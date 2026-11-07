@@ -39,7 +39,7 @@ export default function ContentPageView({ page, showCta = true, slug }: { page: 
                 alt={page.imageAlt ?? ""}
                 fill
                 unoptimized
-                priority
+                preload
                 sizes="(max-width: 760px) 100vw, 48vw"
                 className="page-hero-image"
               />

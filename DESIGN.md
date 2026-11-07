@@ -29,7 +29,7 @@ Use deep teal for text on peach and sea-glass surfaces. Reserve white text for d
 
 - Use an 8px spacing rhythm.
 - Section padding: `clamp(70px, 10vw, 130px)`.
-- Cards: 28px radius; large panels: 48px radius; controls may use a pill shape.
+- Cards: 20-24px radius; image-led heroes: 28px; large panels: 36-48px; controls may use a pill shape.
 - Keep shadows soft and limited to elevated navigation, cards, and floating actions.
 
 ## Components and motion
@@ -37,8 +37,10 @@ Use deep teal for text on peach and sea-glass surfaces. Reserve white text for d
 - Primary booking action: peach pill with deep-teal text.
 - Secondary action: transparent outline on dark surfaces and deep-teal outline on light surfaces.
 - Quiet links: deep-teal with an arrow that moves on hover.
-- Navigation: transparent over the hero, dark blurred glass after 40px scroll; dropdowns are rounded, shadowed, and keyboard operable.
+- Navigation: white with a quiet border and soft elevation; keep the same clear surface while scrolling. Dropdowns are rounded, shadowed, and keyboard operable.
 - Cards: use for actual grouped items; vary sizes and layouts rather than repeating identical tiles.
+- Inner-page heroes: use an image-led split only when suitable Access Psych photography is available. Keep text-only heroes compact rather than reserving an empty image column.
+- Content pages: use mist backgrounds, white grouped cards, calm divider lines, and a deep-teal closing call to action.
 - Focus: visible 3px outline with offset.
 - Respect `prefers-reduced-motion`; keep hover and scroll motion subtle and element-local.
 

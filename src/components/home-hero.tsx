@@ -92,7 +92,7 @@ export default function HomeHero({
               alt=""
               fill
               unoptimized
-              priority={active === 0}
+              preload={active === 0}
               sizes="100vw"
               className="hero-poster"
             />

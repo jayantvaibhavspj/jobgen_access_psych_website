@@ -89,7 +89,7 @@ export default function SiteHeader() {
         <div className="nav-inner">
           <Link className="brand" href="/" aria-label="Access Psych homepage">
             {/* The source-provided logo includes its brand colours and wordmark. */}
-            <Image src={LOGO_URL} alt="Access Psych" width={190} height={30} priority unoptimized />
+            <Image src={LOGO_URL} alt="Access Psych" width={190} height={30} loading="eager" unoptimized />
           </Link>
 
           <nav className="desktop-nav" aria-label="Main navigation">
