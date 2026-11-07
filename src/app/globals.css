@@ -4,19 +4,23 @@
 
 :root {
   color-scheme: light;
-  --ink: #1c2b38;
-  --ink-soft: #31424d;
-  --muted: #65717a;
-  --paper: #f7f4ee;
-  --paper-deep: #eee9df;
-  --white: #fffefa;
-  --violet: #9966ff;
-  --violet-deep: #5d3b9c;
-  --violet-pale: #eee7fb;
-  --coral: #a64e38;
-  --coral-pale: #f5e4d9;
-  --sage: #dce6dd;
-  --line: #e5e0d7;
+  --deep-teal: #0b2a33;
+  --sea-glass: #86d6c6;
+  --peach: #ffb48a;
+  --mist: #f2f7f6;
+  --ink: #0b2a33;
+  --ink-soft: #31484d;
+  --muted: #53676b;
+  --paper: #f2f7f6;
+  --paper-deep: #e8f1ef;
+  --white: #fff;
+  --violet: #0b2a33;
+  --violet-deep: #0b2a33;
+  --violet-pale: #e2f1ee;
+  --coral: #0b2a33;
+  --coral-pale: #ffb48a;
+  --sage: #d8eee8;
+  --line: #d5e2df;
   --display: var(--font-display), Georgia, serif;
   --sans: var(--font-sans), Arial, sans-serif;
   --content: 1240px;
@@ -71,7 +75,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 summary:focus-visible {
-  outline: 3px solid var(--violet);
+  outline: 3px solid var(--sea-glass);
   outline-offset: 4px;
 }
 
@@ -86,7 +90,7 @@ summary:focus-visible {
 }
 
 .section-pad {
-  padding-block: clamp(76px, 9vw, 132px);
+  padding-block: clamp(70px, 10vw, 130px);
 }
 
 .sr-only {
@@ -3154,19 +3158,23 @@ summary:focus-visible {
 
 /* Access Psych visual refresh */
 :root {
-  --paper: #f5f1e9;
-  --paper-deep: #ebe4d9;
-  --white: #fffdf8;
-  --ink: #172a35;
-  --ink-soft: #344852;
-  --muted: #647078;
-  --violet: #9966ff;
-  --violet-deep: #6845a3;
-  --violet-pale: #eee8f5;
-  --coral: #b65c42;
-  --coral-pale: #f3e4da;
-  --sage: #dfe7dd;
-  --line: #ded8ce;
+  --deep-teal: #0b2a33;
+  --sea-glass: #86d6c6;
+  --peach: #ffb48a;
+  --mist: #f2f7f6;
+  --paper: #f2f7f6;
+  --paper-deep: #e8f1ef;
+  --white: #fff;
+  --ink: #0b2a33;
+  --ink-soft: #31484d;
+  --muted: #53676b;
+  --violet: #0b2a33;
+  --violet-deep: #0b2a33;
+  --violet-pale: #e2f1ee;
+  --coral: #0b2a33;
+  --coral-pale: #ffb48a;
+  --sage: #d8eee8;
+  --line: #d5e2df;
 }
 
 html {

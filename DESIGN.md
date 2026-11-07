@@ -2,55 +2,48 @@
 
 ## Direction
 
-Warm, editorial healthcare: composed typography, documentary photography, and calm color. Keep the existing Access Psych logo and its violet mark; use coral sparingly for booking actions. Let imagery and generous whitespace do more work than decorative cards.
+Calm, welcoming healthcare with a polished editorial feel. Use real Access Psych photography, generous whitespace, strong dark-teal typography, and restrained motion. Keep the existing logo, copy, links, and imagery; do not borrow other sites' content or assets.
 
 ## Color
 
 | Token | Value | Role |
 |---|---|---|
-| Ink | `#172A35` | Primary text, dark panels, footer |
-| Ink soft | `#344852` | Secondary text on light backgrounds |
-| Paper | `#F5F1E9` | Main canvas |
-| Paper deep | `#EBE4D9` | Alternate warm sections |
-| White | `#FFFDF8` | Text on dark panels and image surfaces |
-| Violet | `#6845A3` | Links, focus accents, selected labels |
-| Coral | `#B65C42` | Primary booking action and small highlights |
-| Sage | `#DFE7DD` | Grounded wellbeing and values sections |
-| Line | `#DED8CE` | Rules and quiet boundaries |
+| Deep teal | `#0b2a33` | Main text, dark panels, footer, and primary buttons |
+| Sea glass | `#86d6c6` | Decorative highlights, selected states, and subtle focus accents |
+| Peach | `#ffb48a` | Booking actions and warm highlights; pair with deep-teal text |
+| Mist | `#f2f7f6` | Main canvas and light section backgrounds |
+| White | `#ffffff` | Card surfaces and text on dark panels |
+| Secondary text | `#53676b` | Supporting copy on light backgrounds |
+| Divider | `#d5e2df` | Hairline rules and quiet boundaries |
 
-Use the dark ink and white for readable contrast. Do not put small white text on coral; use white-on-ink for secondary actions.
+Use deep teal for text on peach and sea-glass surfaces. Reserve white text for deep-teal backgrounds.
 
 ## Typography
 
-- Display: Fraunces, regular weight, for editorial headings.
-- Body: Manrope, regular/medium for readable copy; bold weights for navigation and actions.
-- Scale: 12, 14, 16, 20, 24, 32, 48, 64px; fluid display sizes may scale between these steps.
-- Body copy targets 15–16px with 1.7–1.9 line height. Labels and metadata may be smaller.
+- Display: Fraunces for headings, with a confident editorial scale.
+- Body: Figtree for navigation, body text, and controls.
+- Body copy: 16px minimum where practical, with 1.65–1.8 line height.
+- Use fluid heading sizes and avoid long lines; content width is capped at 1240px.
 
-## Spacing and layout
+## Spacing and shape
 
-- 4px base spacing; compose common gaps from 8, 16, 24, 32, 48, and 64px.
-- Content width: 1240px maximum.
-- Section padding: fluid 80–140px desktop, 70–84px mobile.
-- Use asymmetric editorial columns, full-width photographs, and fine divider rules. Avoid repeating a three-card pattern.
+- Use an 8px spacing rhythm.
+- Section padding: `clamp(70px, 10vw, 130px)`.
+- Cards: 28px radius; large panels: 48px radius; controls may use a pill shape.
+- Keep shadows soft and limited to elevated navigation, cards, and floating actions.
 
-## Shape and depth
+## Components and motion
 
-- Square corners for navigation, buttons, and editorial image frames; reserve small radii for utility controls.
-- Use one soft shadow for floating/sticky controls and dropdown depth. Avoid decorative glass and glows.
-- Motion is brief, element-local, and disabled or reduced for `prefers-reduced-motion`.
-
-## Components
-
-- Primary action: coral, solid, uppercase label, clear external/next-step cue.
-- Secondary action: transparent outline on dark surfaces; ink outline on light surfaces.
-- Quiet links: violet text with a small arrow that moves on hover.
-- Navigation: transparent over the hero, warm solid/blurred surface after scrolling; keyboard-operable dropdowns and mobile accordions.
-- Cards: use only for real grouped content such as articles or clinician profiles; otherwise use open lists and ruled rows.
-- Focus: visible 3px violet outline with offset.
+- Primary booking action: peach pill with deep-teal text.
+- Secondary action: transparent outline on dark surfaces and deep-teal outline on light surfaces.
+- Quiet links: deep-teal with an arrow that moves on hover.
+- Navigation: transparent over the hero, dark blurred glass after 40px scroll; dropdowns are rounded, shadowed, and keyboard operable.
+- Cards: use for actual grouped items; vary sizes and layouts rather than repeating identical tiles.
+- Focus: visible 3px outline with offset.
+- Respect `prefers-reduced-motion`; keep hover and scroll motion subtle and element-local.
 
 ## Imagery and icons
 
-- Use the original Access Psych photography and logo, never reference-site assets.
-- Prefer candid, human-scale photos with restrained saturation and legible contrast.
+- Use original Access Psych photography and logo, never reference-site assets.
+- Prefer candid, human-scale photos with readable contrast and descriptive alt text.
 - Use Lucide icons as small functional cues, not as decoration.

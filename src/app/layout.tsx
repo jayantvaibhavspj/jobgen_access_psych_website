@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Figtree, Fraunces } from "next/font/google";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import FloatingBooking from "@/components/floating-booking";
 import { HOME_IMAGE } from "@/lib/site-data";
 import "./globals.css";
+import "./homepage.css";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -12,7 +13,7 @@ const display = Fraunces({
   display: "swap",
 });
 
-const sans = Manrope({
+const sans = Figtree({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -48,8 +49,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU">
-      <body className={`${display.variable} ${sans.variable}`}>
+    <html lang="en-AU" className={`${display.variable} ${sans.variable}`}>
+      <body>
         <a className="skip-link" href="#main">
           Skip to content
         </a>

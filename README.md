@@ -31,9 +31,10 @@ Recommended footage is calm, slow and warm (for example, people talking in soft 
 
 - Navigation, page copy, contact details, location addresses, and original image references live in `src/lib/site-data.ts`.
 - Homepage content and homepage sections live in `src/components/home-page.tsx`.
+- Homepage FAQ, Australia map, and newsletter entry interactions live in `src/components/home-interactions.tsx`.
 - Hero slides and video fallback behaviour live in `src/components/home-hero.tsx`.
 - Shared layout, menus, footer, and inner-page presentation live in `src/components/`.
-- The visual tokens and component guidance live in `DESIGN.md` and `src/app/globals.css`.
+- The visual tokens and component guidance live in `DESIGN.md`, `src/app/globals.css`, and `src/app/homepage.css`.
 - The existing clinician data is in `src/data/clinicians.js`.
 
 The site uses Next.js, TypeScript, Tailwind CSS, Framer Motion, and lucide-react. Content links for appointment requests, policy PDFs, articles, and clinician profiles continue to use Access Psych's existing services.

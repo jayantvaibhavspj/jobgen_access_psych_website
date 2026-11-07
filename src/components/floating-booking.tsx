@@ -8,7 +8,11 @@ export default function FloatingBooking() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const updateVisibility = () => setVisible(window.scrollY > 460);
+    const updateVisibility = () => {
+      const hero = document.querySelector<HTMLElement>(".home-hero");
+      const threshold = hero ? hero.offsetHeight : 460;
+      setVisible(window.scrollY > threshold);
+    };
     updateVisibility();
     window.addEventListener("scroll", updateVisibility, { passive: true });
     return () => window.removeEventListener("scroll", updateVisibility);

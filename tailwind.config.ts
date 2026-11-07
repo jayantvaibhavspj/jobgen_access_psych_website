@@ -5,10 +5,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#172A35",
-        violet: "#6845A3",
-        cream: "#F5F1E9",
-        coral: "#B65C42",
+        ink: "#0B2A33",
+        "deep-teal": "#0B2A33",
+        "sea-glass": "#86D6C6",
+        peach: "#FFB48A",
+        mist: "#F2F7F6",
       },
       fontFamily: {
         display: ["var(--font-display)"],

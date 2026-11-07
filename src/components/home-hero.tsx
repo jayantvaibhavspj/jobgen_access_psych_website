@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Check, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { useEffect, useState } from "react";
-import { BOOKING_PORTAL, HOME_IMAGE, SITE_URL } from "@/lib/site-data";
+import { BOOKING_PORTAL, HOME_IMAGE } from "@/lib/site-data";
 
 const slides = [
   {
@@ -13,28 +13,26 @@ const slides = [
     text: "Our mental health clinicians have capacity for telehealth and face-to-face sessions.",
     action: "Find a clinician",
     href: "/meet-our-team",
-    image: HOME_IMAGE,
-    alt: "A young man talking with a psychologist",
   },
   {
     title: "Employee Assistance Program.",
     text: "We offer dependable and proven counselling services to meet corporate needs.",
     action: "Learn more",
     href: "/employee-assistance-program",
-    image: `${SITE_URL}/wp-content/uploads/2022/06/EAP1.jpg`,
-    alt: "An employee talking with a psychologist",
   },
   {
     title: "Meet our clinicians.",
     text: "We've got Australia covered so there's a talented and qualified clinician near you.",
     action: "Find a clinician",
     href: "/meet-our-team",
-    image: `${SITE_URL}/wp-content/uploads/2022/10/Slide-1_MOO221981-1030x302.png`,
-    alt: "A mental health clinician talking with a client",
   },
 ];
 
-export default function HomeHero() {
+export default function HomeHero({
+  videoSources,
+}: {
+  videoSources: { webm: boolean; mp4: boolean };
+}) {
   const [active, setActive] = useState(0);
   const [videoAllowed, setVideoAllowed] = useState(false);
   const [videoFailed, setVideoFailed] = useState(false);
@@ -48,7 +46,9 @@ export default function HomeHero() {
     const smallScreen = window.matchMedia("(max-width: 520px)");
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     const updateVideoPreference = () => {
-      setVideoAllowed(!motionPreference.matches && !smallScreen.matches && !connection?.saveData);
+      const allowed =
+        !motionPreference.matches && !smallScreen.matches && !connection?.saveData;
+      setVideoAllowed(allowed);
     };
     updateVideoPreference();
     motionPreference.addEventListener("change", updateVideoPreference);
@@ -61,9 +61,12 @@ export default function HomeHero() {
 
   useEffect(() => {
     if (reducedMotion || paused) return;
-    const timer = window.setInterval(() => setActive((current) => (current + 1) % slides.length), 7000);
-    return () => window.clearInterval(timer);
-  }, [paused, reducedMotion]);
+    const timer = window.setTimeout(
+      () => setActive((current) => (current + 1) % slides.length),
+      7000,
+    );
+    return () => window.clearTimeout(timer);
+  }, [active, paused, reducedMotion]);
 
   const changeSlide = (direction: number) => {
     setActive((current) => (current + direction + slides.length) % slides.length);
@@ -73,8 +76,8 @@ export default function HomeHero() {
     <section className="home-hero min-h-screen" aria-label="Welcome to Access Psych">
       <div className="hero-media" aria-hidden="true">
         <Image
-          key={slide.image}
-          src={slide.image}
+          key={HOME_IMAGE}
+          src={HOME_IMAGE}
           alt=""
           fill
           unoptimized
@@ -82,7 +85,7 @@ export default function HomeHero() {
           sizes="100vw"
           className="hero-poster"
         />
-        {videoAllowed && !videoFailed && (
+        {videoAllowed && (videoSources.webm || videoSources.mp4) && !videoFailed && (
           <video
             className={`hero-video${videoReady ? " is-ready" : ""}`}
             autoPlay
@@ -90,12 +93,12 @@ export default function HomeHero() {
             loop
             playsInline
             preload="metadata"
-            poster={slide.image}
+            poster={HOME_IMAGE}
             onLoadedData={() => setVideoReady(true)}
             onError={() => setVideoFailed(true)}
           >
-            <source src="/video/hero.webm" type="video/webm" />
-            <source src="/video/hero.mp4" type="video/mp4" />
+            {videoSources.webm && <source src="/video/hero.webm" type="video/webm" />}
+            {videoSources.mp4 && <source src="/video/hero.mp4" type="video/mp4" />}
           </video>
         )}
         <div className="hero-overlay" />
@@ -103,14 +106,13 @@ export default function HomeHero() {
 
       <div className="hero-inner">
         <div className="hero-copy">
-          <span className="hero-eyebrow"><span className="eyebrow-line" /> A little more room to feel like you</span>
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
               className="hero-slide-copy"
-              initial={reducedMotion ? false : { opacity: 1, y: 10 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={reducedMotion ? undefined : { opacity: 1, y: -8 }}
+              exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
               transition={{ duration: 0.48, ease: [0.2, 0.75, 0.25, 1] }}
               aria-live="polite"
             >
@@ -137,6 +139,10 @@ export default function HomeHero() {
           </div>
         </div>
 
+        <div className="hero-breathing" aria-hidden="true">
+          <span />
+        </div>
+
         <div className="hero-controls" aria-label="Hero slides">
           <button type="button" onClick={() => changeSlide(-1)} aria-label="Previous message"><ChevronLeft size={18} /></button>
           <div className="hero-dots">
@@ -147,7 +153,13 @@ export default function HomeHero() {
                 aria-label={`Show message ${index + 1}: ${item.title}`}
                 aria-current={active === index ? "true" : undefined}
                 onClick={() => setActive(index)}
-              />
+              >
+                <span
+                  key={`${active}-${index}`}
+                  className={`hero-progress${active === index ? " is-active" : ""}`}
+                  style={{ animationPlayState: paused ? "paused" : "running" }}
+                />
+              </button>
             ))}
           </div>
           <button type="button" onClick={() => setPaused((value) => !value)} aria-label={paused ? "Play messages" : "Pause messages"}>
