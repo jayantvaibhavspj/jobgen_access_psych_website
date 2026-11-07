@@ -50,6 +50,7 @@ export const navigation = [
       { label: "How to book", href: "/how-to-book-an-appointment-with-access-psych" },
       { label: "Meet our team", href: "/meet-our-team" },
       { label: "Our fees", href: "/fees" },
+      { label: "Technology Partner", href: "/technology-partner" },
       { label: "News and Events", href: "/news-and-events" },
       { label: "Our locations", href: "/our-locations" },
     ],

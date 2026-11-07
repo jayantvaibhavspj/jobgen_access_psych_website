@@ -3,12 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   BOOKING_PORTAL,
-  EMAIL_LINK,
   LOGO_URL,
   navigation,
   PHONE_LINK,
@@ -86,23 +85,6 @@ export default function SiteHeader() {
 
   return (
     <header className={`site-header${scrolled || !isHome ? " is-scrolled" : ""}${menuOpen ? " menu-is-open" : ""}`}>
-      <div className="utility-bar">
-        <div className="utility-inner">
-          <div className="utility-social">
-            <a href="https://au.linkedin.com/company/access-psych/" target="_blank" rel="noreferrer" aria-label="Access Psych on LinkedIn">
-              <span className="linkedin-mark" aria-hidden="true">in</span>
-              <span>LinkedIn</span>
-            </a>
-            <a href={EMAIL_LINK}><Mail size={14} aria-hidden="true" /><span>info@accesspsych.com.au</span></a>
-          </div>
-          <div className="utility-links">
-            <Link href="/online-booking-request">Make a Booking / Referral</Link>
-            <a href={BOOKING_PORTAL} target="_blank" rel="noreferrer">Treatment Booking Portal <span aria-hidden="true">↗</span></a>
-            <a className="utility-phone" href={PHONE_LINK}><Phone size={13} aria-hidden="true" />1800 APSYCH (1800 277 924)</a>
-          </div>
-        </div>
-      </div>
-
       <div className="nav-shell">
         <div className="nav-inner">
           <Link className="brand" href="/" aria-label="Access Psych homepage">

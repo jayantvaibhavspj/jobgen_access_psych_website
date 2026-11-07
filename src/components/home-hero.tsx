@@ -10,18 +10,21 @@ import { BOOKING_PORTAL, HOME_IMAGE } from "@/lib/site-data";
 const slides = [
   {
     title: "Welcome to Access Psych.",
+    titleLines: ["Welcome to", "Access Psych."],
     text: "Our mental health clinicians have capacity for telehealth and face-to-face sessions.",
     action: "Find a clinician",
     href: "/meet-our-team",
   },
   {
     title: "Employee Assistance Program.",
+    titleLines: ["Employee Assistance", "Program."],
     text: "We offer dependable and proven counselling services to meet corporate needs.",
     action: "Learn more",
     href: "/employee-assistance-program",
   },
   {
     title: "Meet our clinicians.",
+    titleLines: ["Meet our", "clinicians."],
     text: "We've got Australia covered so there's a talented and qualified clinician near you.",
     action: "Find a clinician",
     href: "/meet-our-team",
@@ -31,12 +34,12 @@ const slides = [
 export default function HomeHero({
   videoSources,
 }: {
-  videoSources: { webm: boolean; mp4: boolean };
+  videoSources: { webm: string | null; mp4: string | null }[];
 }) {
   const [active, setActive] = useState(0);
   const [videoAllowed, setVideoAllowed] = useState(false);
-  const [videoFailed, setVideoFailed] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
+  const [failedSlides, setFailedSlides] = useState<number[]>([]);
+  const [hasEntered, setHasEntered] = useState(false);
   const [paused, setPaused] = useState(false);
   const reducedMotion = useReducedMotion();
   const slide = slides[active];
@@ -75,32 +78,55 @@ export default function HomeHero({
   return (
     <section className="home-hero min-h-screen" aria-label="Welcome to Access Psych">
       <div className="hero-media" aria-hidden="true">
-        <Image
-          key={HOME_IMAGE}
-          src={HOME_IMAGE}
-          alt=""
-          fill
-          unoptimized
-          priority
-          sizes="100vw"
-          className="hero-poster"
-        />
-        {videoAllowed && (videoSources.webm || videoSources.mp4) && !videoFailed && (
-          <video
-            className={`hero-video${videoReady ? " is-ready" : ""}`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={HOME_IMAGE}
-            onLoadedData={() => setVideoReady(true)}
-            onError={() => setVideoFailed(true)}
+        <AnimatePresence initial={false}>
+          <motion.div
+            className="hero-media-slide"
+            key={active}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: reducedMotion ? 0 : 1, ease: "easeInOut" }}
           >
-            {videoSources.webm && <source src="/video/hero.webm" type="video/webm" />}
-            {videoSources.mp4 && <source src="/video/hero.mp4" type="video/mp4" />}
-          </video>
-        )}
+            <Image
+              src={HOME_IMAGE}
+              alt=""
+              fill
+              unoptimized
+              priority={active === 0}
+              sizes="100vw"
+              className="hero-poster"
+            />
+            {videoAllowed &&
+              (videoSources[active]?.webm || videoSources[active]?.mp4) &&
+              !failedSlides.includes(active) && (
+                <video
+                  className="hero-video"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster={HOME_IMAGE}
+                  onError={() =>
+                    setFailedSlides((current) => [...current, active])
+                  }
+                >
+                  {videoSources[active]?.webm && (
+                    <source
+                      src={videoSources[active].webm}
+                      type="video/webm"
+                    />
+                  )}
+                  {videoSources[active]?.mp4 && (
+                    <source
+                      src={videoSources[active].mp4}
+                      type="video/mp4"
+                    />
+                  )}
+                </video>
+              )}
+          </motion.div>
+        </AnimatePresence>
         <div className="hero-overlay" />
       </div>
 
@@ -113,10 +139,33 @@ export default function HomeHero({
               initial={reducedMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
-              transition={{ duration: 0.48, ease: [0.2, 0.75, 0.25, 1] }}
+              transition={{ duration: reducedMotion ? 0 : 0.55, ease: [0.2, 0.75, 0.25, 1] }}
+              onAnimationComplete={() => setHasEntered(true)}
               aria-live="polite"
             >
-              <h1>{slide.title}</h1>
+              <h1 aria-label={slide.title}>
+                {slide.titleLines.map((line, index) => (
+                  <motion.span
+                    className="hero-title-line"
+                    key={line}
+                    initial={
+                      reducedMotion
+                        ? false
+                        : active === 0 && !hasEntered
+                          ? { opacity: 0, y: "100%" }
+                          : { opacity: 0, y: 8 }
+                    }
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: reducedMotion ? 0 : 0.62,
+                      delay: active === 0 && !hasEntered ? index * 0.17 : 0,
+                      ease: [0.2, 0.75, 0.25, 1],
+                    }}
+                  >
+                    {line}
+                  </motion.span>
+                ))}
+              </h1>
               <p>{slide.text}</p>
             </motion.div>
           </AnimatePresence>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUp, Linkedin, Mail, Phone } from "lucide-react";
-import { EMAIL_LINK, LOGO_URL, PHONE_LINK, SITE_URL } from "@/lib/site-data";
+import { BOOKING_PORTAL, EMAIL_LINK, LOGO_URL, PHONE_LINK, SITE_URL } from "@/lib/site-data";
 
 export default function SiteFooter() {
   const scrollToTop = () => {
@@ -30,9 +30,10 @@ export default function SiteFooter() {
           <Link href="/employee-assistance-program">Employee Assistance Program</Link>
           <Link href="/fees">Our fees</Link>
           <Link href="/meet-our-team">Meet our team</Link>
+          <Link href="/technology-partner">Technology Partner</Link>
           <Link href="/frequently-asked-questions">Frequently asked questions</Link>
           <Link href="/our-locations">Our locations</Link>
-          <Link href="/online-booking-request">Booking request form</Link>
+          <Link href="/online-booking-request">Make a Booking / Referral</Link>
         </div>
         <div className="footer-column">
           <h2>Company policies</h2>
@@ -43,6 +44,8 @@ export default function SiteFooter() {
           <h2>Connect</h2>
           <Link href="/newsletter">Subscribe to our Newsletter</Link>
           <a href="https://au.linkedin.com/company/access-psych/" target="_blank" rel="noreferrer"><Linkedin size={16} aria-hidden="true" />LinkedIn</a>
+          <a href={BOOKING_PORTAL} target="_blank" rel="noreferrer">Treatment Booking Portal <span aria-hidden="true">↗</span></a>
+          <Link href="/technology-partner">Powered by JobGen.AI</Link>
           <Link className="footer-logo" href="/" aria-label="Access Psych homepage">
             <Image src={LOGO_URL} alt="Access Psych" width={190} height={30} unoptimized />
           </Link>

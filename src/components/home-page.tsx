@@ -20,7 +20,14 @@ import Reveal from "@/components/reveal";
 import {
   AustraliaLocations,
   FAQAccordion,
+  HowItWorks,
+  MarqueeTicker,
+  MetricsPlaceholder,
+  ParallaxPhoto,
   NewsletterForm,
+  TestimonialSlider,
+  TrustStrip,
+  ValuesStory,
 } from "@/components/home-interactions";
 import {
   BOOKING_PORTAL,
@@ -82,14 +89,28 @@ const pathways = [
 export default function HomePage() {
   const introParagraphs = homepageCopy.slice(0, 3);
   const concludingIntro = homepageCopy[3];
-  const heroVideoSources = {
-    webm: existsSync(join(process.cwd(), "public", "video", "hero.webm")),
-    mp4: existsSync(join(process.cwd(), "public", "video", "hero.mp4")),
+  const defaultVideoSources = {
+    webm: existsSync(join(process.cwd(), "public", "video", "hero.webm"))
+      ? "/video/hero.webm"
+      : null,
+    mp4: existsSync(join(process.cwd(), "public", "video", "hero.mp4"))
+      ? "/video/hero.mp4"
+      : null,
   };
+  const heroVideoSources = ["welcome", "eap", "clinicians"].map((slide) => ({
+    webm: existsSync(join(process.cwd(), "public", "video", `hero-${slide}.webm`))
+      ? `/video/hero-${slide}.webm`
+      : defaultVideoSources.webm,
+    mp4: existsSync(join(process.cwd(), "public", "video", `hero-${slide}.mp4`))
+      ? `/video/hero-${slide}.mp4`
+      : defaultVideoSources.mp4,
+  }));
 
   return (
     <main id="main">
       <HomeHero videoSources={heroVideoSources} />
+      <MarqueeTicker />
+      <TrustStrip />
 
       <section className="intro-section section-pad" id="intro">
         <div className="section-container">
@@ -156,6 +177,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      <HowItWorks />
+      <MetricsPlaceholder />
+
       <section
         className="services-overview section-pad"
         aria-labelledby="services-heading"
@@ -211,35 +235,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="values-overview section-pad">
-        <div className="section-container values-overview-layout">
-          <div className="values-overview-intro">
-            <span className="section-eyebrow">Our purpose</span>
-            <h2>{pages["vision-purpose-values"].sections?.[1]?.paragraphs?.[0]}</h2>
-            <Link className="text-link" href="/vision-purpose-values">
-              Vision, purpose &amp; values
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="values-overview-list">
-            {pages["vision-purpose-values"].cards?.map((value, index) => {
-              const ValueIcon = [
-                HeartHandshake,
-                HandHeart,
-                Shield,
-                UsersRound,
-              ][index];
-              return (
-                <div className="values-overview-item" key={value.title}>
-                  <ValueIcon size={23} aria-hidden="true" />
-                  <strong>{value.title}</strong>
-                  <p>{value.text}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <ValuesStory values={pages["vision-purpose-values"].cards ?? []} />
 
       <section className="session-section section-pad">
         <div className="section-container">
@@ -325,11 +321,10 @@ export default function HomePage() {
           </div>
           <div className="clinicians-feature-layout">
             <Reveal className="clinicians-image">
-              <Image
+              <ParallaxPhoto
                 src={HOME_IMAGE}
                 alt="A young man talking with a psychologist or therapist"
-                fill
-                unoptimized
+                className="parallax-photo"
                 sizes="(max-width: 900px) 100vw, 35vw"
               />
               <span className="image-caption">
@@ -371,6 +366,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <TestimonialSlider />
 
       <section className="clinicians-section section-pad">
         <div className="section-container clinicians-layout">
@@ -551,11 +548,10 @@ export default function HomePage() {
           </div>
           {pages.careers.image && (
             <div className="careers-preview-image">
-              <Image
+              <ParallaxPhoto
                 src={pages.careers.image}
                 alt={pages.careers.imageAlt ?? ""}
-                fill
-                unoptimized
+                className="parallax-photo"
                 sizes="(max-width: 760px) 100vw, 44vw"
               />
             </div>

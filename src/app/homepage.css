@@ -102,18 +102,12 @@ summary:focus-visible {
 }
 
 .site-header {
-  color: var(--white);
-}
-
-.utility-bar {
-  height: 38px;
-  background: rgb(11 42 51 / 38%);
-  border-color: rgb(255 255 255 / 16%);
+  color: var(--deep-teal);
 }
 
 .nav-shell {
-  background: linear-gradient(180deg, rgb(11 42 51 / 30%), transparent);
-  border-color: rgb(255 255 255 / 14%);
+  background: #fff;
+  border-color: rgb(11 42 51 / 12%);
 }
 
 .brand {
@@ -138,22 +132,15 @@ summary:focus-visible {
 }
 
 .site-header.is-scrolled {
-  background: rgb(11 42 51 / 92%);
+  background: rgb(255 255 255 / 97%);
   box-shadow: 0 10px 32px rgb(11 42 51 / 17%);
-  color: var(--white);
+  color: var(--deep-teal);
   backdrop-filter: blur(18px);
 }
 
-.site-header.is-scrolled .utility-bar {
-  height: 0;
-  overflow: hidden;
-  border: 0;
-  opacity: 0;
-}
-
 .site-header.is-scrolled .nav-shell {
-  background: transparent;
-  border-color: transparent;
+  background: #fff;
+  border-color: rgb(11 42 51 / 12%);
 }
 
 .site-header.is-scrolled .brand {
@@ -167,7 +154,7 @@ summary:focus-visible {
 
 .site-header.is-scrolled .nav-trigger:hover,
 .site-header.is-scrolled .nav-trigger[aria-expanded="true"] {
-  color: var(--sea-glass);
+  color: #236657;
 }
 
 .home-hero,
@@ -216,6 +203,8 @@ summary:focus-visible {
   line-height: 0.96;
   text-shadow: 0 4px 26px rgb(0 0 0 / 24%);
 }
+
+.hero-title-line { display: block; }
 
 .hero-slide-copy p {
   max-width: 34ch;
@@ -1459,8 +1448,6 @@ summary:focus-visible {
 @media (max-width: 760px) {
   html { scroll-padding-top: 72px; }
   .section-container { width: calc(100% - 40px); }
-  .utility-bar,
-  .site-header.is-scrolled .utility-bar { display: none; }
   .nav-inner { height: 68px; }
   .brand { padding: 6px 8px; border-radius: 9px; }
   .brand img { width: 145px; }
