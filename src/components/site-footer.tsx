@@ -45,7 +45,6 @@ export default function SiteFooter() {
           <Link href="/newsletter">Subscribe to our Newsletter</Link>
           <a href="https://au.linkedin.com/company/access-psych/" target="_blank" rel="noreferrer"><Linkedin size={16} aria-hidden="true" />LinkedIn</a>
           <a href={BOOKING_PORTAL} target="_blank" rel="noreferrer">Treatment Booking Portal <span aria-hidden="true">↗</span></a>
-          <Link href="/technology-partner">Powered by JobGen.AI</Link>
           <Link className="footer-logo" href="/" aria-label="Access Psych homepage">
             <Image src={LOGO_URL} alt="Access Psych" width={190} height={30} unoptimized />
           </Link>
@@ -59,6 +58,7 @@ export default function SiteFooter() {
         <button className="scroll-top" type="button" onClick={scrollToTop}>
           Back to top <ArrowUp size={15} aria-hidden="true" />
         </button>
+        <Link className="footer-powered" href="/technology-partner">Powered by JobGen.AI</Link>
       </div>
     </footer>
   );

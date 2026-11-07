@@ -1403,6 +1403,13 @@ summary:focus-visible {
 
 .footer-credit a { color: var(--white); }
 
+.footer-powered {
+  color: var(--white);
+  font-weight: 700;
+  margin-right: 20px;
+  white-space: nowrap;
+}
+
 .scroll-top {
   display: inline-flex;
   min-height: 42px;

@@ -5,50 +5,205 @@ import {
   ArrowRight,
   ArrowUpRight,
   Bot,
-  BrainCircuit,
   CalendarCheck,
   Check,
   ClipboardList,
+  Database,
+  Globe,
   Hand,
   KeyRound,
   MessagesSquare,
+  PhoneCall,
   PhoneForwarded,
-  RefreshCw,
+  PhoneOutgoing,
   Route,
   ShieldCheck,
 } from "lucide-react";
 import Reveal from "@/components/reveal";
-import { TechnologyProgressLine } from "@/components/home-interactions";
-import { HOME_IMAGE, BOOKING_PORTAL } from "@/lib/site-data";
+import { HOME_IMAGE } from "@/lib/site-data";
+
+const JOBGEN_DEMO_URL = "https://calendly.com/jobgen-demo/30min";
+const JOBGEN_SITE_URL = "https://jobgen.ai/";
+const JOBGEN_IMAGE_PATH = "/images/jobgen-partner/";
 
 export const metadata: Metadata = {
-  title: "Technology Partner",
+  title: "Technology Partner | JobGen.AI",
   description:
-    "Learn about the Access Psych and JobGen.AI technology partnership. Clinical care always stays with qualified clinicians.",
+    "Meet JobGen.AI, Access Psych's technology partner. Explore JobGen.AI's voice-agent capabilities, with a clear distinction between platform features and Access Psych services.",
   alternates: { canonical: "/technology-partner" },
   openGraph: {
     title: "Technology Partner | Access Psych",
     description:
-      "Learn about the Access Psych and JobGen.AI technology partnership.",
+      "Learn about JobGen.AI's platform capabilities and the safeguards required before any Access Psych use.",
     url: "/technology-partner",
     images: [HOME_IMAGE],
   },
 };
 
-const proposedCapabilities = [
-  { title: "Enquiry intake", tag: "24/7 · confirm", icon: MessagesSquare },
-  { title: "Calendar booking", tag: "Live · confirm", icon: CalendarCheck },
-  { title: "Phone forwarding", tag: "Keep your number · confirm", icon: PhoneForwarded },
-  { title: "Smart routing", tag: "Team routing · confirm", icon: Route },
-  { title: "Unified channels", tag: "Web · voice · chat · confirm", icon: BrainCircuit },
-  { title: "CRM connection", tag: "Real-time sync · confirm", icon: RefreshCw },
+const agents = [
+  {
+    name: "Jenny",
+    role: "Inbound AI receptionist",
+    image: "jenny-front.webp",
+    alt: "Jenny, JobGen.AI's AI receptionist, shown in a professional portrait",
+    icon: PhoneCall,
+    description:
+      "Greets callers, answers approved business questions, takes messages and can help book or reschedule appointments against a configured calendar.",
+  },
+  {
+    name: "Olivia",
+    role: "Outbound sales agent",
+    image: "olivia-front.webp",
+    alt: "Olivia, JobGen.AI's outbound sales agent, shown in a professional portrait",
+    icon: PhoneOutgoing,
+    description:
+      "Follows up with eligible contacts, checks interest and arranges callbacks. JobGen.AI also describes WhatsApp and CRM workflows for this agent.",
+  },
 ];
 
-const guardrails = [
-  { title: "Approved facts only", icon: Check },
-  { title: "Identity verification", icon: KeyRound },
-  { title: "Warm handoff to a human", icon: Hand },
-  { title: "Complete audit trail", icon: ClipboardList },
+const capabilities = [
+  {
+    title: "Call intake",
+    description:
+      "Answer enquiries with approved information and capture a message when a person needs follow-up.",
+    image: "call-intake.webp",
+    alt: "Receptionist at a front desk handling customer calls",
+    icon: PhoneCall,
+  },
+  {
+    title: "Appointment calendars",
+    description:
+      "Check available times, apply configured duration and staff rules, book or reschedule, then send confirmations.",
+    image: "calendar-sync.webp",
+    alt: "Professional checking appointment schedules on a tablet",
+    icon: CalendarCheck,
+  },
+  {
+    title: "Missed-call coverage",
+    description:
+      "Forward unanswered, overflow or after-hours calls while keeping the number customers already know.",
+    image: "carrier-forward.webp",
+    alt: "Smartphone receiving an incoming customer call on a desk",
+    icon: PhoneForwarded,
+  },
+  {
+    title: "Human handoff",
+    description:
+      "Route conversations to the right person and pass on context for a smoother handover.",
+    image: "smart-routing.webp",
+    alt: "Team members coordinating customer call routing and handoffs",
+    icon: Route,
+  },
+  {
+    title: "Website chat and voice",
+    description:
+      "Give website visitors another way to ask questions and share what they need.",
+    image: "website-voice.webp",
+    alt: "Customer browsing a website on a laptop",
+    icon: Globe,
+  },
+  {
+    title: "Inbound reception",
+    description:
+      "Provide an AI receptionist for inbound calls, enquiries and appointment requests, including outside office hours.",
+    image: "inbound-voice.webp",
+    alt: "Receptionist greeting a visitor at a front desk",
+    icon: Bot,
+  },
+  {
+    title: "Outbound follow-up",
+    description:
+      "Follow up with eligible contacts, qualify interest and arrange callbacks on a schedule set by the business.",
+    image: "outbound-voice.webp",
+    alt: "Professional making an outbound call beside a city window",
+    icon: PhoneOutgoing,
+  },
+  {
+    title: "WhatsApp workflows",
+    description:
+      "Connect messaging with voice workflows for coordinated follow-up across channels.",
+    image: "whatsapp-voice.webp",
+    alt: "Person sending a message on a smartphone outdoors",
+    icon: MessagesSquare,
+  },
+  {
+    title: "CRM activity",
+    description:
+      "Capture contact details, enquiry intent and conversation summaries in a connected CRM.",
+    image: "crm-leads.webp",
+    alt: "CRM dashboard showing customer enquiries and a sales pipeline",
+    icon: Database,
+  },
+];
+
+const implementationSteps = [
+  {
+    title: "Prepare approved information",
+    description:
+      "Provide verified service information and define what the agent may answer.",
+    image: "cp-1.webp",
+    alt: "Audio equipment and waveform representing knowledge preparation",
+  },
+  {
+    title: "Set rules and escalation",
+    description:
+      "Agree what to ask, when to verify identity and how to route an enquiry to a person.",
+    image: "cp-2.webp",
+    alt: "Compliance and security checks displayed on a tablet",
+  },
+  {
+    title: "Test before launch",
+    description:
+      "Run sandbox conversations, review the results and approve the workflow before going live.",
+    image: "cp-6.webp",
+    alt: "Voice interaction being tested in a software sandbox",
+  },
+];
+
+const safeguards = [
+  {
+    title: "Approved information",
+    description:
+      "Agents use business-approved facts rather than inventing policies, prices or availability.",
+    icon: Check,
+  },
+  {
+    title: "Identity checks",
+    description:
+      "A workflow can require identity details before sharing customer-specific information.",
+    icon: KeyRound,
+  },
+  {
+    title: "Human handoff",
+    description:
+      "Teams can define when an enquiry should be transferred to a person with context.",
+    icon: Hand,
+  },
+  {
+    title: "Audit records",
+    description:
+      "Call audio, transcripts and recording consent can be logged; handling must be reviewed before use.",
+    icon: ClipboardList,
+  },
+];
+
+const integrations = [
+  "WhatsApp",
+  "Microsoft Teams",
+  "HubSpot",
+  "Google Drive",
+  "Slack",
+  "LinkedIn",
+  "Calendly",
+  "Dropbox",
+  "Notion",
+  "Airtable",
+  "Mailchimp",
+  "Stripe",
+  "Zapier",
+  "Salesforce",
+  "Google Calendar",
+  "MYOB",
 ];
 
 export default function TechnologyPartnerPage() {
@@ -63,77 +218,88 @@ export default function TechnologyPartnerPage() {
           </nav>
           <div className="technology-hero-grid">
             <div className="technology-hero-copy">
-              <span className="section-eyebrow">Australian workforce partnership</span>
-              <h1>Built with JobGen.AI</h1>
+              <span className="section-eyebrow">Technology partner</span>
+              <h1>Meet JobGen.AI</h1>
               <p>
-                Access Psych and JobGen.AI are exploring how thoughtful
-                technology can support the admin and enquiries around mental
-                health care.
+                JobGen.AI builds voice and chat agents for reception,
+                appointment enquiries and business workflows. Access Psych
+                partners with JobGen.AI to explore technology that can support
+                administration around care.
               </p>
+              <div className="technology-hero-actions">
+                <a
+                  className="button button-dark"
+                  href={JOBGEN_DEMO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Book a JobGen.AI demo
+                  <ArrowUpRight size={17} aria-hidden="true" />
+                </a>
+                <a
+                  className="button button-outline"
+                  href={JOBGEN_SITE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Visit JobGen.AI
+                  <ArrowRight size={17} aria-hidden="true" />
+                </a>
+              </div>
               <div className="partner-wordmark" aria-label="Access Psych and JobGen.AI">
                 <span>Access Psych</span>
                 <span aria-hidden="true">×</span>
-                <span>JobGen.AI</span>
+                <Image
+                  src={`${JOBGEN_IMAGE_PATH}jobgen-white.webp`}
+                  alt=""
+                  width={28}
+                  height={28}
+                  unoptimized
+                />
+                <strong>JobGen.AI</strong>
               </div>
             </div>
-            <div className="agent-dashboard" aria-label="Illustrative technology dashboard">
-              <div className="dashboard-topbar">
-                <span className="dashboard-brand"><i /> JobGen.AI</span>
-                <span className="dashboard-live"><i /> Live Agent Engine <small>Demo</small></span>
-              </div>
-              <div className="dashboard-body">
-                <div className="dashboard-sidebar">
-                  <span className="dashboard-sidebar-dot is-selected" />
-                  <span className="dashboard-sidebar-dot" />
-                  <span className="dashboard-sidebar-dot" />
-                </div>
-                <div className="dashboard-content">
-                  <span className="dashboard-label">WORKSPACE OVERVIEW · CONCEPT</span>
-                  <strong>Workforce orchestration</strong>
-                  <div className="dashboard-agent-row">
-                    <span><Bot size={19} aria-hidden="true" /></span>
-                    <span><b>Agent placeholder</b><small>Capabilities to confirm</small></span>
-                    <i />
-                  </div>
-                  <div className="dashboard-agent-row">
-                    <span><MessagesSquare size={19} aria-hidden="true" /></span>
-                    <span><b>Agent placeholder</b><small>Integration to confirm</small></span>
-                    <i />
-                  </div>
-                  <div className="dashboard-activity"><span />Illustrative interface · not a live Access Psych system</div>
-                </div>
-              </div>
-              <div className="dashboard-wordmark">AP <span>×</span> JG</div>
-            </div>
+            <figure className="technology-hero-visual">
+              <Image
+                src={`${JOBGEN_IMAGE_PATH}hero.webp`}
+                alt="JobGen.AI voice agent interface on a smartphone"
+                fill
+                preload
+                sizes="(max-width: 760px) 100vw, 52vw"
+              />
+              <figcaption>
+                JobGen.AI voice-agent platform
+                <small>Image courtesy of JobGen.AI</small>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
       <section className="technology-partnership section-pad">
-        <div className="section-container technology-partnership-grid">
+        <div className="section-container technology-partnership-content">
           <Reveal className="technology-partnership-copy">
-            <span className="section-eyebrow">A considered partnership</span>
-            <h2>People first. Technology in support.</h2>
+            <span className="section-eyebrow">People first. Technology in support.</span>
+            <h2>Support the admin around care.</h2>
             <p>
-              Access Psych brings qualified mental health clinicians across
-              Australia, with telehealth and face-to-face services.
-            </p>
-            <p>
-              JobGen.AI brings applied technology and workflow automation.
-              Technology supports administration and enquiries; clinical care
-              always stays with qualified clinicians.
+              JobGen.AI describes conversational agents for answering
+              enquiries, helping with appointment workflows, routing calls and
+              coordinating follow-up. Those are platform capabilities—not a
+              statement that every feature is currently active at Access Psych.
             </p>
           </Reveal>
-          <Reveal className="technology-partnership-image">
-            <Image
-              src={HOME_IMAGE}
-              alt="A person speaking with a mental health clinician"
-              fill
-              unoptimized
-              sizes="(max-width: 760px) 100vw, 48vw"
-            />
-            <span>Clinical care remains human-led.</span>
-          </Reveal>
+          <aside className="technology-scope-note">
+            <ShieldCheck size={24} aria-hidden="true" />
+            <div>
+              <strong>Clinical care remains with qualified clinicians.</strong>
+              <p>
+                Any Access Psych use requires separate configuration and
+                approval, including privacy, security, consent and clinical
+                governance checks before patient information or recordings are
+                involved.
+              </p>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -141,24 +307,44 @@ export default function TechnologyPartnerPage() {
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
-              <span className="section-eyebrow">Meet the AI workforce</span>
-              <h2>Agent details are still to be confirmed.</h2>
+              <span className="section-eyebrow">JobGen.AI agent examples</span>
+              <h2>Two roles in the JobGen.AI workforce.</h2>
             </div>
             <p>
-              The profiles below are placeholders only. No agents or live
-              Access Psych integrations are represented as active.
+              These profiles describe JobGen.AI products. They are not
+              representations of agents currently deployed by Access Psych.
             </p>
           </div>
           <div className="technology-agent-grid">
-            {[1, 2].map((index) => (
-              <Reveal className="technology-agent-card" key={index} delay={(index - 1) * 0.08}>
-                <span className="technology-agent-avatar"><Bot size={30} aria-hidden="true" /></span>
-                <span className="technology-agent-status"><i /> TODO · status unconfirmed</span>
-                <span className="section-eyebrow">TODO: Confirm agent role</span>
-                <h3>Agent placeholder {String(index).padStart(2, "0")}</h3>
-                <p>TODO: Add an approved description of this agent’s role and verified capabilities.</p>
-              </Reveal>
-            ))}
+            {agents.map((agent) => {
+              const AgentIcon = agent.icon;
+              return (
+                <Reveal className="technology-agent-card" key={agent.name}>
+                  <div className="technology-agent-image">
+                    <Image
+                      src={`${JOBGEN_IMAGE_PATH}${agent.image}`}
+                      alt={agent.alt}
+                      fill
+                      sizes="(max-width: 760px) 100vw, 24vw"
+                    />
+                  </div>
+                  <div className="technology-agent-copy">
+                    <span className="technology-agent-tag">
+                      <AgentIcon size={15} aria-hidden="true" />
+                      {agent.role}
+                    </span>
+                    <h3>{agent.name}</h3>
+                    <p>{agent.description}</p>
+                    {agent.name === "Olivia" && (
+                      <small className="technology-agent-note">
+                        Outbound patient contact is not presented as an
+                        Access Psych workflow.
+                      </small>
+                    )}
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -167,24 +353,36 @@ export default function TechnologyPartnerPage() {
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
-              <span className="section-eyebrow">What it can do</span>
-              <h2>Proposed capabilities.</h2>
+              <span className="section-eyebrow">JobGen.AI platform overview</span>
+              <h2>Reception, routing and follow-up tools.</h2>
             </div>
             <p>
-              These are requested concepts, not confirmed Access Psych
-              features. Validate each item before describing it as available.
+              The examples below are capabilities described by JobGen.AI.
+              Access Psych availability depends on separate decisions and
+              implementation.
             </p>
           </div>
           <div className="technology-capability-grid">
-            {proposedCapabilities.map((capability, index) => {
+            {capabilities.map((capability, index) => {
               const CapabilityIcon = capability.icon;
               return (
-                <Reveal key={capability.title} delay={index * 0.035}>
+                <Reveal key={capability.title} delay={index * 0.025}>
                   <article className="technology-capability-card">
-                    <span className="technology-capability-icon"><CapabilityIcon size={22} aria-hidden="true" /></span>
-                    <span className="technology-todo-tag">TODO · confirm</span>
-                    <h3>{capability.title}</h3>
-                    <small>{capability.tag}</small>
+                    <div className="technology-capability-image">
+                      <Image
+                        src={`${JOBGEN_IMAGE_PATH}${capability.image}`}
+                        alt={capability.alt}
+                        fill
+                        sizes="(max-width: 480px) 50vw, (max-width: 900px) 50vw, 33vw"
+                      />
+                    </div>
+                    <div className="technology-capability-copy">
+                      <span className="technology-capability-icon">
+                        <CapabilityIcon size={20} aria-hidden="true" />
+                      </span>
+                      <h3>{capability.title}</h3>
+                      <p>{capability.description}</p>
+                    </div>
                   </article>
                 </Reveal>
               );
@@ -197,22 +395,30 @@ export default function TechnologyPartnerPage() {
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
-              <span className="section-eyebrow">How it works</span>
-              <h2>A careful path to launch.</h2>
+              <span className="section-eyebrow">Implementation journey</span>
+              <h2>From verified information to a tested workflow.</h2>
             </div>
-            <p>Proposed implementation sequence — confirm the delivery process.</p>
+            <p>
+              JobGen.AI outlines a three-step process. Any Access Psych rollout
+              would need its own approvals before going live.
+            </p>
           </div>
-          <div className="technology-process-steps">
-            <TechnologyProgressLine />
-            {[
-              "Ingest verified business knowledge",
-              "Define intake & escalation rules",
-              "Test in sandbox, then go live",
-            ].map((step, index) => (
-              <article key={step}>
-                <span>{index + 1}</span>
-                <h3>{step}</h3>
-                <small>TODO · confirm before launch</small>
+          <div className="technology-process-grid">
+            {implementationSteps.map((step, index) => (
+              <article className="technology-process-card" key={step.title}>
+                <div className="technology-process-image">
+                  <Image
+                    src={`${JOBGEN_IMAGE_PATH}${step.image}`}
+                    alt={step.alt}
+                    fill
+                    sizes="(max-width: 760px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="technology-process-copy">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -223,19 +429,23 @@ export default function TechnologyPartnerPage() {
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
-              <span className="section-eyebrow">Accurate &amp; accountable</span>
-              <h2>Designed around clear guardrails.</h2>
+              <span className="section-eyebrow">Accuracy and accountability</span>
+              <h2>Guardrails matter as much as automation.</h2>
             </div>
-            <p>TODO: Verify these safeguards are implemented before making commitments.</p>
+            <p>
+              JobGen.AI describes these controls for its platform. Their
+              configuration and suitability must be checked for each
+              organisation and workflow.
+            </p>
           </div>
           <div className="technology-guardrail-grid">
-            {guardrails.map((item) => {
-              const GuardrailIcon = item.icon;
+            {safeguards.map((safeguard) => {
+              const SafeguardIcon = safeguard.icon;
               return (
-                <article className="technology-guardrail-card" key={item.title}>
-                  <GuardrailIcon size={23} aria-hidden="true" />
-                  <h3>{item.title}</h3>
-                  <small>TODO · implementation unconfirmed</small>
+                <article className="technology-guardrail-card" key={safeguard.title}>
+                  <SafeguardIcon size={24} aria-hidden="true" />
+                  <h3>{safeguard.title}</h3>
+                  <p>{safeguard.description}</p>
                 </article>
               );
             })}
@@ -243,21 +453,70 @@ export default function TechnologyPartnerPage() {
         </div>
       </section>
 
-      <section className="technology-cta section-pad">
-        <div className="section-container technology-cta-panel">
+      <section className="technology-integrations section-pad">
+        <div className="section-container technology-integrations-content">
           <div>
-            <span className="section-eyebrow">Start a conversation</span>
-            <h2>Talk to JobGen.AI.</h2>
-            <a href="mailto:hello@jobgen.ai">hello@jobgen.ai</a>
+            <span className="section-eyebrow">Tool ecosystem</span>
+            <h2>Connectors JobGen.AI lists.</h2>
+            <p>
+              JobGen.AI describes connections with the services below. Their
+              availability depends on the workflow and configuration; this
+              list does not mean Access Psych systems are connected.
+            </p>
           </div>
-          <div className="technology-cta-actions">
-            <a className="button button-dark" href="https://jobgen.ai/" target="_blank" rel="noreferrer">
-              Visit jobgen.ai <ArrowUpRight size={17} aria-hidden="true" />
-            </a>
-            <a className="button button-outline" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">
-              Book a session <ArrowRight size={17} aria-hidden="true" />
-            </a>
+          <ul className="technology-integration-list" aria-label="JobGen.AI listed integrations">
+            {integrations.map((integration) => (
+              <li key={integration}>{integration}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="technology-cta section-pad">
+        <div className="section-container">
+          <div className="technology-cta-panel">
+            <div className="technology-cta-photo" aria-hidden="true">
+              <Image
+                src={`${JOBGEN_IMAGE_PATH}city.webp`}
+                alt=""
+                fill
+                sizes="100vw"
+              />
+            </div>
+            <div className="technology-cta-copy">
+              <span className="section-eyebrow">Explore the platform</span>
+              <h2>See JobGen.AI in action.</h2>
+              <p>
+                Visit JobGen.AI or book a product demonstration to learn more
+                about its current capabilities.
+              </p>
+              <div className="technology-cta-actions">
+                <a
+                  className="button button-dark"
+                  href={JOBGEN_DEMO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Book a demo
+                  <ArrowUpRight size={17} aria-hidden="true" />
+                </a>
+                <a
+                  className="button button-outline"
+                  href={JOBGEN_SITE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Visit JobGen.AI
+                  <ArrowRight size={17} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
           </div>
+          <p className="technology-source-note">
+            Product details and imagery courtesy of JobGen.AI. The capabilities
+            and integrations on this page describe JobGen.AI&apos;s platform;
+            they do not imply that these services are active at Access Psych.
+          </p>
         </div>
       </section>
     </main>
