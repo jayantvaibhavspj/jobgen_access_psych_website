@@ -2,15 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUp, ArrowUpRight, Linkedin, Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Linkedin, Mail, Phone } from "lucide-react";
 import { BOOKING_PORTAL, EMAIL_LINK, LOGO_URL, PHONE_LINK, SITE_URL } from "@/lib/site-data";
 
 export default function SiteFooter() {
-  const scrollToTop = () => {
-    const prefersReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
-  };
-
   return (
     <footer className="site-footer">
       <div className="section-container">
@@ -97,25 +92,12 @@ export default function SiteFooter() {
           <span>ACCESS PSYCH</span>
         </div>
 
-        {/* Footer Bottom Bar */}
+        {/* Footer Bottom Bar: Simple right-corner Powered by JobGen.ai */}
         <div className="footer-bottom">
-          <div className="footer-bottom-left">
-            <span>© Copyright Access Psych 2026. All rights reserved.</span>
-            <Link href="/disclaimer-copyright">Disclaimer &amp; Copyright</Link>
-            <Link href="/terms-of-use">Terms of Use</Link>
-            <span className="footer-credit">
-              Design by <a href="https://www.moomarketing.com.au/" target="_blank" rel="noreferrer">MOO Marketing</a>
-            </span>
-          </div>
-
           <div className="footer-bottom-right">
             <Link className="footer-powered" href="/technology-partner">
-              Powered by JobGen.AI
+              Powered by JobGen.ai
             </Link>
-            <button className="scroll-top" type="button" onClick={scrollToTop} aria-label="Scroll back to top">
-              <span>Back to top</span>
-              <ArrowUp size={14} aria-hidden="true" />
-            </button>
           </div>
         </div>
       </div>
