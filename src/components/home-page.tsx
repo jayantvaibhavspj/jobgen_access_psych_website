@@ -80,7 +80,7 @@ const concernIconMap: Record<string, React.ComponentType<{ size?: number; classN
   "Personality disorders": Smile,
   "Relationship therapy": UsersRound,
   "Substance abuse including drug and alcohol addictions": ShieldCheck,
-  "Trauma-related disorders such as PTSD": HeartHandshake,
+  "Trauma related disorders such as PTSD": HeartHandshake,
 };
 const featuredLocations = [
   locations.find((location) => location.city === "Sydney CBD"),
@@ -157,10 +157,6 @@ export default function HomePage() {
             <div className="intro-copy">
               <Reveal>
                 <div className="intro-heading-group">
-                  <span className="intro-category-badge">
-                    <Sparkles size={13} aria-hidden="true" />
-                    <span>Evidence-Based Care</span>
-                  </span>
                   <h2>Access psychology, therapy and counselling services</h2>
                 </div>
               </Reveal>
@@ -168,7 +164,7 @@ export default function HomePage() {
               <div className="intro-prose">
                 <Reveal delay={0.06}>
                   <p className="intro-lead-para">
-                    Access Psych connects you with qualified, AHPRA-registered mental health clinicians across Australia — providing evidence-based care when and where you need it.
+                    Access Psych connects you with qualified, AHPRA registered mental health clinicians across Australia, providing evidence based care when and where you need it.
                   </p>
                 </Reveal>
                 <Reveal delay={0.12}>
@@ -187,11 +183,11 @@ export default function HomePage() {
                   </div>
                   <div className="intro-value-pill">
                     <CheckCircle2 size={15} aria-hidden="true" />
-                    <span>AHPRA-Registered Clinicians</span>
+                    <span>AHPRA Registered Clinicians</span>
                   </div>
                   <div className="intro-value-pill">
                     <CheckCircle2 size={15} aria-hidden="true" />
-                    <span>Telehealth &amp; 50+ In-Person Clinics</span>
+                    <span>Telehealth &amp; 50+ In Person Clinics</span>
                   </div>
                 </div>
               </Reveal>
@@ -249,7 +245,7 @@ export default function HomePage() {
                       <span>AREAS OF SUPPORT</span>
                     </span>
                     <h3>Specialised mental health support</h3>
-                    <p>Compassionate, evidence-based care tailored to your unique challenges and conditions.</p>
+                    <p>Compassionate, evidence based care tailored to your unique challenges and conditions.</p>
                   </div>
 
                   <ul className="concern-card-list" aria-label="Mental health issues and concerns">
@@ -292,7 +288,7 @@ export default function HomePage() {
                         <CheckCircle2 size={12} aria-hidden="true" /> Immediate Capacity
                       </span>
                       <span className="trust-strip-item">
-                        <CheckCircle2 size={12} aria-hidden="true" /> Telehealth &amp; In-Person
+                        <CheckCircle2 size={12} aria-hidden="true" /> Telehealth &amp; In Person
                       </span>
                       <span className="trust-strip-item">
                         <CheckCircle2 size={12} aria-hidden="true" /> Ages 12+
@@ -513,7 +509,7 @@ export default function HomePage() {
             <div className="locations-preview-intro">
               <h2>Support, wherever you are.</h2>
               <p>
-                Appointments are available via telehealth, with face-to-face
+                Appointments are available via telehealth, with face to face
                 sessions at selected clinics.
               </p>
             </div>

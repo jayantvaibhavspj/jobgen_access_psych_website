@@ -101,13 +101,13 @@ export const concerns = [
   "Personality disorders",
   "Relationship therapy",
   "Substance abuse including drug and alcohol addictions",
-  "Trauma-related disorders such as PTSD",
+  "Trauma related disorders such as PTSD",
 ];
 
 export const homepageCopy = [
   "It’s no secret that our mental health and wellbeing are essential to living our best lives.",
   "However, unprecedented demand for qualified, expert psychological services has outstripped supply and Australians are struggling to receive the mental health support they need, when they need it.",
-  "That’s why Access Psych was established – to offer qualified face-to-face and telehealth psychological services to address a wide range of mental health issues and concerns, including:",
+  "That’s why Access Psych was established to offer qualified face to face and telehealth psychological services to address a wide range of mental health issues and concerns, including:",
   "Access Psych psychology, therapy and counselling services are delivered by our team of mental health clinicians located across Australia. Our clinicians are trained in the science of the human mind and how people think, feel, behave and learn. They put this training to practice; supporting people to understand and improve mental health and wellbeing, relationships and behaviours, as well as learning, development and performance.",
 ];
 

@@ -45,7 +45,7 @@ export const HERO_CLIPS: HeroClip[] = [
     src: "/videos/amber.mp4",
     label: "PSYCHOLOGY & THERAPY",
     headline: "A clinician who listens.",
-    line: "Evidence-based therapy in a space that feels safe and unhurried.",
+    line: "Evidence based therapy in a space that feels safe and unhurried.",
     nameTag: "Amber Jones · Registered Psychologist",
     faceSide: "right",
   },
