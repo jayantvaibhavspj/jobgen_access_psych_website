@@ -1395,9 +1395,32 @@ summary:focus-visible {
 }
 
 .footer-brand-column {
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  gap: 16px;
+  gap: 18px;
+}
+
+.footer-cta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  background: #9966ff;
+  color: #ffffff !important;
+  font-size: 11.5px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 180ms ease;
+  box-shadow: 0 4px 18px rgba(153, 102, 255, 0.35);
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.footer-cta-pill:hover {
+  background: #834cf7;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(153, 102, 255, 0.5);
 }
 
 .footer-logo {
@@ -1422,70 +1445,6 @@ summary:focus-visible {
   line-height: 1.6;
   margin: 0;
   max-width: 330px;
-}
-
-.footer-contact-block {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 4px;
-}
-
-.footer-contact-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #9966ff;
-}
-
-.footer-phone {
-  display: flex;
-  flex-direction: column;
-  color: #ffffff !important;
-  font-family: var(--display);
-  font-size: clamp(26px, 2.5vw, 34px) !important;
-  line-height: 1.1;
-  text-decoration: none;
-  transition: color 150ms ease;
-}
-
-.footer-phone:hover {
-  color: #9966ff !important;
-}
-
-.footer-phone small {
-  margin-top: 4px;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.footer-contact-details {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 6px;
-}
-
-.footer-contact-details a,
-.footer-contact-details span {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 13.5px;
-  text-decoration: none;
-}
-
-.footer-contact-details a:hover {
-  color: #9966ff;
-}
-
-.footer-contact-details svg {
-  color: #9966ff;
-  flex-shrink: 0;
 }
 
 .footer-column h2 {
@@ -1531,134 +1490,127 @@ summary:focus-visible {
   transform: translate(2px, -2px);
 }
 
-.footer-portal-card {
+.nav-accent-link {
+  color: #9966ff !important;
+  font-weight: 700 !important;
+}
+
+.footer-contact-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 16px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  margin-bottom: 8px;
+  gap: 12px;
   width: 100%;
 }
 
-.footer-portal-title {
-  color: #ffffff;
+.footer-contact-item {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.85);
   font-size: 13.5px;
-  font-weight: 700;
 }
 
-.footer-portal-desc {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 12px;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.footer-booking-btn {
+.contact-icon {
+  color: #9966ff;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: #9966ff;
-  color: #ffffff !important;
-  font-size: 12.5px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 180ms ease;
-  margin-top: 4px;
+  margin-top: 2px;
+  flex-shrink: 0;
 }
 
-.footer-booking-btn:hover {
-  background: #834cf7;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(153, 102, 255, 0.35);
-}
-
-/* Prominent Brand Wordmark Strip sitting under Columns 2, 3, 4 */
-.footer-columns-brand-banner {
-  grid-column: 2 / -1;
-  grid-row: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-  padding: 24px 30px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(153, 102, 255, 0.1) 0%, rgba(28, 43, 56, 0.5) 100%);
-  border: 1px solid rgba(153, 102, 255, 0.24);
-  margin-top: 10px;
-  backdrop-filter: blur(8px);
-}
-
-.footer-wordmark-group {
+.contact-item-text {
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
 
-.footer-big-wordmark {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--display);
-  font-size: clamp(38px, 4.6vw, 64px);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.035em;
-  color: #ffffff;
-}
-
-.wordmark-access {
-  color: #ffffff;
-}
-
-.wordmark-psych {
-  color: #9966ff;
-  text-shadow: 0 0 24px rgba(153, 102, 255, 0.4);
-}
-
-.wordmark-arrow {
-  color: #9966ff;
-  margin-left: 4px;
-  flex-shrink: 0;
-  filter: drop-shadow(0 0 10px rgba(153, 102, 255, 0.6));
-}
-
-.footer-wordmark-sub {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 13.5px;
-  line-height: 1.5;
-  margin: 0;
-  max-width: 480px;
-}
-
-.footer-wordmark-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: rgba(153, 102, 255, 0.14);
-  border: 1px solid rgba(153, 102, 255, 0.32);
-  color: #ffffff;
-  font-size: 12.5px;
+.contact-phone {
+  color: #ffffff !important;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
+  text-decoration: none;
 }
 
-.footer-badge-dot {
-  width: 8px;
-  height: 8px;
+.contact-item-text small {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.contact-email {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.contact-email:hover,
+.contact-phone:hover {
+  color: #9966ff !important;
+}
+
+.contact-hours {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+}
+
+.contact-hours-dot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #9966ff;
-  box-shadow: 0 0 8px #9966ff;
+  box-shadow: 0 0 6px #9966ff;
   flex-shrink: 0;
+}
+
+.footer-social-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+}
+
+.footer-social-strip a {
+  color: rgba(255, 255, 255, 0.82);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.footer-social-strip a:hover {
+  color: #9966ff;
+}
+
+.footer-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Giant Watermark Typography across full footer width (Harrington Legal Style) */
+.footer-giant-watermark {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px 0 16px;
+  margin: 0 0 4px;
+  user-select: none;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.footer-giant-watermark span {
+  font-family: var(--sans);
+  font-size: clamp(48px, 10.4vw, 150px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 0.92;
+  color: rgba(255, 255, 255, 0.14);
+  white-space: nowrap;
+  display: block;
 }
 
 .footer-bottom {
@@ -1765,8 +1717,6 @@ summary:focus-visible {
   .team-preview-grid { gap: 10px; }
   .team-preview-photo { min-height: 380px; }
   .footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .footer-brand-column { grid-row: auto; }
-  .footer-columns-brand-banner { grid-column: 1 / -1; grid-row: auto; }
 }
 
 @media (max-width: 900px) {
@@ -1902,8 +1852,8 @@ summary:focus-visible {
 
 @media (max-width: 580px) {
   .footer-main { grid-template-columns: 1fr; gap: 32px; }
-  .footer-columns-brand-banner { grid-column: 1; flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; }
-  .footer-big-wordmark { font-size: clamp(32px, 8vw, 44px); }
+  .footer-giant-watermark { padding: 18px 0 10px; }
+  .footer-giant-watermark span { font-size: clamp(36px, 12vw, 60px); }
   .footer-bottom-left { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 

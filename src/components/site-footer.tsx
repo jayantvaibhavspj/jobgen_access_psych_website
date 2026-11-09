@@ -150,7 +150,7 @@ export default function SiteFooter() {
 
       <div className="section-container">
         <div className="footer-main">
-          {/* Column 1: Brand & Contact */}
+          {/* Column 1: Brand & CTA */}
           <div className="footer-column footer-brand-column">
             <Link className="footer-logo" href="/" aria-label="Access Psych homepage">
               <Image src={LOGO_URL} alt="Access Psych" width={180} height={32} unoptimized priority />
@@ -158,45 +158,33 @@ export default function SiteFooter() {
             <p className="footer-tagline">
               Connecting people with the mental health support they need, when they need it across Australia.
             </p>
-            <div className="footer-contact-block">
-              <span className="footer-contact-label">Need to talk? Call us toll-free</span>
-              <a className="footer-phone" href={PHONE_LINK}>
-                1800 APSYCH
-                <small>(1800 277 924)</small>
-              </a>
-              <div className="footer-contact-details">
-                <a href={EMAIL_LINK}>
-                  <Mail size={15} aria-hidden="true" />
-                  <span>info@accesspsych.com.au</span>
-                </a>
-                <span className="footer-fax">
-                  <Phone size={15} aria-hidden="true" />
-                  <span>Fax: 02 4903 3299</span>
-                </span>
-              </div>
-            </div>
+            <a className="footer-cta-pill" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">
+              <span>MAKE A BOOKING</span>
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
           </div>
 
           {/* Column 2: Explore */}
           <div className="footer-column">
             <h2>Explore</h2>
             <nav className="footer-nav" aria-label="Explore Access Psych">
+              <Link href="/">Home</Link>
+              <Link href="/about-us">About Us</Link>
               <Link href="/meet-our-team">Meet our team</Link>
               <Link href="/our-locations">Our locations</Link>
               <Link href="/employee-assistance-program">Employee Assistance Program</Link>
-              <Link href="/fees">Fees &amp; Rebates</Link>
+              <Link href="/fees">Our fees &amp; rebates</Link>
               <Link href="/frequently-asked-questions">Frequently asked questions</Link>
-              <Link href="/online-booking-request">Make a Booking / Referral</Link>
+              <Link className="nav-accent-link" href="/technology-partner">Technology Partner</Link>
             </nav>
           </div>
 
-          {/* Column 3: Company Policies */}
+          {/* Column 3: Care & Policies */}
           <div className="footer-column">
-            <h2>Company &amp; Policies</h2>
-            <nav className="footer-nav" aria-label="Company policies and information">
-              <Link href="/about-us">About Us</Link>
+            <h2>Care &amp; Policies</h2>
+            <nav className="footer-nav" aria-label="Care pathways and policies">
               <Link href="/vision-purpose-values">Vision, Purpose &amp; Values</Link>
-              <Link href="/technology-partner">Technology Partner</Link>
+              <Link href="/online-booking-request">Make a Booking / Referral</Link>
               <a href={`${SITE_URL}/wp-content/uploads/2026/09/Privacy-Policy-Sept-2026.pdf`} target="_blank" rel="noreferrer">
                 Privacy Policy <ArrowUpRight size={14} aria-hidden="true" />
               </a>
@@ -204,48 +192,50 @@ export default function SiteFooter() {
                 Quality Policy <ArrowUpRight size={14} aria-hidden="true" />
               </a>
               <Link href="/terms-of-use">Terms of Use</Link>
-            </nav>
-          </div>
-
-          {/* Column 4: Connect & Book */}
-          <div className="footer-column footer-connect-column">
-            <h2>Connect &amp; Book</h2>
-            <div className="footer-portal-card">
-              <span className="footer-portal-title">Book an Appointment</span>
-              <p className="footer-portal-desc">Direct telehealth and in-clinic consultation bookings.</p>
-              <a className="footer-booking-btn" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">
-                Treatment Booking Portal <ArrowUpRight size={15} aria-hidden="true" />
-              </a>
-            </div>
-            <nav className="footer-nav footer-social-nav" aria-label="Social and Newsletter">
-              <Link href="/newsletter">Subscribe to our Newsletter</Link>
-              <a href="https://au.linkedin.com/company/access-psych/" target="_blank" rel="noreferrer">
-                <Linkedin size={15} aria-hidden="true" />
-                <span>LinkedIn</span>
-                <ArrowUpRight size={13} aria-hidden="true" />
+              <a href={`${SITE_URL}/disclaimer-copyright/`} target="_blank" rel="noreferrer">
+                Disclaimer &amp; Copyright <ArrowUpRight size={14} aria-hidden="true" />
               </a>
             </nav>
           </div>
 
-          {/* Prominent Brand Wordmark Banner Underneath Columns 2, 3, 4 */}
-          <div className="footer-columns-brand-banner">
-            <div className="footer-wordmark-group">
-              <div className="footer-big-wordmark">
-                <span className="wordmark-access">Access</span>
-                <span className="wordmark-psych">Psych</span>
-                <svg className="wordmark-arrow" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <polygon points="6 4 18 12 6 20 6 4" />
-                </svg>
+          {/* Column 4: Contact Us */}
+          <div className="footer-column footer-contact-column">
+            <h2>Contact Us</h2>
+            <div className="footer-contact-list">
+              <div className="footer-contact-item">
+                <span className="contact-icon"><Phone size={15} aria-hidden="true" /></span>
+                <div className="contact-item-text">
+                  <a className="contact-phone" href={PHONE_LINK}>1800 APSYCH</a>
+                  <small>(1800 277 924)</small>
+                </div>
               </div>
-              <p className="footer-wordmark-sub">
-                Accessible, evidence-based mental health support and clinical psychology care across Australia.
-              </p>
+              <div className="footer-contact-item">
+                <span className="contact-icon"><Mail size={15} aria-hidden="true" /></span>
+                <a className="contact-email" href={EMAIL_LINK}>info@accesspsych.com.au</a>
+              </div>
+              <div className="footer-contact-item">
+                <span className="contact-icon"><Phone size={15} aria-hidden="true" /></span>
+                <span>Fax: 02 4903 3299</span>
+              </div>
+              <div className="footer-contact-item contact-hours">
+                <span className="contact-hours-dot" />
+                <span>Mon–Fri: 8:00am–6:00pm AEST</span>
+              </div>
             </div>
-            <div className="footer-wordmark-badge">
-              <span className="footer-badge-dot" />
-              <span>National Telehealth &amp; Clinic Network</span>
+            <div className="footer-social-strip">
+              <Link href="/newsletter">Newsletter</Link>
+              <span className="footer-sep">·</span>
+              <a href="https://au.linkedin.com/company/access-psych/" target="_blank" rel="noreferrer">
+                <Linkedin size={14} aria-hidden="true" />
+                <span>LinkedIn</span>
+              </a>
             </div>
           </div>
+        </div>
+
+        {/* Giant Watermark Display Typography (Harrington Legal Style) */}
+        <div className="footer-giant-watermark" aria-hidden="true">
+          <span>ACCESS PSYCH</span>
         </div>
 
         {/* Footer Bottom Bar */}
