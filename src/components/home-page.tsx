@@ -106,30 +106,30 @@ const featuredFaqs =
 const pathways = [
   {
     title: "About Access Psych",
+    description: "Our story, clinical mission, and approach to mental wellbeing.",
     href: "/about-us",
     icon: HeartHandshake,
-    image: "/images/pathways/about-us.jpg",
     tag: "Our Story & Care",
   },
   {
     title: "Find a clinician near you",
+    description: "Browse AHPRA-registered psychologists, counsellors, and social workers.",
     href: "/meet-our-team",
     icon: UsersRound,
-    image: "/images/pathways/find-clinician.jpg",
     tag: "AHPRA Clinicians",
   },
   {
     title: "Our fees",
+    description: "Clear fee structures, Medicare rebates, and healthcare claims.",
     href: "/fees",
     icon: ClipboardCheck,
-    image: "/images/pathways/our-fees.jpg",
     tag: "Medicare Rebates",
   },
   {
     title: "Employee Assistance Program",
+    description: "Dedicated workplace mental health and wellbeing solutions for organisations.",
     href: "/employee-assistance-program",
     icon: BriefcaseBusiness,
-    image: "/images/pathways/eap.jpg",
     tag: "Workplace Wellbeing",
   },
 ];
@@ -486,36 +486,27 @@ export default function HomePage() {
                 const PathwayIcon = item.icon;
                 return (
                   <Link
-                    className="pathway-row has-bg-image"
+                    className="pathway-row pathway-clean-card"
                     href={item.href}
                     key={item.title}
                   >
-                    <div className="pathway-card-bg" aria-hidden="true">
-                      <Image
-                        src={item.image}
-                        alt=""
-                        fill
-                        unoptimized
-                        sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 25vw"
-                        className="pathway-card-img"
-                      />
-                      <div className="pathway-card-overlay" />
+                    <div className="pathway-card-top">
+                      <span className="pathway-icon-wrap">
+                        <PathwayIcon size={20} aria-hidden="true" />
+                      </span>
+                      <span className="pathway-tag">{item.tag}</span>
                     </div>
 
-                    <div className="pathway-card-copy">
-                      <div className="pathway-card-top">
-                        <span className="pathway-icon-wrap">
-                          <PathwayIcon size={19} aria-hidden="true" />
-                        </span>
-                        <span className="pathway-tag">{item.tag}</span>
-                      </div>
+                    <div className="pathway-card-body">
+                      <strong>{item.title}</strong>
+                      <p>{item.description}</p>
+                    </div>
 
-                      <div className="pathway-card-bottom">
-                        <strong>{item.title}</strong>
-                        <span className="pathway-action-arrow">
-                          <ArrowUpRight size={16} aria-hidden="true" />
-                        </span>
-                      </div>
+                    <div className="pathway-card-bottom">
+                      <span className="pathway-action-label">Explore</span>
+                      <span className="pathway-action-arrow">
+                        <ArrowUpRight size={16} aria-hidden="true" />
+                      </span>
                     </div>
                   </Link>
                 );
