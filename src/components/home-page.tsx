@@ -398,7 +398,7 @@ export default function HomePage() {
           <div className="booking-editorial">
             <Reveal className="booking-editorial-heading">
               <h2>Book a session with one of our mental health clinicians.</h2>
-              <p>Choose the way that feels easiest. Our team is here to help.</p>
+              <p>Our team is here to help.</p>
             </Reveal>
             <div className="booking-options-list">
               <Reveal>
