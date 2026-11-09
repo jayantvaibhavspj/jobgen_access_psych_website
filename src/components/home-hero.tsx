@@ -7,14 +7,8 @@ import HeroVideoBackground from "@/components/HeroVideoBackground";
 
 export default function HomeHero() {
   return (
-    <section className="home-hero min-h-screen" aria-label="Welcome to Access Psych">
+    <section className="home-hero min-h-screen" aria-label="Access Psych">
       <HeroVideoBackground
-        title={
-          <h1 aria-label="Welcome to Access Psych.">
-            <span className="hero-title-line">Welcome to</span>
-            <span className="hero-title-line">Access Psych.</span>
-          </h1>
-        }
         actions={
           <div className="hero-actions">
             <a className="button button-coral" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">

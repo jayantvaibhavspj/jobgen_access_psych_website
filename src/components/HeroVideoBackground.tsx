@@ -312,11 +312,11 @@ export default function HeroVideoBackground({
         <div className="hero-copy">
           {title && <div className="hero-slide-copy">{title}</div>}
 
-          {/* Video-Related Synchronized Text Overlay */}
+          {/* Video-Related Synchronized Hero Content */}
           <div className="hero-video-caption-block" aria-live="polite">
             <div className={`hero-caption-content anim-${captionAnimClass}`}>
               <span className="hero-caption-label">{currentClip.label}</span>
-              <h2 className="hero-caption-headline">{currentClip.headline}</h2>
+              <h1 className="hero-caption-headline">{currentClip.headline}</h1>
               <p className="hero-caption-line">{currentClip.line}</p>
               <span className="hero-caption-name">{currentClip.nameTag}</span>
             </div>

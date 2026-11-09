@@ -229,21 +229,21 @@ summary:focus-visible {
   pointer-events: none;
 }
 
-/* Video-Related Synchronized Caption Block (Merged on Left) */
+/* Video-Related Synchronized Hero Content (Merged on Left, Main Heading) */
 .hero-video-caption-block {
   position: static;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 22px;
   pointer-events: auto;
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 .hero-caption-content {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
   transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -254,7 +254,7 @@ summary:focus-visible {
 
 .hero-caption-content.anim-exit {
   opacity: 0;
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   transition-duration: 400ms;
 }
 
@@ -267,7 +267,7 @@ summary:focus-visible {
 @keyframes heroCaptionSlideUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -276,10 +276,10 @@ summary:focus-visible {
 }
 
 .hero-caption-label {
-  display: block;
-  font-size: 11px;
+  display: inline-block;
+  font-size: 13px;
   font-weight: 750;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #c084fc;
   margin-bottom: 2px;
@@ -289,27 +289,29 @@ summary:focus-visible {
   margin: 0;
   color: #ffffff;
   font-family: var(--display);
-  font-size: clamp(21px, 2vw, 28px);
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+  font-size: clamp(2.8rem, 5.2vw, 4.8rem);
+  font-weight: 450;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.5);
+  max-width: 720px;
 }
 
 .hero-caption-line {
   margin: 0;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 14.5px;
-  line-height: 1.5;
-  max-width: 500px;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(16px, 1.35vw, 19.5px);
+  line-height: 1.55;
+  max-width: 540px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 .hero-caption-name {
-  display: block;
-  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.8);
   margin-top: 2px;
 }
 
@@ -317,9 +319,9 @@ summary:focus-visible {
 .hero-caption-progress {
   display: flex;
   align-items: center;
-  gap: 6px;
-  width: min(290px, 100%);
-  margin-top: 4px;
+  gap: 7px;
+  width: min(320px, 100%);
+  margin-top: 6px;
 }
 
 .hero-progress-segment {
@@ -380,7 +382,7 @@ summary:focus-visible {
   justify-content: flex-start;
   min-height: 100vh;
   min-height: 100svh;
-  padding-block: 130px 64px;
+  padding-block: 140px 64px;
   width: min(var(--content), calc(100% - 96px));
   margin-inline: auto;
   pointer-events: none;
@@ -388,11 +390,11 @@ summary:focus-visible {
 
 .home-hero .hero-copy {
   pointer-events: auto;
-  width: min(580px, 50%);
+  width: min(680px, 60%);
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .home-hero .hero-slide-copy {
@@ -400,35 +402,20 @@ summary:focus-visible {
   padding-top: 0;
 }
 
-.home-hero .hero-slide-copy h1 {
-  max-width: 620px;
-  font-size: clamp(2.4rem, 4.5vw, 4.25rem);
-  font-weight: 450;
-  letter-spacing: -0.045em;
-  line-height: 1.02;
-  margin: 0;
-  color: #ffffff;
-  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
-}
-
-.home-hero .hero-title-line {
-  display: block;
-}
-
 .home-hero .hero-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 14px;
-  margin: 0;
+  margin-top: 6px;
 }
 
 .home-hero .hero-actions .button {
   min-height: 52px;
   padding-inline: 24px;
-  font-size: 13.5px;
+  font-size: 13px;
   letter-spacing: 0.05em;
-  font-weight: 650;
+  font-weight: 700;
 }
 
 .hero-trust {
@@ -2185,62 +2172,58 @@ summary:focus-visible {
   .mobile-menu-actions .button-outline { border-color: var(--line); color: var(--deep-teal); }
   .home-hero .hero-inner {
     align-items: flex-end;
-    padding: 100px 20px 24px;
+    padding: 100px 20px 32px;
     min-height: 100svh;
   }
   .home-hero .hero-copy {
     width: 100%;
     max-width: 100%;
     text-align: left;
-    margin-bottom: 12px;
+    gap: 18px;
   }
-  .home-hero .hero-slide-copy h1 {
-    margin-inline: 0;
-    font-size: clamp(2.1rem, 8vw, 3rem);
-    text-align: left;
-  }
-  .home-hero .hero-actions {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 18px;
-  }
-  .home-hero .hero-actions .button {
-    min-height: 46px;
-    padding-inline: 18px;
-    font-size: 12px;
-  }
-  .hero-trust { flex-wrap: wrap; gap: 8px 11px; margin-top: 21px; font-size: 9px; }
-  .hero-trust i { display: none; }
-  .hero-breathing { display: none; }
-  .hero-overlay {
-    background:
-      linear-gradient(180deg, rgb(28 43 56 / 52%) 0%, rgb(28 43 56 / 74%) 53%, rgb(28 43 56 / 87%) 100%),
-      linear-gradient(90deg, rgb(28 43 56 / 28%), transparent);
-  }
-  .hero-poster,
-  .hero-video { object-position: 58% center; }
   .hero-video-caption-block {
     position: static !important;
     transform: none !important;
     width: 100%;
     text-align: left;
     align-items: flex-start;
-    gap: 12px;
-    margin-top: 4px;
+    gap: 16px;
+    margin-top: 0;
   }
   .hero-caption-content {
     align-items: flex-start;
     text-align: left;
+    gap: 10px;
+  }
+  .hero-caption-label {
+    font-size: 11.5px;
   }
   .hero-caption-headline {
-    font-size: 20px;
+    font-size: clamp(2.3rem, 8.8vw, 3.4rem);
+    line-height: 1.08;
+    max-width: 100%;
   }
   .hero-caption-line {
-    font-size: 13.5px;
+    font-size: 15px;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+  .hero-caption-name {
+    font-size: 12.5px;
+  }
+  .home-hero .hero-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .home-hero .hero-actions .button {
+    min-height: 48px;
+    padding-inline: 20px;
+    font-size: 12px;
   }
   .hero-caption-progress {
-    max-width: 240px;
+    max-width: 260px;
     margin-inline: 0;
   }
   .hero-controls { right: 50%; bottom: 23px; transform: translateX(50%); }
