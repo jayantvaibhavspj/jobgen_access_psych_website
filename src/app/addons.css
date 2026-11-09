@@ -3456,7 +3456,29 @@
   pointer-events: none !important;
 }
 
-/* Black text stroke and crisp outline on all hero video text */
+/* Black text stroke, 1-line display, and shifted lower position on hero video text */
+.home-hero .hero-inner {
+  padding-block: 140px 24px !important;
+}
+
+.home-hero .hero-copy {
+  width: min(1080px, 88%) !important;
+  max-width: 1080px !important;
+  gap: 14px !important;
+}
+
+.hero-video-caption-block {
+  gap: 14px !important;
+}
+
+.hero-caption-content {
+  gap: 7px !important;
+}
+
+.home-hero .hero-actions {
+  margin-top: 2px !important;
+}
+
 .hero-caption-label {
   -webkit-text-stroke: 0.6px #000000 !important;
   paint-order: stroke fill !important;
@@ -3464,7 +3486,9 @@
 }
 
 .hero-caption-headline {
-  font-size: clamp(2.3rem, 4.1vw, 3.85rem) !important;
+  font-size: clamp(1.85rem, 2.9vw, 2.85rem) !important;
+  line-height: 1.15 !important;
+  max-width: 1050px !important;
   -webkit-text-stroke: 1px #000000 !important;
   paint-order: stroke fill !important;
   text-shadow:
@@ -3475,8 +3499,16 @@
      0 3px 12px rgba(0, 0, 0, 0.85) !important;
 }
 
+@media (min-width: 768px) {
+  .hero-caption-headline {
+    white-space: nowrap !important;
+  }
+}
+
 .hero-caption-line {
-  font-size: clamp(15px, 1.18vw, 17.5px) !important;
+  font-size: clamp(14px, 1.05vw, 16px) !important;
+  line-height: 1.5 !important;
+  max-width: 1000px !important;
   -webkit-text-stroke: 0.5px #000000 !important;
   paint-order: stroke fill !important;
   text-shadow:
@@ -3485,6 +3517,12 @@
     -1px  1px 0 #000000,
      1px  1px 0 #000000,
      0 2px 8px rgba(0, 0, 0, 0.85) !important;
+}
+
+@media (min-width: 992px) {
+  .hero-caption-line {
+    white-space: nowrap !important;
+  }
 }
 
 .hero-caption-name {
