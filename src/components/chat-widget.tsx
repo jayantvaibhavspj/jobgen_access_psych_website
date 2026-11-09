@@ -260,22 +260,22 @@ export default function ChatWidget() {
   function getCurrentPosition(): ChatPosition {
     const bounds = widgetRef.current?.getBoundingClientRect();
     return {
-      right: bounds ? window.innerWidth - bounds.right : 22,
-      bottom: bounds ? window.innerHeight - bounds.bottom : 94,
+      right: bounds ? window.innerWidth - bounds.right : 24,
+      bottom: bounds ? window.innerHeight - bounds.bottom : 24,
     };
   }
 
   function moveWidget(nextPosition: ChatPosition) {
     const bounds = launcherRef.current?.getBoundingClientRect();
-    const width = bounds?.width ?? 58;
-    const height = bounds?.height ?? 58;
+    const width = bounds?.width ?? 62;
+    const height = bounds?.height ?? 62;
     const right = Math.min(
-      Math.max(12, nextPosition.right),
-      Math.max(12, window.innerWidth - width - 12),
+      Math.max(16, nextPosition.right),
+      Math.max(16, window.innerWidth - width - 16),
     );
     const bottom = Math.min(
-      Math.max(12, nextPosition.bottom),
-      Math.max(12, window.innerHeight - height - 12),
+      Math.max(16, nextPosition.bottom),
+      Math.max(16, window.innerHeight - height - 16),
     );
     const aboveSpace = window.innerHeight - bottom - height - 26;
     const belowSpace = bottom - height - 26;
@@ -367,24 +367,21 @@ export default function ChatWidget() {
   return (
     <div ref={widgetRef} className="chat-widget" style={widgetStyle}>
       <AnimatePresence>
-        {tooltip && !open && (
+        {!open && (
           <motion.div
-            className="chat-tooltip"
-            initial={reduceMotion ? false : { opacity: 0, x: -8 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={reduceMotion ? undefined : { opacity: 0, x: -8 }}
+            className="chat-ask-bubble"
+            onClick={toggleOpen}
+            initial={reduceMotion ? false : { opacity: 0, scale: 0.85, y: 6 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={reduceMotion ? undefined : { opacity: 0, scale: 0.85 }}
+            transition={{ duration: 0.25 }}
+            role="button"
+            tabIndex={0}
+            aria-label="Ask me"
           >
-            <Image
-              className="chat-tooltip-image"
-              src="/images/access-psych-chat.jpg"
-              alt="A person speaking with a psychologist"
-              width={36}
-              height={36}
-            />
-            <span>Access Psych Assistant</span>
-            <button type="button" aria-label="Dismiss chat prompt" onClick={() => setTooltip(false)}>
-              <X size={14} aria-hidden="true" />
-            </button>
+            <span className="chat-ask-label">Ask me</span>
+            <span className="chat-ask-wave" aria-hidden="true">👋</span>
+            <div className="chat-ask-tail" aria-hidden="true" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -403,12 +400,20 @@ export default function ChatWidget() {
             transition={{ duration: reduceMotion ? 0 : 0.22, ease: "easeOut" }}
           >
             <header className="chat-header">
-              <span className="chat-brand-logo">
-                <Image src={LOGO_URL} alt="Access Psych" width={190} height={30} unoptimized />
-              </span>
+              <div className="chat-header-avatar-wrap">
+                <Image
+                  src="/images/clinician-listen.jpg"
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="chat-header-avatar"
+                  unoptimized
+                />
+                <span className="chat-header-online-dot" aria-hidden="true" />
+              </div>
               <span className="chat-heading">
                 <strong id="chat-title">Access Psych Assistant</strong>
-                <small><i aria-hidden="true" /> Online</small>
+                <small><i aria-hidden="true" /> Online now</small>
               </span>
               <button type="button" aria-label="Minimise chat" onClick={() => setOpen(false)}>
                 <Minus size={19} aria-hidden="true" />
@@ -527,16 +532,20 @@ export default function ChatWidget() {
         }}
       >
         {open ? (
-          <X size={23} aria-hidden="true" />
+          <X size={24} aria-hidden="true" />
         ) : (
-          <Image
-            className="chat-launcher-logo"
-            src={LOGO_URL}
-            alt=""
-            width={190}
-            height={30}
-            unoptimized
-          />
+          <div className="chat-launcher-avatar-wrap">
+            <Image
+              className="chat-launcher-avatar"
+              src="/images/clinician-listen.jpg"
+              alt="Access Psych Assistant"
+              width={64}
+              height={64}
+              unoptimized
+              priority
+            />
+            <span className="chat-online-badge" aria-hidden="true" />
+          </div>
         )}
       </button>
       <span className="sr-only" id="chat-move-instructions">
