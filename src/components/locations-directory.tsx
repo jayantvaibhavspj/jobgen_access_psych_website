@@ -48,38 +48,36 @@ export default function LocationsDirectory() {
         <div className="location-grid">
           {filtered.map((location) => (
             <article
-              className="location-card has-bg-image"
+              className="location-card"
               key={`${location.state}-${location.city}-${location.address}`}
             >
-              {/* Background image & dark gradient overlay */}
-              <div className="location-card-bg" aria-hidden="true">
+              {/* Top: 100% Clear, Vibrant Photo with Floating Badges */}
+              <div className="location-card-image-wrap">
                 <Image
                   src={location.image || "/images/locations/sydney-cbd.jpg"}
-                  alt=""
+                  alt={location.city}
                   fill
                   sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="location-card-img"
                   unoptimized
                 />
-                <div className="location-card-overlay" />
-              </div>
-
-              {/* Foreground Content with fixed equal-height spacing */}
-              <div className="location-card-content">
-                <div className="location-card-top">
+                <div className="location-card-badges">
                   <span className="location-state-badge">
-                    <MapPin size={13} aria-hidden="true" />
+                    <MapPin size={12} aria-hidden="true" />
                     <span>{location.state}</span>
                   </span>
                   <span className="location-availability-tag">Clinic &amp; Telehealth</span>
                 </div>
+              </div>
 
-                <div className="location-card-middle">
+              {/* Bottom: Clean Content Body with High-Contrast Text */}
+              <div className="location-card-body">
+                <div className="location-card-info">
                   <h3 className="location-city-title">{location.city}</h3>
                   <p className="location-address-text">{location.address}</p>
                 </div>
 
-                <div className="location-card-bottom">
+                <div className="location-card-footer">
                   {location.note ? (
                     <span className="location-note-badge" title={location.note}>
                       {location.note}

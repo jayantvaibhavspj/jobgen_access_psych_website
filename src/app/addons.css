@@ -2210,179 +2210,14 @@
   align-items: stretch !important;
 }
 
-.location-card.has-bg-image {
-  position: relative !important;
-  height: 310px !important;
-  min-height: 310px !important;
-  max-height: 310px !important;
-  border-radius: 20px !important;
-  overflow: hidden !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 10px 30px rgba(10, 20, 28, 0.18) !important;
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
-  padding: 0 !important;
-  background: #0f1c24 !important;
-}
-
-.location-card.has-bg-image:hover {
-  transform: translateY(-5px) !important;
-  border-color: rgba(153, 102, 255, 0.7) !important;
-  box-shadow: 0 18px 42px rgba(153, 102, 255, 0.28), 0 8px 24px rgba(10, 20, 28, 0.35) !important;
-}
-
-.location-card-bg {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 1 !important;
-  overflow: hidden !important;
-}
-
-.location-card-img {
-  object-fit: cover !important;
-  object-position: center !important;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
-}
-
-.location-card.has-bg-image:hover .location-card-img {
-  transform: scale(1.08) !important;
-}
-
-.location-card-overlay {
-  position: absolute !important;
-  inset: 0 !important;
-  background: linear-gradient(
-    180deg,
-    rgba(12, 22, 30, 0.52) 0%,
-    rgba(12, 22, 30, 0.75) 42%,
-    rgba(10, 18, 26, 0.96) 100%
-  ) !important;
-  backdrop-filter: blur(1px) !important;
-  transition: background 0.35s ease !important;
-}
-
-.location-card.has-bg-image:hover .location-card-overlay {
-  background: linear-gradient(
-    180deg,
-    rgba(12, 22, 30, 0.42) 0%,
-    rgba(12, 22, 30, 0.68) 42%,
-    rgba(10, 18, 26, 0.94) 100%
-  ) !important;
-}
-
-.location-card-content {
-  position: relative !important;
-  z-index: 2 !important;
-  height: 100% !important;
-  padding: 22px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  box-sizing: border-box !important;
-}
-
-/* Card Top: State Badge & Type Tag */
-.location-card-top {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 10px !important;
-}
-
-.location-state-badge {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  background: rgba(153, 102, 255, 0.22) !important;
-  border: 1px solid rgba(153, 102, 255, 0.5) !important;
-  color: #f3edff !important;
-  font-size: 11px !important;
-  font-weight: 750 !important;
-  letter-spacing: 0.04em !important;
-  padding: 5px 11px !important;
-  border-radius: 999px !important;
-  backdrop-filter: blur(6px) !important;
-}
-
-.location-availability-tag {
-  color: rgba(255, 255, 255, 0.72) !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.02em !important;
-}
-
-/* Card Middle: City & Address */
-.location-card-middle {
-  margin: auto 0 !important;
-}
-
-.location-city-title {
-  color: #ffffff !important;
-  font-size: 22px !important;
-  font-weight: 750 !important;
-  margin: 0 0 6px 0 !important;
-  line-height: 1.25 !important;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45) !important;
-  letter-spacing: -0.01em !important;
-}
-
-.location-address-text {
-  color: rgba(255, 255, 255, 0.88) !important;
-  font-size: 13.5px !important;
-  line-height: 1.45 !important;
-  margin: 0 !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45) !important;
-}
-
-/* Card Bottom: Note & Action Button */
-.location-card-bottom {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 10px !important;
-  padding-top: 14px !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
-}
-
-.location-note-badge {
-  background: rgba(255, 255, 255, 0.12) !important;
-  backdrop-filter: blur(8px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  color: rgba(255, 255, 255, 0.92) !important;
-  font-size: 11.5px !important;
-  font-weight: 600 !important;
-  padding: 5px 10px !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  white-space: nowrap !important;
-  max-width: 170px !important;
-}
-
-.location-note-default {
-  background: rgba(255, 255, 255, 0.08) !important;
-  color: rgba(255, 255, 255, 0.75) !important;
-}
-
-.location-action-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 5px !important;
-  background: #9966ff !important;
-  color: #ffffff !important;
-  font-size: 12px !important;
-  font-weight: 750 !important;
-  padding: 7px 14px !important;
-  border-radius: 999px !important;
-  text-decoration: none !important;
-  box-shadow: 0 4px 12px rgba(153, 102, 255, 0.35) !important;
-  transition: background 0.2s ease, transform 0.2s ease !important;
-  flex-shrink: 0 !important;
-}
-
-.location-action-btn:hover {
-  background: #b388ff !important;
-  transform: translateY(-1px) !important;
-  color: #ffffff !important;
+/* ==========================================================================
+   Find a Clinic Near You - Premium Location Cards (Crystal Clear HD Images)
+   ========================================================================== */
+.location-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  margin-top: 32px !important;
 }
 
 @media (max-width: 1080px) {
@@ -2394,13 +2229,177 @@
 @media (max-width: 640px) {
   .location-grid {
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
+    gap: 18px !important;
   }
-  .location-card.has-bg-image {
-    height: 290px !important;
-    min-height: 290px !important;
-    max-height: 290px !important;
-  }
+}
+
+.location-card {
+  display: flex !important;
+  flex-direction: column !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  border: 1.5px solid #e6ebf0 !important;
+  box-shadow: 0 8px 24px rgba(28, 43, 56, 0.06) !important;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+  position: relative !important;
+  height: 100% !important;
+}
+
+.location-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: #9966ff !important;
+  box-shadow: 0 20px 42px rgba(153, 102, 255, 0.18), 0 8px 20px rgba(28, 43, 56, 0.08) !important;
+}
+
+/* Image Container: 100% Clear, Bright & Crisp (No Dark Wash, No Blur) */
+.location-card-image-wrap {
+  position: relative !important;
+  width: 100% !important;
+  height: 195px !important;
+  min-height: 195px !important;
+  overflow: hidden !important;
+  background: #eef2f6 !important;
+}
+
+.location-card-img {
+  object-fit: cover !important;
+  object-position: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  filter: none !important;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.location-card:hover .location-card-img {
+  transform: scale(1.06) !important;
+}
+
+/* Floating Badges inside top of image */
+.location-card-badges {
+  position: absolute !important;
+  top: 14px !important;
+  left: 14px !important;
+  right: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  z-index: 2 !important;
+}
+
+.location-state-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  background: #9966ff !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.03em !important;
+  padding: 5px 12px !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 12px rgba(153, 102, 255, 0.45) !important;
+}
+
+.location-availability-tag {
+  background: rgba(16, 28, 38, 0.78) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  font-size: 10.5px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0.02em !important;
+  padding: 4px 10px !important;
+  border-radius: 999px !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Card Content Body */
+.location-card-body {
+  padding: 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  flex-grow: 1 !important;
+  background: #ffffff !important;
+  gap: 16px !important;
+}
+
+.location-card-info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.location-city-title {
+  color: #1c2b38 !important;
+  font-size: 22px !important;
+  font-weight: 750 !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.location-address-text {
+  color: #5e7182 !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+/* Card Footer */
+.location-card-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  padding-top: 14px !important;
+  border-top: 1px solid #edf1f5 !important;
+  margin-top: auto !important;
+}
+
+.location-note-badge {
+  background: #f4f6fa !important;
+  border: 1px solid #e1e7ee !important;
+  color: #5e7182 !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  padding: 6px 10px !important;
+  border-radius: 8px !important;
+  max-width: 175px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: inline-block !important;
+}
+
+.location-note-default {
+  background: #f4f6fa !important;
+  border-color: #e1e7ee !important;
+  color: #7b8e9f !important;
+}
+
+.location-action-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  background: #9966ff !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-weight: 750 !important;
+  padding: 8px 14px !important;
+  border-radius: 999px !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 14px rgba(153, 102, 255, 0.3) !important;
+  flex-shrink: 0 !important;
+}
+
+.location-action-btn:hover {
+  background: #8040ff !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 18px rgba(153, 102, 255, 0.45) !important;
 }
 
 /* 9. Booking Request Form Page */
