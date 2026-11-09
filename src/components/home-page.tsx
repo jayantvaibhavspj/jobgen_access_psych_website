@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import HomeHero from "@/components/home-hero";
 import Reveal from "@/components/reveal";
+import FooterVideoBackground from "@/components/FooterVideoBackground";
 import {
   AustraliaLocations,
   CliniciansShowcase,
@@ -595,39 +596,30 @@ export default function HomePage() {
       </section>
 
       <section className="final-cta">
-        <div className="final-cta-bg" aria-hidden="true">
-          <Image
-            src="/images/final-cta-bg.jpg"
-            alt=""
-            fill
-            unoptimized
-            sizes="100vw"
-            className="final-cta-bg-img"
-          />
-          <div className="final-cta-overlay" />
-        </div>
-        <div className="section-container final-cta-inner">
-          <div>
-            <h2>Book online now.</h2>
+        <FooterVideoBackground>
+          <div className="final-cta-inner">
+            <div>
+              <h2>Book online now.</h2>
+            </div>
+            <div className="final-cta-actions">
+              <a
+                className="button button-dark"
+                href={BOOKING_PORTAL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Book online now <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+              <a className="final-cta-contact" href={EMAIL_LINK}>
+                info@accesspsych.com.au
+              </a>
+              <a className="final-cta-contact" href={PHONE_LINK}>
+                <Phone size={17} aria-hidden="true" />
+                1800 APSYCH (1800 277 924)
+              </a>
+            </div>
           </div>
-          <div className="final-cta-actions">
-            <a
-              className="button button-dark"
-              href={BOOKING_PORTAL}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Book online now <ArrowUpRight size={17} aria-hidden="true" />
-            </a>
-            <a className="final-cta-contact" href={EMAIL_LINK}>
-              info@accesspsych.com.au
-            </a>
-            <a className="final-cta-contact" href={PHONE_LINK}>
-              <Phone size={17} aria-hidden="true" />
-              1800 APSYCH (1800 277 924)
-            </a>
-          </div>
-        </div>
+        </FooterVideoBackground>
       </section>
     </main>
   );
