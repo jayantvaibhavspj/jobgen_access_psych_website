@@ -116,66 +116,109 @@ export default function HomePage() {
       <section className="intro-section section-pad" id="intro">
         <div className="section-container">
           <div className="intro-layout">
+            {/* Left Column: Narrative Copy & Clinic Photo Card */}
             <div className="intro-copy">
               <Reveal>
-                <h2>Access psychology, therapy and counselling services</h2>
+                <div className="intro-heading-group">
+                  <span className="intro-category-badge">EVIDENCE-BASED CARE</span>
+                  <h2>Access psychology, therapy and counselling services</h2>
+                </div>
               </Reveal>
+
               <div className="intro-prose">
-                {introParagraphs.map((paragraph, index) => (
-                  <Reveal key={paragraph} delay={index * 0.06}>
-                    {index === 2 ? (
-                      <div className="intro-image-row">
-                        <p>{paragraph}</p>
-                        <div className="intro-inline-photo">
-                          <Image
-                            src="/images/intro-therapy-space.jpg"
-                            alt="A welcoming and comfortable modern therapy clinic space"
-                            width={460}
-                            height={340}
-                            className="intro-photo-img"
-                          />
-                        </div>
-                      </div>
-                    ) : (
-                      <p>{paragraph}</p>
-                    )}
-                  </Reveal>
-                ))}
+                <Reveal delay={0.06}>
+                  <p className="intro-lead-para">{homepageCopy[0]}</p>
+                </Reveal>
+                <Reveal delay={0.12}>
+                  <p>{homepageCopy[1]}</p>
+                </Reveal>
+                <Reveal delay={0.18}>
+                  <p>{homepageCopy[2]}</p>
+                </Reveal>
+                <Reveal delay={0.24}>
+                  <p className="intro-conclusion-para">{homepageCopy[3]}</p>
+                </Reveal>
               </div>
+
+              {/* Clinic Atmosphere Feature Card */}
+              <Reveal delay={0.3}>
+                <div className="intro-feature-banner">
+                  <div className="intro-photo-wrap">
+                    <Image
+                      src="/images/intro-therapy-space.jpg"
+                      alt="Welcoming and comfortable modern therapy clinic space"
+                      width={720}
+                      height={380}
+                      className="intro-photo-img"
+                    />
+                    <div className="intro-photo-overlay">
+                      <span className="photo-overlay-dot" />
+                      <span>Comfortable, modern clinic spaces across Australia &amp; Telehealth nationwide</span>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* Age Note & Explore Button */}
+              <Reveal delay={0.36}>
+                <div className="intro-footer-actions">
+                  <div className="age-note-pill">
+                    <span className="age-note-icon">
+                      <Shield size={16} aria-hidden="true" />
+                    </span>
+                    <span>Our services are for people aged 12 and over.</span>
+                  </div>
+                  <Link
+                    className="intro-explore-btn"
+                    href="/psychology-therapy-counselling"
+                  >
+                    <span>Explore psychology services</span>
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </Link>
+                </div>
+              </Reveal>
             </div>
-            <div className="concern-list">
-              <span className="concern-list-label">Areas of support</span>
-              <ul aria-label="Mental health issues and concerns">
-                {concerns.map((concern) => (
-                  <li key={concern}>
-                    <Link
-                      className="concern-row"
-                      href="/psychology-therapy-counselling"
-                    >
-                      <span>{concern}</span>
-                      <ArrowUpRight size={17} aria-hidden="true" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+
+            {/* Right Column: Areas of Support Card */}
+            <div className="intro-support-column">
+              <Reveal delay={0.15}>
+                <div className="concern-card">
+                  <div className="concern-card-header">
+                    <span className="concern-card-tag">AREAS OF SUPPORT</span>
+                    <h3>Specialised mental health support</h3>
+                    <p>Evidence-based care for a broad range of challenges and conditions.</p>
+                  </div>
+
+                  <ul className="concern-card-list" aria-label="Mental health issues and concerns">
+                    {concerns.map((concern) => (
+                      <li key={concern}>
+                        <Link
+                          className="concern-card-row"
+                          href="/psychology-therapy-counselling"
+                        >
+                          <span>{concern}</span>
+                          <span className="concern-row-arrow">
+                            <ArrowUpRight size={15} aria-hidden="true" />
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="concern-card-cta">
+                    <div className="concern-cta-text">
+                      <strong>Need support with something else?</strong>
+                      <small>Our clinicians cover a wide range of needs.</small>
+                    </div>
+                    <a className="concern-cta-button" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">
+                      <span>Book a session</span>
+                      <ArrowUpRight size={14} aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+              </Reveal>
             </div>
           </div>
-          <div className="intro-followup">
-            <p className="age-note">
-              <span className="age-note-icon">
-                <Shield size={17} aria-hidden="true" />
-              </span>
-              Our services are for people aged 12 and over.
-            </p>
-            <Link
-              className="text-link"
-              href="/psychology-therapy-counselling"
-            >
-              Explore psychology, therapy and counselling
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-          <p className="intro-conclusion">{concludingIntro}</p>
         </div>
       </section>
 
