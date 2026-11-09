@@ -227,9 +227,16 @@ summary:focus-visible {
   pointer-events: none;
 }
 
-/* Video background: no dark overlay over the video */
+/* Soft black gradient overlay: subtle contrast so video stays bright and visible */
 .hero-video-gradient-overlay {
-  display: none !important;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block !important;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.42) 38%, rgba(0, 0, 0, 0.16) 72%, rgba(0, 0, 0, 0.05) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 22%, transparent 75%, rgba(0, 0, 0, 0.35) 100%);
+  pointer-events: none;
 }
 
 /* Video-Related Synchronized Hero Content (Merged on Left, Main Heading) */

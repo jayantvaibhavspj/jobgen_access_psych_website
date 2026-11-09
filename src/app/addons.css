@@ -3444,24 +3444,59 @@
   object-position: center top !important;
 }
 
-/* Remove black gradient overlay from hero video (User request) */
+/* Soft black gradient overlay over hero video (subtle contrast, not too heavy) */
 .hero-video-gradient-overlay {
-  display: none !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  display: block !important;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.42) 38%, rgba(0, 0, 0, 0.16) 72%, rgba(0, 0, 0, 0.05) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 22%, transparent 75%, rgba(0, 0, 0, 0.35) 100%) !important;
+  pointer-events: none !important;
+}
+
+/* Black text stroke and crisp outline on all hero video text */
+.hero-caption-label {
+  -webkit-text-stroke: 0.6px #000000 !important;
+  paint-order: stroke fill !important;
+  text-shadow: 0 0 1px #000000, 1px 1px 3px rgba(0, 0, 0, 0.9) !important;
 }
 
 .hero-caption-headline {
   font-size: clamp(2.3rem, 4.1vw, 3.85rem) !important;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.95) !important;
+  -webkit-text-stroke: 1px #000000 !important;
+  paint-order: stroke fill !important;
+  text-shadow:
+    -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000,
+     0 3px 12px rgba(0, 0, 0, 0.85) !important;
 }
 
 .hero-caption-line {
   font-size: clamp(15px, 1.18vw, 17.5px) !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.95) !important;
+  -webkit-text-stroke: 0.5px #000000 !important;
+  paint-order: stroke fill !important;
+  text-shadow:
+    -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000,
+     0 2px 8px rgba(0, 0, 0, 0.85) !important;
 }
 
 .hero-caption-name {
   font-size: 12.5px !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85) !important;
+  -webkit-text-stroke: 0.5px #000000 !important;
+  paint-order: stroke fill !important;
+  text-shadow:
+    -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000,
+     0 1px 5px rgba(0, 0, 0, 0.9) !important;
 }
 
 /* ==========================================================================

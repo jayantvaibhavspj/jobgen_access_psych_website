@@ -292,7 +292,8 @@ export default function HeroVideoBackground({
           style={{ opacity: 0, zIndex: 1 }}
         />
 
-        {/* Pure video background, no dark overlay */}
+        {/* Soft black gradient overlay for video contrast */}
+        <div className="hero-video-gradient-overlay" />
       </div>
 
       {/* 2. Unified Hero Foreground - Merged on the Left */}
