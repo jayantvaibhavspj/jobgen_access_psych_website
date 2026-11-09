@@ -60,7 +60,17 @@ export const HERO_CLIPS: HeroClip[] = [
   },
 ];
 
-export default function HeroVideoBackground() {
+interface HeroVideoBackgroundProps {
+  title?: React.ReactNode;
+  actions?: React.ReactNode;
+  children?: React.ReactNode;
+}
+
+export default function HeroVideoBackground({
+  title,
+  actions,
+  children,
+}: HeroVideoBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoARef = useRef<HTMLVideoElement>(null);
   const videoBRef = useRef<HTMLVideoElement>(null);
@@ -293,50 +303,59 @@ export default function HeroVideoBackground() {
           style={{ opacity: 0, zIndex: 1 }}
         />
 
-        {/* Dark brand gradient overlay for high text contrast */}
+        {/* Dark brand gradient overlay for high text contrast on the left */}
         <div className="hero-video-gradient-overlay" />
       </div>
 
-      {/* 2. Video-Related Synchronized Text Overlay & Progress Bars */}
-      <div
-        className={`hero-video-caption-block caption-side-${currentClip.faceSide}`}
-        aria-live="polite"
-      >
-        <div className={`hero-caption-content anim-${captionAnimClass}`}>
-          <span className="hero-caption-label">{currentClip.label}</span>
-          <h2 className="hero-caption-headline">{currentClip.headline}</h2>
-          <p className="hero-caption-line">{currentClip.line}</p>
-          <span className="hero-caption-name">{currentClip.nameTag}</span>
-        </div>
+      {/* 2. Unified Hero Foreground - Merged on the Left */}
+      <div className="hero-inner">
+        <div className="hero-copy">
+          {title && <div className="hero-slide-copy">{title}</div>}
 
-        {/* 5-Segment Progress Indicator */}
-        <div className="hero-caption-progress" role="tablist" aria-label="Hero video clips">
-          {HERO_CLIPS.map((clip, index) => {
-            const isActive = index === captionIndex;
-            const isCompleted = index < captionIndex;
-            const barFillWidth = isActive
-              ? `${Math.round(progress * 100)}%`
-              : isCompleted
-              ? "100%"
-              : "0%";
+          {/* Video-Related Synchronized Text Overlay */}
+          <div className="hero-video-caption-block" aria-live="polite">
+            <div className={`hero-caption-content anim-${captionAnimClass}`}>
+              <span className="hero-caption-label">{currentClip.label}</span>
+              <h2 className="hero-caption-headline">{currentClip.headline}</h2>
+              <p className="hero-caption-line">{currentClip.line}</p>
+              <span className="hero-caption-name">{currentClip.nameTag}</span>
+            </div>
 
-            return (
-              <button
-                key={clip.id}
-                type="button"
-                className={`hero-progress-segment${isActive ? " is-active" : ""}`}
-                role="tab"
-                aria-selected={isActive}
-                aria-label={`Show clip ${index + 1} of 5: ${clip.headline}`}
-                onClick={() => handleBarClick(index)}
-              >
-                <span
-                  className="hero-progress-fill"
-                  style={{ width: barFillWidth }}
-                />
-              </button>
-            );
-          })}
+            {/* Action Buttons */}
+            {actions}
+
+            {/* 5-Segment Progress Indicator */}
+            <div className="hero-caption-progress" role="tablist" aria-label="Hero video clips">
+              {HERO_CLIPS.map((clip, index) => {
+                const isActive = index === captionIndex;
+                const isCompleted = index < captionIndex;
+                const barFillWidth = isActive
+                  ? `${Math.round(progress * 100)}%`
+                  : isCompleted
+                  ? "100%"
+                  : "0%";
+
+                return (
+                  <button
+                    key={clip.id}
+                    type="button"
+                    className={`hero-progress-segment${isActive ? " is-active" : ""}`}
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-label={`Show clip ${index + 1} of 5: ${clip.headline}`}
+                    onClick={() => handleBarClick(index)}
+                  >
+                    <span
+                      className="hero-progress-fill"
+                      style={{ width: barFillWidth }}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {children}
         </div>
       </div>
     </div>

@@ -218,38 +218,26 @@ summary:focus-visible {
   pointer-events: none;
 }
 
-/* Dark overlay on top of videos: linear-gradient from rgba(8, 24, 32, 0.75) on the left to rgba(8, 24, 32, 0.35) on the right */
+/* Dark overlay on top of videos: high contrast on left for merged text block, crystal clear on right */
 .hero-video-gradient-overlay {
   position: absolute;
   inset: 0;
   z-index: 3;
   background:
-    linear-gradient(90deg, rgba(8, 24, 32, 0.85) 0%, rgba(8, 24, 32, 0.72) 36%, rgba(8, 24, 32, 0.45) 72%, rgba(8, 24, 32, 0.35) 100%),
-    linear-gradient(180deg, rgba(8, 24, 32, 0.65) 0%, transparent 18%, transparent 78%, rgba(8, 24, 32, 0.75) 100%);
+    linear-gradient(90deg, rgba(8, 24, 32, 0.88) 0%, rgba(8, 24, 32, 0.74) 44%, rgba(8, 24, 32, 0.28) 76%, rgba(8, 24, 32, 0.12) 100%),
+    linear-gradient(180deg, rgba(8, 24, 32, 0.6) 0%, transparent 20%, transparent 80%, rgba(8, 24, 32, 0.7) 100%);
   pointer-events: none;
 }
 
-/* Video-Related Synchronized Caption Block */
+/* Video-Related Synchronized Caption Block (Merged on Left) */
 .hero-video-caption-block {
-  position: absolute;
-  right: max(48px, calc((100% - 1240px) / 2));
-  bottom: 64px;
-  z-index: 10;
-  width: min(390px, 44vw);
+  position: static;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   pointer-events: auto;
-  transition: transform 500ms ease, right 500ms ease;
-}
-
-/* Move caption if person in clip is on the right or left */
-.hero-video-caption-block.caption-side-right {
-  right: max(48px, calc((100% - 1240px) / 2 + 24px));
-}
-
-.hero-video-caption-block.caption-side-left {
-  right: max(48px, calc((100% - 1240px) / 2));
+  margin-top: 2px;
 }
 
 .hero-caption-content {
@@ -266,7 +254,7 @@ summary:focus-visible {
 
 .hero-caption-content.anim-exit {
   opacity: 0;
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   transition-duration: 400ms;
 }
 
@@ -279,7 +267,7 @@ summary:focus-visible {
 @keyframes heroCaptionSlideUp {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -293,7 +281,7 @@ summary:focus-visible {
   font-weight: 750;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--sea-glass, #89c5b2);
+  color: #c084fc;
   margin-bottom: 2px;
 }
 
@@ -301,7 +289,7 @@ summary:focus-visible {
   margin: 0;
   color: #ffffff;
   font-family: var(--display);
-  font-size: clamp(21px, 1.8vw, 27px);
+  font-size: clamp(21px, 2vw, 28px);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.025em;
@@ -310,15 +298,16 @@ summary:focus-visible {
 
 .hero-caption-line {
   margin: 0;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14.5px;
   line-height: 1.5;
+  max-width: 500px;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
 }
 
 .hero-caption-name {
   display: block;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.72);
   margin-top: 2px;
@@ -329,7 +318,7 @@ summary:focus-visible {
   display: flex;
   align-items: center;
   gap: 6px;
-  width: 100%;
+  width: min(290px, 100%);
   margin-top: 4px;
 }
 
@@ -2180,10 +2169,8 @@ summary:focus-visible {
 @media (max-width: 900px) {
   .clinicians-feature-layout { grid-template-columns: 1fr; }
   .clinicians-image { min-height: 400px; }
-  .hero-video-caption-block {
-    right: 32px !important;
-    bottom: 70px;
-    width: min(330px, 85vw);
+  .home-hero .hero-copy {
+    width: min(580px, 80%);
   }
 }
 
@@ -2234,27 +2221,27 @@ summary:focus-visible {
   .hero-poster,
   .hero-video { object-position: 58% center; }
   .hero-video-caption-block {
-    right: 50% !important;
-    left: auto !important;
-    transform: translateX(50%) !important;
-    bottom: 20px;
-    width: min(380px, calc(100% - 32px));
-    text-align: center;
-    align-items: center;
+    position: static !important;
+    transform: none !important;
+    width: 100%;
+    text-align: left;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 4px;
   }
   .hero-caption-content {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
   .hero-caption-headline {
-    font-size: 21px;
+    font-size: 20px;
   }
   .hero-caption-line {
-    font-size: 13px;
+    font-size: 13.5px;
   }
   .hero-caption-progress {
-    max-width: 220px;
-    margin-inline: auto;
+    max-width: 240px;
+    margin-inline: 0;
   }
   .hero-controls { right: 50%; bottom: 23px; transform: translateX(50%); }
   .scroll-cue { display: none; }
