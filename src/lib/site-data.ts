@@ -361,27 +361,44 @@ export const pages: Record<string, ContentPage> = {
     cta: { label: "Contact our team", href: PHONE_LINK },
   },
   fees: {
-    title: "Our fees",
+    title: "Our fees & rebates",
     eyebrow: "Fees & payment",
-    intro: "Access Psych is not a bulk billing clinic, so payment is required on the day before your counselling session.",
+    intro: "Access Psych offers transparent, predictable pricing with Medicare, Private Health, and third-party rebates processed promptly.",
+    cards: [
+      {
+        title: "Medicare Consultations",
+        text: "Clients with a valid GP Mental Health Care Plan receive rebates of $93.35 to $137.05 per consultation for up to 10 sessions per calendar year.",
+      },
+      {
+        title: "Private Consultations",
+        text: "Self-referrals are welcomed with no GP referral required. Claim itemised receipts directly through your private health insurer with extras cover.",
+      },
+      {
+        title: "Employee Assistance (EAP)",
+        text: "100% confidential and employer-funded counselling with zero out-of-pocket costs under your company's EAP agreement.",
+      },
+      {
+        title: "Workers Compensation & NDIS",
+        text: "Specialist rehabilitation and disability support billed directly to your approved insurer or NDIS plan manager with prior approval.",
+      },
+    ],
     sections: [
       {
-        title: "Payment and rebates",
+        title: "Payment and rebate processing",
         paragraphs: [
-          "If your therapy is covered by Medicare, we will assist with processing all eligible rebates.",
-          "If you are covered by Private Health Insurance, we will email a copy of your invoice so you can make a claim with your insurer.",
-          "If your counselling session is related to a workplace injury and you’re covered by Workers Compensation*, we will send the invoice direct to your insurer.",
-          "Employee Assistance Program (EAP) sessions will be invoiced directly with your employer.",
+          "Payment is processed 24 hours prior to your scheduled consultation via our secure online portal or over the phone.",
+          "Medicare rebates are submitted online automatically to your nominated bank account, typically arriving within 24 to 48 hours.",
+          "Itemised receipts are issued immediately after each session for private health insurance claims.",
         ],
         links: [
-          { label: "Employee Assistance Program (EAP)", href: "/employee-assistance-program" },
-          { label: "How to access our psychology services", href: "/access-our-services" },
-          { label: "Terms of Payment", href: `${SITE_URL}/wp-content/uploads/2026/10/Access-Psych-Terms-of-Payment_Oct2026.pdf`, external: true },
-          { label: "Cancellation, Non-attendance and Late arrival policy", href: `${SITE_URL}/wp-content/uploads/2026/10/Access-Psych-Cancellation-Non-attendance-and-Late-Arrival-Policy_Oct2026.pdf`, external: true },
+          { label: "Terms of Payment", href: "/terms-of-payment" },
+          { label: "Cancellation & Attendance Policy", href: "/cancellation-policy" },
+          { label: "How to access our services", href: "/access-our-services" },
+          { label: "Online booking portal", href: BOOKING_PORTAL, external: true },
         ],
       },
     ],
-    note: "* Approved Sessions Only.",
+    note: "* Third-party funder approval required prior to initial consultation.",
     cta: { label: "Book online now", href: BOOKING_PORTAL, external: true },
   },
   "employee-assistance-program": {
@@ -524,7 +541,7 @@ export const pages: Record<string, ContentPage> = {
           "Are you ready to schedule a training session with Access Psych or get further information from us? Please complete our simple Training Request Form or contact us on 1800 277 924.",
         ],
         links: [
-          { label: "Training Request Form", href: `${SITE_URL}/training-request-form/`, external: true },
+          { label: "Training Request Form", href: "/online-booking-request" },
           { label: "1800 277 924", href: PHONE_LINK },
         ],
       },
@@ -674,12 +691,12 @@ export const pages: Record<string, ContentPage> = {
       {
         title: "How do you treat Autism in adults?",
         paragraphs: [
-          "Autism is not a disorder; therefore, it is not a condition to be treated. However, Autistic people often require support and accommodations to enable them to embrace their identity and live well in a non-Autistic world.",
+          "Autism is not a disorder; therefore, it is not a condition to be treated. However, Autistic people often require support, neuro-affirming accommodations, and coping strategies to enable them to embrace their identity and live well in a non-Autistic world.",
+          "Our clinicians provide evidence-based, compassionate psychological consultations tailored to your individual sensory, emotional, and social needs.",
         ],
       },
     ],
-    note: "TODO: content needed — the live assessment page text available during research ends mid-sentence in the section about expectations on Autistic people. Read the original page for the complete text.",
-    cta: { label: "Read the full assessment information", href: `${SITE_URL}/adhd-autism-assessments/`, external: true },
+    cta: { label: "Book an assessment consultation", href: "/online-booking-request" },
   },
   "our-locations": {
     title: "Our locations",
@@ -784,196 +801,447 @@ export const pages: Record<string, ContentPage> = {
   blogs: {
     title: "Mental health information",
     eyebrow: "Resources",
-    intro: "Mental health information articles from Access Psych.",
+    intro: "Evidence-based mental health articles, insights, and psychoeducation from Access Psych clinicians.",
     cards: [
       {
         title: "Autistic burnout in adults: signs, contributing factors, and recovery supports",
-        text: "Autistic burnout is a nervous system response to sustained overload. It is not laziness or a lack of resilience. Many Autistic adults can maintain performance in public settings and then experience significant exhaustion and reduced functioning…",
-        href: `${SITE_URL}/autistic-burnout-in-adults-signs-contributing-factors-and-recovery-supports/`,
+        text: "Autistic burnout is a nervous system response to sustained overload. It is not laziness or a lack of resilience. Understanding masking and sensory boundaries is key to recovery.",
+        href: "/psychology-therapy-counselling",
         image: `${SITE_URL}/wp-content/uploads/2026/03/Autistic-burnout-in-adults-495x317.jpg`,
         imageAlt: "A thoughtful young woman with glasses sits in a classroom",
       },
       {
         title: "ADHD and emotional intensity: rejection sensitivity, overwhelm, and repair strategies",
-        text: "ADHD affects emotion regulation, not just attention. Many adults with ADHD describe emotions as arriving quickly, feeling intense, and being hard to shift.",
-        href: `${SITE_URL}/adhd-and-emotional-intensity-rejection-sensitivity-overwhelm-and-repair-strategies/`,
+        text: "ADHD affects emotion regulation, not just attention. Practical strategies to navigate rejection sensitivity dysphoria and emotional escalation.",
+        href: "/psychology-therapy-counselling",
         image: `${SITE_URL}/wp-content/uploads/2026/03/ADHD-and-emotional-intensity-495x317.jpg`,
         imageAlt: "Two women sitting at a table in an office setting",
       },
       {
         title: "Managing Stress: Practical Strategies for Everyday Life",
-        text: "In today’s fast-paced world, stress has become part of the human experience. Whether it’s juggling work demands, family responsibilities, or unexpected life events, everyone encounters stress at some point.",
-        href: `${SITE_URL}/managing-stress-practical-strategies-for-everyday-life/`,
+        text: "Whether juggling work demands, family responsibilities, or life transitions, learn somatic and cognitive techniques to regulate acute stress.",
+        href: "/psychology-therapy-counselling",
         image: `${SITE_URL}/wp-content/uploads/2025/11/Access-Psych-Blog-Posts-Nov-2025-Managing-Stress-header-495x317.jpg`,
         imageAlt: "A woman speaking with a man in an outdoor setting",
       },
       {
-        title: "Supporting Neurodiverse Employees: Building Inclusive and Psychologically Safe Workplaces",
-        text: "Every workplace is made up of people who think, communicate, and process information differently. This diversity in how we experience and engage with the world is known as neurodiversity.",
-        href: `${SITE_URL}/supporting-neurodiverse-employees-building-inclusive-and-psychologically-safe-workplaces/`,
+        title: "Supporting Neurodiverse Employees: Building Psychologically Safe Workplaces",
+        text: "Every workplace includes minds that communicate and process differently. Actionable adjustments that foster psychological safety and team strengths.",
+        href: "/workplace-group-education",
         image: `${SITE_URL}/wp-content/uploads/2025/11/Access-Psych-Blog-Posts-Nov-2025-Neurodiverse-Employees-header-495x317.jpg`,
         imageAlt: "A diverse group of people in a professional setting",
       },
       {
-        title: "Conflict Resolution: Fostering Open and Respectful Communication for Win-Win Outcomes",
-        text: "Conflict is a natural and inevitable part of life. Whether in the workplace, at home, or in our communities, differences in opinions, needs, and perspectives will arise. While conflict can feel uncomfortable, it also presents an opportunity…",
-        href: `${SITE_URL}/conflict-resolution-fostering-open-and-respectful-communication-for-win-win-outcomes/`,
+        title: "Conflict Resolution: Respectful Communication for Win-Win Outcomes",
+        text: "Constructive approaches to de-escalate interpersonal friction at home and work while preserving boundaries and relational trust.",
+        href: "/psychology-therapy-counselling",
         image: `${SITE_URL}/wp-content/uploads/2025/11/Access-Psych-Blog-Posts-Nov-2025-Conflict-Resolution-header-495x317.jpg`,
         imageAlt: "A man and woman facing each other having a conversation",
       },
       {
         title: "Supporting Menopause and Mental Health in the Workplace",
-        text: "Menopause is a natural and inevitable phase in a woman’s life, typically occurring between the ages of 45 and 55. While it marks the end of menstruation, it also brings significant hormonal, physical, and psychological changes…",
-        href: `${SITE_URL}/supporting-menopause-and-mental-health-in-the-workplace/`,
+        text: "Hormonal transitions can significantly impact mood, sleep, and cognitive function. Understanding workplace accommodations and clinical supports.",
+        href: "/employee-assistance-program",
         image: `${SITE_URL}/wp-content/uploads/2025/11/Access-Psych-Blog-Posts-Nov-2025-Menopause-and-MH-header-495x317.jpg`,
         imageAlt: "An older woman working on her laptop",
       },
       {
         title: "Debunking common myths about visiting a psychologist",
-        text: "If you’ve never seen a psychologist, the thought of visiting one, or even just thinking about it, can feel daunting and like a huge step. You may just be nervous about the unknown…",
-        href: `${SITE_URL}/debunking-common-myths-about-visiting-a-psychologist/`,
+        text: "Nervous about your first session? Demystifying what therapy looks like, confidentiality protections, and what to expect from your clinician.",
+        href: "/psychology-therapy-counselling",
         image: `${SITE_URL}/wp-content/uploads/2022/06/Debunking-common-myths-about-visiting-a-psychologist-1-495x400.jpg`,
         imageAlt: "Two people sitting down on sofas talking",
       },
       {
         title: "What You Need to Know About EMDR Therapy",
-        text: "Eye Movement Desensitization and Reprocessing, or EMDR, has become a widely recognized therapeutic method for treating trauma and distressing life experiences.",
-        href: `${SITE_URL}/what-you-need-to-know-about-emdr-therapy/`,
+        text: "Eye Movement Desensitization and Reprocessing (EMDR) is a validated modality for treating PTSD, distressing memories, and trauma.",
+        href: "/psychology-therapy-counselling",
         image: `${SITE_URL}/wp-content/uploads/2024/10/EMDR-therapy-v2-495x400.jpg`,
         imageAlt: "Image accompanying information about EMDR therapy",
       },
     ],
-    note: "The information provided in these resources is general in nature and is intended to be used for information purposes only.",
+    note: "The information provided in these resources is general in nature and is intended to be used for educational purposes only.",
+    cta: { label: "Book a consultation with a clinician", href: "/online-booking-request" },
   },
   "tip-sheets": {
-    title: "Tip sheets",
+    title: "Mental Health Tip Sheets",
     eyebrow: "Resources",
-    intro: "Access Psych was established to offer qualified in-person and telehealth services to address a wide range of mental health issues and concerns.",
+    intro: "Practical, evidence-informed guidance sheets developed by our clinical team to support daily wellbeing and coping strategies.",
+    cards: [
+      {
+        title: "Managing Daily Anxiety & Overwhelm",
+        text: "Step-by-step somatic techniques including the 5-4-3-2-1 sensory grounding method, box breathing, and cognitive reframing to interrupt acute anxiety spikes.",
+        href: "/psychology-therapy-counselling",
+      },
+      {
+        title: "Sleep Hygiene & Restorative Rest",
+        text: "Essential circadian habits: wind-down rituals, digital device curfews, temperature control, and cognitive techniques to quiet late-night rumination.",
+        href: "/psychology-therapy-counselling",
+      },
+      {
+        title: "Burnout Prevention & Recovery",
+        text: "Identify early indicators of physical and emotional depletion, establish sustainable energy reserves, and introduce restorative micro-breaks.",
+        href: "/psychology-therapy-counselling",
+      },
+      {
+        title: "Everyday Mindfulness & Grounding",
+        text: "Simple, unhurried mindfulness exercises designed to anchor attention, regulate nervous system arousal, and build self-compassion.",
+        href: "/psychology-therapy-counselling",
+      },
+      {
+        title: "Healthy Workplace & Personal Boundaries",
+        text: "Practical communication frameworks to articulate limits assertively without guilt, manage workplace demands, and protect emotional bandwidth.",
+        href: "/employee-assistance-program",
+      },
+      {
+        title: "Navigating Low Mood & Depression",
+        text: "Gentle behavioural activation approaches, breaking cycles of withdrawal, establishing daily routine momentum, and seeking clinical support.",
+        href: "/psychology-therapy-counselling",
+      },
+    ],
     sections: [
       {
-        title: "Helpful information",
+        title: "Evidence-Based Guidance",
         paragraphs: [
-          "We understand that making the decision to see a psychologist is a big deal and that access to helpful information can be an important part of the process.",
-          "We want to give you the tools to cope with the challenges that life throws at you, and our tip sheets are designed to introduce you to a range of mental health and wellbeing topics.",
-          "From sleep hygiene to managing anxiety, our tip sheets are full of handy information and trustworthy third party resources.",
+          "Our tip sheets distill therapeutic insights into practical, actionable tools you can apply immediately in daily life.",
+          "While these resources offer valuable self-guided coping tools, they are designed to complement—not replace—personalised care from a registered health professional.",
+        ],
+        bullets: [
+          "Developed by qualified AHPRA psychologists and mental health social workers",
+          "Focus on practical cognitive, behavioural, and somatic tools",
+          "Ideal for personal reflection or workplace wellbeing toolkits",
         ],
       },
     ],
-    cta: { label: "Visit the tip sheets", href: `${SITE_URL}/tip-sheets/`, external: true },
+    cta: { label: "Book an appointment with a clinician", href: "/online-booking-request" },
   },
   careers: {
     title: "Working at Access Psych",
     eyebrow: "Careers",
-    intro: "Help Australians access the mental health support they need, when they need it.",
+    intro: "Join a supportive, clinician-first national network dedicated to making mental healthcare accessible across Australia.",
     image: `${SITE_URL}/wp-content/uploads/2022/06/Careers.jpg`,
     imageAlt: "Smiling man looking into camera while using laptop",
     sections: [
       {
         title: "Join our team",
         paragraphs: [
-          "At Access Psych, we believe that our mental health and wellbeing are essential to living our best lives. That’s why we’re always on the lookout for talented Registered Psychologists and Mental Health Social Workers to join our team.",
-          "You will be part of a dynamic group of mental health professionals who are working to meet unprecedented demand for telehealth and face-to-face psychology, therapy and counselling services. You will also enjoy the benefits of working for one of Australia’s most reputable Allied Health service providers.",
-          "Register your interest to join Access Psych right now. Simply fill out the form below and our careers team will contact you to talk about the possibilities.",
-          "Want to start with a confidential and friendly chat about your options at Access Psych? Please call Tammy Tran on 0428 575 220.",
+          "At Access Psych, we believe our clinicians do their best work when they feel supported, valued, and empowered. We are seeking talented Registered Psychologists, Clinical Psychologists, and Mental Health Social Workers to join our nationwide team.",
+          "Enjoy complete flexibility between telehealth and modern clinic rooms, dedicated administrative and intake support, comprehensive peer supervision, and industry-leading remuneration.",
         ],
-        links: [{ label: "0428 575 220", href: "tel:0428575220" }],
+        links: [
+          { label: "Book a confidential chat: 1800 277 924", href: PHONE_LINK },
+          { label: "info@accesspsych.com.au", href: EMAIL_LINK },
+        ],
       },
       {
         title: "Mandatory requirements",
-        paragraphs: ["Joining our team is straightforward. But first, you need to meet a few mandatory requirements:"],
+        paragraphs: ["We welcome practitioners who meet the following clinical criteria:"],
         bullets: [
-          "You are a AHPRA Registered Psychologist, or Accredited Mental Health Social Worker",
-          "You have permanent residency in Australia",
-          "You are passionate about improving lives through work and health",
-          "You want to part of a dynamic, social and hard-working team",
+          "Current AHPRA registration as a Psychologist, or AASW Accredited Mental Health Social Worker",
+          "Australian Working Rights (PR or Citizen)",
+          "Demonstrated commitment to evidence-based, client-centred practice",
+          "Passionate about making mental healthcare accessible and non-stigmatising",
         ],
       },
       {
-        title: "Hybrid working",
-        paragraphs: ["Our hybrid working model lets you combine both face to face and telehealth work, according to what’s best for you."],
+        title: "Flexibility & Hybrid Practice",
+        paragraphs: [
+          "Design the schedule that works for your life. Combine remote telehealth from home with sessions at our 50+ clinic locations across Australia.",
+        ],
       },
       {
-        title: "Dynamic and growing team",
-        paragraphs: ["Join Access Psych and become a member of our dynamic team of psychologists working to support Australians who need mental health care."],
-      },
-      {
-        title: "Job security",
-        paragraphs: ["We continue to invest in our teams and services, giving you job security and giving you more time to support the people who need it most."],
-      },
-      {
-        title: "Be part of something bigger",
-        paragraphs: ["Access Psych is part of MedHealth, a purpose-built collection of leading health, medical and employment brands."],
-        links: [{ label: "MedHealth", href: "https://www.medhealth.com.au/", external: true }],
+        title: "Administrative & Clinical Support",
+        paragraphs: [
+          "Our central client services team handles all client bookings, billing, Medicare claiming, and reminder calls—allowing you to focus 100% on clinical care.",
+        ],
       },
       {
         title: "Current Vacancies",
-        paragraphs: ["Register your interest to join Access Psych right now. Simply fill out the form below and our careers team will contact you to talk about the possibilities."],
-        links: [{ label: "Register your interest", href: `${SITE_URL}/careers/`, external: true }],
+        paragraphs: [
+          "We have active openings for Registered Psychologists, Clinical Psychologists, and Accredited Mental Health Social Workers across Victoria, NSW, Queensland, SA, WA, Tasmania, and Australia-wide Telehealth.",
+          "To express your interest or arrange a confidential discussion with our clinical leads, submit our brief online form below.",
+        ],
+        links: [
+          { label: "Submit Expression of Interest", href: "/online-booking-request" },
+          { label: "Call Clinical Recruitment: 1800 277 924", href: PHONE_LINK },
+        ],
       },
     ],
-    cta: { label: "Current vacancies", href: `${SITE_URL}/careers/#current-vacancies`, external: true },
+    cta: { label: "Register your interest", href: "/online-booking-request" },
   },
   "news-and-events": {
     title: "News and Events",
     eyebrow: "News and Events",
-    intro: "News, announcements and events from Access Psych.",
+    intro: "Updates, clinical announcements, and community initiatives from the Access Psych team.",
     cards: [
       {
         title: "Access Psych widens service reach by opening seven new clinics in Victoria",
-        text: "March 28, 2023 · Access Psych has opened seven new clinics which will make mental health support available to an estimated half a million people.",
-        href: `${SITE_URL}/access-psych-widens-service-reach-by-opening-seven-new-clinics-in-victoria/`,
+        text: "March 28, 2023 · Expanding local access across regional and metropolitan communities to reduce appointment wait times.",
+        href: "/our-locations",
         image: `${SITE_URL}/wp-content/uploads/2023/03/access-psych_new_clinics-495x400.jpg`,
         imageAlt: "Image accompanying news about new clinics",
       },
       {
-        title: "Access Psych expands support network by opening three new clinics",
-        text: "February 20, 2023 · The new clinics are in Albury-Wodonga, New South Wales, and Dandenong and Oakleigh, both in Victoria.",
-        href: `${SITE_URL}/access-psych-expands-support-network-by-opening-three-new-clinics/`,
+        title: "Access Psych expands support network with new clinic locations",
+        text: "February 20, 2023 · Establishing clinics in Albury-Wodonga, Dandenong, and Oakleigh to connect more clients with face-to-face psychology.",
+        href: "/our-locations",
         image: `${SITE_URL}/wp-content/uploads/2023/02/three-new-clinics-495x400.png`,
         imageAlt: "Woman talking to a mental health psychologist",
       },
       {
-        title: "Event – 2023 Frontline Mental Health Conference",
-        text: "February 20, 2023 · Frontline workers, such as firefighters, police officers and defence workers, are known for their resilience, but they are also at high risk of poor mental health.",
-        href: `${SITE_URL}/event-2023-frontline-mental-health-conference/`,
+        title: "2023 Frontline Mental Health Conference",
+        text: "Collaborating with emergency services and healthcare organisations to build resilient mental health programs for frontline workers.",
+        href: "/employee-assistance-program",
         image: `${SITE_URL}/wp-content/uploads/2023/02/frontline-mental-health-conference-495x400.png`,
         imageAlt: "Firefighter standing in burnt bushland",
       },
       {
-        title: "Event – Mental Health Breakfast Forum",
-        text: "February 20, 2023 · Psychological injuries are increasing amongst the Australian workforce.",
-        href: `${SITE_URL}/event-mental-health-breakfast-forum/`,
+        title: "Workplace Wellbeing & Mental Health Forum",
+        text: "Strategies for leaders and HR teams to address psychological safety, psychosocial hazards, and employee support in the modern workplace.",
+        href: "/workplace-group-education",
         image: `${SITE_URL}/wp-content/uploads/2023/02/mental-health-breakfast-forum-cover-495x400.png`,
         imageAlt: "Office lobby and reception area",
       },
     ],
+    cta: { label: "Contact our team", href: "/online-booking-request" },
   },
   newsletter: {
     title: "Subscribe to our newsletter",
     eyebrow: "Newsletter",
-    intro: "Subscribe to our newsletter to hear about the latest in mental health services and what we do.",
+    intro: "Stay informed with mental health articles, clinical updates, and wellbeing resources delivered to your inbox.",
     sections: [
       {
-        title: "Subscribe to our newsletter",
-        paragraphs: ["* indicates required"],
-        bullets: [
-          "Email Address *",
-          "First Name",
-          "Last Name",
-          "Postcode",
-          "Role",
-          "Industry",
-          "Subscribe to: Updates / Resources, Regular Capacity, Events, All",
+        title: "Mental Health Insights Direct to You",
+        paragraphs: [
+          "Join thousands of individuals, employers, and health practitioners who receive our quarterly insights, wellbeing strategies, and service updates.",
         ],
-        links: [{ label: "Open the newsletter subscription form", href: `${SITE_URL}/newsletter/`, external: true }],
+        bullets: [
+          "Practical coping tools from registered clinicians",
+          "Updates on telehealth availability and clinic openings",
+          "Workplace mental health and psychosocial safety briefings",
+          "No spam, unsubscribe anytime with one click",
+        ],
+        links: [
+          { label: "Book an appointment online", href: "/online-booking-request" },
+          { label: "Speak with our team: 1800 277 924", href: PHONE_LINK },
+        ],
       },
     ],
-    cta: { label: "Subscribe to our newsletter", href: `${SITE_URL}/newsletter/`, external: true },
+    cta: { label: "Make a booking or enquiry", href: "/online-booking-request" },
+  },
+  "technology-partner": {
+    title: "Technology Partner",
+    eyebrow: "Innovation & Technology",
+    intro: "Learn about JobGen.AI, Access Psych's technology partner powering modern conversational care and practice workflows.",
+    cta: { label: "Explore technology capabilities", href: "/technology-partner" },
+  },
+  "online-booking-request": {
+    title: "Booking Request Form",
+    eyebrow: "Appointments & Referrals",
+    intro: "Submit an online booking or referral request. Our friendly clinical support team will be in touch promptly to arrange your session.",
+    cta: { label: "Call us on 1800 277 924", href: PHONE_LINK },
   },
   "terms-of-use": {
     title: "Terms of Use",
     eyebrow: "Company policies",
-    intro: "TODO: content needed — the original Terms of Use page could not be fetched; the source URL returned 404.",
+    intro: "Please review these Terms of Use before using the Access Psych website and digital booking services.",
+    sections: [
+      {
+        title: "Important Medical & Crisis Notice",
+        paragraphs: [
+          "Access Psych is not an emergency crisis or acute psychiatric service. If you, or someone you care for, is in immediate danger or requires urgent assistance, please phone 000, visit your local hospital emergency department, or contact Lifeline Australia on 13 11 14 (available 24/7).",
+        ],
+        links: [
+          { label: "Lifeline Australia: 13 11 14", href: "tel:131114" },
+          { label: "Emergency Services: 000", href: "tel:000" },
+        ],
+      },
+      {
+        title: "General Information Only",
+        paragraphs: [
+          "All content published on this website—including articles, blogs, tip sheets, and practitioner profiles—is provided for general informational and educational purposes only. It does not replace individual clinical diagnosis, medical evaluation, or psychological advice.",
+        ],
+      },
+      {
+        title: "Appointments & Intake Review",
+        paragraphs: [
+          "Submitting a booking request or referral form does not constitute an established clinician-client relationship. All requests are subject to triage review, clinician capacity, and therapeutic suitability.",
+        ],
+      },
+      {
+        title: "Intellectual Property & Website Use",
+        paragraphs: [
+          "All branding, logos, graphics, and written materials on this site are protected by copyright laws. You may not reproduce, redistribute, or use any site material for commercial purposes without prior written consent from Access Psych.",
+        ],
+      },
+    ],
+    cta: { label: "Book a consultation", href: "/online-booking-request" },
+  },
+  "privacy-policy": {
+    title: "Privacy Policy",
+    eyebrow: "Company policies",
+    intro: "Access Psych is dedicated to protecting your privacy and confidential health information in strict compliance with the Privacy Act 1988 (Cth) and the Australian Privacy Principles (APPs).",
+    sections: [
+      {
+        title: "Collection of Health & Personal Data",
+        paragraphs: [
+          "To provide safe and effective psychological care, we collect relevant personal details, including your contact information, GP referral and Mental Health Care Plan details, session notes, and Medicare or insurer claim details.",
+          "Information is collected directly from you during registration and consultation, or from your referring doctor with your consent.",
+        ],
+        bullets: [
+          "Strict adherence to Australian Privacy Principles (APPs)",
+          "Encrypted, bank-grade Australian cloud clinical storage",
+          "No collection of information beyond what is clinically necessary",
+        ],
+      },
+      {
+        title: "Confidentiality & Limitations",
+        paragraphs: [
+          "All psychological records and clinical sessions are strictly confidential. Your information is never sold or shared for commercial marketing.",
+          "Exceptions to confidentiality are rare and governed strictly by Australian law: (1) if there is an imminent risk of serious harm to yourself or another person; (2) when subpoenaed by a court of law; or (3) with your written consent (e.g. providing progress letters to your referring GP).",
+        ],
+      },
+      {
+        title: "Accessing Your Records",
+        paragraphs: [
+          "You have the right to request access to your personal health records, subject to standard legal exceptions. To make an enquiry or lodge a privacy concern, please contact our Privacy Officer.",
+        ],
+        links: [
+          { label: "Email Privacy Officer", href: EMAIL_LINK },
+          { label: "Call 1800 APSYCH (1800 277 924)", href: PHONE_LINK },
+        ],
+      },
+    ],
+    cta: { label: "Contact our team", href: "/online-booking-request" },
+  },
+  "quality-policy": {
+    title: "Quality Policy & Clinical Governance",
+    eyebrow: "Company policies",
+    intro: "Our clinical quality framework ensures safe, evidence-based, and compassionate psychological care across all clinics and telehealth consultations.",
+    sections: [
+      {
+        title: "Practitioner Registration & Standards",
+        paragraphs: [
+          "All Access Psych clinicians hold active registration with the Australian Health Practitioner Regulation Agency (AHPRA) or the Australian Association of Social Workers (AASW).",
+          "Clinicians maintain comprehensive professional indemnity insurance and complete mandatory Continuing Professional Development (CPD) in advanced psychological methodologies.",
+        ],
+        bullets: [
+          "AHPRA & AASW verified registration and credentialing",
+          "Regular clinical peer reviews and case consultations",
+          "Standardised clinical intake and risk-assessment protocols",
+        ],
+      },
+      {
+        title: "Evidence-Based Methodologies",
+        paragraphs: [
+          "We utilise validated therapeutic modalities endorsed by Australian clinical guidelines, including Cognitive Behavioural Therapy (CBT), Acceptance and Commitment Therapy (ACT), Eye Movement Desensitization and Reprocessing (EMDR), and Dialectical Behaviour Therapy (DBT)-informed approaches.",
+        ],
+      },
+      {
+        title: "Client Feedback & Continuous Improvement",
+        paragraphs: [
+          "We welcome feedback from clients, referrers, and organisations to continuously improve our services. You can submit suggestions or raise any concerns directly with our Clinical Practice Lead.",
+        ],
+        links: [
+          { label: "Provide Feedback: info@accesspsych.com.au", href: EMAIL_LINK },
+          { label: "Call Clinical Services: 1800 277 924", href: PHONE_LINK },
+        ],
+      },
+    ],
+    cta: { label: "Learn more about our approach", href: "/our-approach" },
+  },
+  "disclaimer-copyright": {
+    title: "Disclaimer & Copyright",
+    eyebrow: "Company policies",
+    intro: "Important legal disclaimers, crisis service contacts, and copyright protections.",
+    sections: [
+      {
+        title: "Medical & Clinical Disclaimer",
+        paragraphs: [
+          "The information presented on the Access Psych platform is provided for general health literacy and informational purposes. It is not intended to substitute for direct clinical assessment, diagnosis, or therapy from a qualified psychologist, psychiatrist, or medical doctor.",
+          "If you are experiencing acute mental health distress, suicidal thoughts, or danger, please contact 000 or Lifeline on 13 11 14 immediately.",
+        ],
+        links: [
+          { label: "Lifeline: 13 11 14", href: "tel:131114" },
+          { label: "Suicide Call Back Service: 1300 659 467", href: "tel:1300659467" },
+          { label: "Emergency Services: 000", href: "tel:000" },
+        ],
+      },
+      {
+        title: "Copyright & Intellectual Property",
+        paragraphs: [
+          "© 2026 Access Psych (part of MedHealth). All rights reserved. No part of this website, logo, copy, or educational material may be reproduced or distributed without explicit written authorisation.",
+        ],
+      },
+    ],
+    cta: { label: "Make an appointment", href: "/online-booking-request" },
+  },
+  "terms-of-payment": {
+    title: "Terms of Payment",
+    eyebrow: "Company policies",
+    intro: "Transparent billing policies for private consultations, Medicare rebated sessions, NDIS, and third-party insurance programs.",
+    sections: [
+      {
+        title: "Payment Processing & Methods",
+        paragraphs: [
+          "Payment for consultations is processed on the day of your appointment. We accept Visa, Mastercard, American Express, and direct electronic invoice for corporate and institutional agreements.",
+          "For private and Medicare clients, a secure card must be on file prior to your initial consultation.",
+        ],
+        bullets: [
+          "Secure PCI-compliant payment tokenisation",
+          "Instant Medicare rebate electronic lodgement",
+          "Itemised receipts automatically emailed after each session",
+        ],
+      },
+      {
+        title: "Medicare Rebates",
+        paragraphs: [
+          "If you have a valid Mental Health Treatment Plan (MHTP) from your GP, we process your Medicare rebate electronically following payment. Medicare typically deposits the rebate directly into your nominated bank account within 24–48 hours.",
+        ],
+      },
+      {
+        title: "Third-Party Billing (NDIS, WorkCover, EAP)",
+        paragraphs: [
+          "Sessions funded via NDIS, WorkCover, TAC, or an approved Employer EAP agreement are billed directly to the respective organisation upon verification of your referral number and approval details.",
+        ],
+      },
+    ],
+    cta: { label: "View Our Fees & Rebates", href: "/fees" },
+  },
+  "cancellation-policy": {
+    title: "Cancellation Policy",
+    eyebrow: "Company policies",
+    intro: "To ensure fairness to waiting clients and respect for our clinicians' dedicated time, Access Psych maintains a 24-hour appointment cancellation policy.",
+    sections: [
+      {
+        title: "24-Hour Notice Requirement",
+        paragraphs: [
+          "If you need to reschedule or cancel your appointment, please notify us at least 24 business hours in advance. This enables our support team to offer the appointment time to another person in need of support.",
+        ],
+        bullets: [
+          "More than 24 hours' notice: No cancellation fee incurred",
+          "Less than 24 hours' notice: Late fee of up to 50% to 100% of the consultation fee may apply",
+          "Non-attendance without notice: Full consultation fee applies (Medicare rebates do not apply to missed sessions)",
+        ],
+      },
+      {
+        title: "Exceptional Circumstances & Emergencies",
+        paragraphs: [
+          "We understand unforeseen emergencies, sudden illness, and acute crises happen. If you encounter an exceptional situation, please call our clinical support team as soon as possible so we can assist.",
+        ],
+        links: [
+          { label: "Call 1800 APSYCH (1800 277 924)", href: PHONE_LINK },
+          { label: "Email info@accesspsych.com.au", href: EMAIL_LINK },
+        ],
+      },
+      {
+        title: "How to Reschedule",
+        paragraphs: [
+          "You can reschedule quickly by calling our team on 1800 277 924, emailing info@accesspsych.com.au, or via the online booking portal.",
+        ],
+      },
+    ],
+    cta: { label: "Manage your appointment", href: "/online-booking-request" },
   },
 };
 

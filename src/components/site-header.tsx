@@ -34,10 +34,31 @@ export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const leaveTimerRef = useRef<NodeJS.Timeout | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const reducedMotion = useReducedMotion();
   const isHome = pathname === "/";
+
+  const handleMouseEnter = (label: string) => {
+    if (leaveTimerRef.current) {
+      clearTimeout(leaveTimerRef.current);
+      leaveTimerRef.current = null;
+    }
+    setOpenGroup(label);
+  };
+
+  const handleMouseLeave = () => {
+    leaveTimerRef.current = setTimeout(() => {
+      setOpenGroup(null);
+    }, 180);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -100,8 +121,8 @@ export default function SiteHeader() {
                 <div
                   className={`nav-group${isOpen ? " is-open" : ""}`}
                   key={group.label}
-                  onMouseEnter={() => setOpenGroup(group.label)}
-                  onMouseLeave={() => setOpenGroup(null)}
+                  onMouseEnter={() => handleMouseEnter(group.label)}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <button
                     className="nav-trigger"
@@ -115,11 +136,20 @@ export default function SiteHeader() {
                   >
                     {group.label}<ChevronDown size={14} aria-hidden="true" />
                   </button>
-                  <div className="nav-dropdown" id={panelId} aria-hidden={!isOpen} inert={!isOpen}>
+                  <div className="nav-dropdown" id={panelId} aria-hidden={!isOpen}>
                     <span className="nav-dropdown-label">Explore {group.label.toLowerCase()}</span>
                     <div className="nav-dropdown-links">
                       {group.links.map((item) => (
-                        <NavLink key={item.href} href={item.href}>{item.label}</NavLink>
+                        <NavLink
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => {
+                            setOpenGroup(null);
+                            setMenuOpen(false);
+                          }}
+                        >
+                          {item.label}
+                        </NavLink>
                       ))}
                     </div>
                   </div>

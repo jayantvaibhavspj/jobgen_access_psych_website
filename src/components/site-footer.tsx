@@ -185,16 +185,10 @@ export default function SiteFooter() {
             <nav className="footer-nav" aria-label="Care pathways and policies">
               <Link href="/vision-purpose-values">Vision, Purpose &amp; Values</Link>
               <Link href="/online-booking-request">Make a Booking / Referral</Link>
-              <a href={`${SITE_URL}/wp-content/uploads/2026/09/Privacy-Policy-Sept-2026.pdf`} target="_blank" rel="noreferrer">
-                Privacy Policy <ArrowUpRight size={14} aria-hidden="true" />
-              </a>
-              <a href={`${SITE_URL}/wp-content/uploads/2026/09/Quality-Policy-Sept-2026.pdf`} target="_blank" rel="noreferrer">
-                Quality Policy <ArrowUpRight size={14} aria-hidden="true" />
-              </a>
+              <Link href="/privacy-policy">Privacy Policy</Link>
+              <Link href="/quality-policy">Quality Policy</Link>
               <Link href="/terms-of-use">Terms of Use</Link>
-              <a href={`${SITE_URL}/disclaimer-copyright/`} target="_blank" rel="noreferrer">
-                Disclaimer &amp; Copyright <ArrowUpRight size={14} aria-hidden="true" />
-              </a>
+              <Link href="/disclaimer-copyright">Disclaimer &amp; Copyright</Link>
             </nav>
           </div>
 
@@ -242,7 +236,7 @@ export default function SiteFooter() {
         <div className="footer-bottom">
           <div className="footer-bottom-left">
             <span>© Copyright Access Psych 2026. All rights reserved.</span>
-            <a href={`${SITE_URL}/disclaimer-copyright/`} target="_blank" rel="noreferrer">Disclaimer &amp; Copyright</a>
+            <Link href="/disclaimer-copyright">Disclaimer &amp; Copyright</Link>
             <Link href="/terms-of-use">Terms of Use</Link>
             <span className="footer-credit">
               Design by <a href="https://www.moomarketing.com.au/" target="_blank" rel="noreferrer">MOO Marketing</a>

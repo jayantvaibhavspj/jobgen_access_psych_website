@@ -129,6 +129,15 @@ summary:focus-visible {
   box-shadow: 0 24px 60px rgb(28 43 56 / 18%);
 }
 
+.nav-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  height: 22px;
+}
+
 .nav-book,
 .nav-book:hover,
 .site-header.is-scrolled .nav-book,

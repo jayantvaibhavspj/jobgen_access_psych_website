@@ -15,6 +15,8 @@ const extraRoutes = [
   "blog",
   "book",
   "bookings-referrals",
+  "how-to-book",
+  "training-request-form",
 ];
 
 export function generateStaticParams(): RouteParams[] {
@@ -23,7 +25,9 @@ export function generateStaticParams(): RouteParams[] {
 
 function getPage(slug: string) {
   if (slug === "blog") return pages.blogs;
-  if (slug === "book" || slug === "bookings-referrals") return pages["how-to-book-an-appointment-with-access-psych"];
+  if (slug === "book" || slug === "bookings-referrals" || slug === "how-to-book") {
+    return pages["how-to-book-an-appointment-with-access-psych"];
+  }
   return pages[slug];
 }
 
@@ -76,6 +80,8 @@ export default async function InnerPage({
 
   if (slug === "bookings-referrals") redirect("/how-to-book-an-appointment-with-access-psych");
   if (slug === "book") redirect("/how-to-book-an-appointment-with-access-psych");
+  if (slug === "how-to-book") redirect("/how-to-book-an-appointment-with-access-psych");
+  if (slug === "training-request-form") redirect("/online-booking-request");
   if (slug === "online-booking-request") return <BookingRequestPage />;
   if (slug === "meet-our-team") {
     const page = pages["meet-our-team"];
