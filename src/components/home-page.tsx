@@ -31,7 +31,6 @@ import {
   FAQAccordion,
   HowItWorks,
   MarqueeTicker,
-  ParallaxPhoto,
   NewsletterForm,
   TrustStrip,
   ValuesStory,
@@ -39,7 +38,6 @@ import {
 import {
   BOOKING_PORTAL,
   concerns,
-  EMAIL_LINK,
   homepageCopy,
   HOME_IMAGE,
   locations,
@@ -660,82 +658,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="careers-preview section-dark" aria-label="Careers at Access Psych">
-        <div className="section-container careers-preview-inner">
-          <div className="careers-preview-copy">
-            <h2>Make a difference with Access Psych.</h2>
-            <Link className="button button-dark" href="/careers">
-              Current vacancies <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="careers-preview-image">
-            <ParallaxPhoto
-              src="/images/careers-banner.jpg"
-              alt="A collaborative multidisciplinary healthcare and psychology team"
-              className="parallax-photo"
-              sizes="(max-width: 760px) 100vw, 44vw"
-            />
-          </div>
-        </div>
-      </section>
-
       <section className="newsletter-preview section-light" aria-label="Newsletter">
         <div className="section-container newsletter-preview-inner">
           <div>
             <h2>{pages.newsletter.intro}</h2>
           </div>
           <NewsletterForm />
-        </div>
-      </section>
-
-      <section className="country-section section-pad section-dark">
-        <div className="section-container country-panel">
-          <div>
-            <h2>Acknowledgement of Country</h2>
-            <p>
-              Access Psych acknowledges the Traditional Custodians of the land
-              upon which we live and work, and pays respect to Elders past and
-              present. We strive to foster acceptance, respect for diversity
-              and a workplace free of intolerance, discrimination, harassment
-              and violence.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="final-cta section-light">
-        <div className="final-cta-bg" aria-hidden="true">
-          <Image
-            src="/images/final-cta-bg.jpg"
-            alt=""
-            fill
-            unoptimized
-            sizes="100vw"
-            className="final-cta-bg-img"
-          />
-          <div className="final-cta-overlay" />
-        </div>
-        <div className="section-container final-cta-inner">
-          <div>
-            <h2>Book online now.</h2>
-          </div>
-          <div className="final-cta-actions">
-            <a
-              className="button button-dark"
-              href={BOOKING_PORTAL}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Book online now <ArrowUpRight size={17} aria-hidden="true" />
-            </a>
-            <a className="final-cta-contact" href={EMAIL_LINK}>
-              info@accesspsych.com.au
-            </a>
-            <a className="final-cta-contact" href={PHONE_LINK}>
-              <Phone size={17} aria-hidden="true" />
-              1800 APSYCH (1800 277 924)
-            </a>
-          </div>
         </div>
       </section>
     </main>
