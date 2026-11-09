@@ -402,7 +402,7 @@ export default function ChatWidget() {
             <header className="chat-header">
               <div className="chat-header-avatar-wrap">
                 <Image
-                  src="/images/clinician-listen.jpg"
+                  src="/images/chat-avatar.jpg"
                   alt=""
                   width={40}
                   height={40}
@@ -537,7 +537,7 @@ export default function ChatWidget() {
           <div className="chat-launcher-avatar-wrap">
             <Image
               className="chat-launcher-avatar"
-              src="/images/clinician-listen.jpg"
+              src="/images/chat-avatar.jpg"
               alt="Access Psych Assistant"
               width={64}
               height={64}
