@@ -540,7 +540,7 @@ export function TestimonialSlider() {
 
 const valueImages: Record<string, string> = {
   Authentic: "/images/values-authentic.jpg",
-  Compassionate: "/images/values-compassionate.jpg",
+  Compassionate: "/images/values-compassionate-v2.jpg",
   Dependable: "/images/values-dependable.jpg",
   Collaborative: "/images/values-collaborative.jpg",
 };

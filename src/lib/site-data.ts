@@ -186,7 +186,7 @@ export const pages: Record<string, ContentPage> = {
         text: "We understand the challenges our clients face and approach them with compassion and understanding.",
         image: `${SITE_URL}/wp-content/uploads/2022/08/Compassionate_Aug.png`,
         imageAlt: "Compassion icon",
-        backgroundImage: "/images/values-compassionate.jpg",
+        backgroundImage: "/images/values-compassionate-v2.jpg",
       },
       {
         title: "Dependable",
