@@ -298,11 +298,11 @@ summary:focus-visible {
 .hero-caption-headline {
   margin: 0;
   color: #ffffff;
-  font-family: var(--display);
+  font-family: var(--font-sans), Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: clamp(1.85rem, 2.9vw, 2.85rem);
-  font-weight: 450;
+  font-weight: 750;
   line-height: 1.15;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   text-shadow: 0 4px 28px rgba(0, 0, 0, 0.5);
   max-width: 1050px;
 }
