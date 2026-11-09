@@ -7,6 +7,7 @@ import {
   BookOpen,
   Brain,
   BriefcaseBusiness,
+  CheckCircle2,
   ClipboardCheck,
   GraduationCap,
   HandHeart,
@@ -88,8 +89,6 @@ const pathways = [
 ];
 
 export default function HomePage() {
-  const introParagraphs = homepageCopy.slice(0, 3);
-  const concludingIntro = homepageCopy[3];
   const defaultVideoSources = {
     webm: existsSync(join(process.cwd(), "public", "video", "hero.webm"))
       ? "/video/hero.webm"
@@ -127,21 +126,37 @@ export default function HomePage() {
 
               <div className="intro-prose">
                 <Reveal delay={0.06}>
-                  <p className="intro-lead-para">{homepageCopy[0]}</p>
+                  <p className="intro-lead-para">
+                    Access Psych connects you with qualified, AHPRA-registered mental health clinicians across Australia — providing evidence-based care when and where you need it.
+                  </p>
                 </Reveal>
                 <Reveal delay={0.12}>
-                  <p>{homepageCopy[1]}</p>
-                </Reveal>
-                <Reveal delay={0.18}>
-                  <p>{homepageCopy[2]}</p>
-                </Reveal>
-                <Reveal delay={0.24}>
-                  <p className="intro-conclusion-para">{homepageCopy[3]}</p>
+                  <p>
+                    Whether managing anxiety, life transitions, depression, or workplace stress, our team offers compassionate, individualised support with immediate capacity and no long waitlists.
+                  </p>
                 </Reveal>
               </div>
 
+              {/* 3 Key Value Pillars */}
+              <Reveal delay={0.18}>
+                <div className="intro-value-pills">
+                  <div className="intro-value-pill">
+                    <CheckCircle2 size={16} aria-hidden="true" />
+                    <span>No Long Waitlists</span>
+                  </div>
+                  <div className="intro-value-pill">
+                    <CheckCircle2 size={16} aria-hidden="true" />
+                    <span>AHPRA-Registered Clinicians</span>
+                  </div>
+                  <div className="intro-value-pill">
+                    <CheckCircle2 size={16} aria-hidden="true" />
+                    <span>Telehealth &amp; 50+ Clinics</span>
+                  </div>
+                </div>
+              </Reveal>
+
               {/* Clinic Atmosphere Feature Card */}
-              <Reveal delay={0.3}>
+              <Reveal delay={0.24}>
                 <div className="intro-feature-banner">
                   <div className="intro-photo-wrap">
                     <Image
@@ -160,7 +175,7 @@ export default function HomePage() {
               </Reveal>
 
               {/* Age Note & Explore Button */}
-              <Reveal delay={0.36}>
+              <Reveal delay={0.3}>
                 <div className="intro-footer-actions">
                   <div className="age-note-pill">
                     <span className="age-note-icon">
@@ -172,7 +187,7 @@ export default function HomePage() {
                     className="intro-explore-btn"
                     href="/psychology-therapy-counselling"
                   >
-                    <span>Explore psychology services</span>
+                    <span>Explore services</span>
                     <ArrowUpRight size={16} aria-hidden="true" />
                   </Link>
                 </div>

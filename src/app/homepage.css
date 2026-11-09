@@ -434,6 +434,33 @@ summary:focus-visible {
   line-height: 1.75 !important;
 }
 
+/* Key Value Pillars */
+.intro-value-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 4px 0 6px;
+}
+
+.intro-value-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #f5f0ff;
+  border: 1.5px solid #e3d9fc;
+  color: #1c2b38;
+  font-size: 13px;
+  font-weight: 650;
+  box-shadow: 0 2px 8px rgba(153, 102, 255, 0.08);
+}
+
+.intro-value-pill svg {
+  color: #9966ff;
+  flex-shrink: 0;
+}
+
 /* Feature Photo Banner */
 .intro-feature-banner {
   margin-top: 6px;
