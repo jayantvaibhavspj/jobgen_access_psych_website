@@ -3107,47 +3107,24 @@
   color: #9966ff !important;
 }
 
-/* 4. Footer: Deep Black Background with Glowing Design & Clear Content */
+/* 4. Footer: Clean Solid Black Background (Design Removed) */
 .site-footer {
   background: #081016 !important;
   color: #ffffff !important;
-  border-top: 1px solid rgba(153, 102, 255, 0.25) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   position: relative !important;
   overflow: hidden !important;
-  isolation: isolate !important;
 }
 
-.footer-journey-backdrop {
-  position: absolute !important;
-  inset: 0 !important;
-  pointer-events: none !important;
-  z-index: 1 !important;
-  overflow: hidden !important;
-  user-select: none !important;
-}
-
-.footer-journey-svg {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  opacity: 1 !important;
-}
-
+.footer-journey-backdrop,
+.footer-journey-svg,
 .footer-journey-overlay {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 1 !important;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(153, 102, 255, 0.16) 0%, transparent 65%),
-    linear-gradient(180deg, rgba(8, 16, 22, 0.12) 0%, rgba(8, 16, 22, 0.48) 100%) !important;
-  pointer-events: none !important;
+  display: none !important;
 }
 
 .site-footer .section-container {
   position: relative !important;
-  z-index: 3 !important;
+  z-index: 2 !important;
 }
 
 .site-footer a {
