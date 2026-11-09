@@ -4074,4 +4074,183 @@
   color: #9966ff !important;
 }
 
+/* ==========================================================================
+   Care for People and Workplaces (Services Overview Redesign)
+   ========================================================================== */
+.services-overview {
+  background: #ffffff !important;
+  padding-block: clamp(60px, 7vw, 100px) !important;
+}
+
+.services-overview-heading h2 {
+  color: #172633 !important;
+  font-family: var(--font-sans), Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: clamp(32px, 3.8vw, 48px) !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.service-overview-row {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 220px !important;
+  padding: 24px !important;
+  overflow: hidden !important;
+  border-radius: 24px !important;
+  border: 1.5px solid rgba(28, 43, 56, 0.08) !important;
+  background: #0f2231 !important;
+  box-shadow: 0 10px 30px rgba(28, 43, 56, 0.08) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease !important;
+  text-decoration: none !important;
+}
+
+.service-overview-featured {
+  min-height: 460px !important;
+  padding: 32px !important;
+}
+
+.service-overview-row:hover {
+  transform: translateY(-5px) !important;
+  border-color: #9966ff !important;
+  box-shadow: 0 20px 48px rgba(153, 102, 255, 0.22), 0 8px 24px rgba(15, 34, 49, 0.35) !important;
+}
+
+.service-overview-image {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
+}
+
+.service-overview-image::after {
+  display: none !important;
+}
+
+.service-overview-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 30% !important;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.service-overview-row:hover .service-overview-image img {
+  transform: scale(1.08) !important;
+}
+
+.service-overview-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 22, 33, 0.42) 0%,
+    rgba(10, 22, 33, 0.72) 48%,
+    rgba(10, 22, 33, 0.95) 100%
+  ) !important;
+  transition: background 0.3s ease !important;
+}
+
+.service-overview-row:hover .service-overview-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 22, 33, 0.28) 0%,
+    rgba(10, 22, 33, 0.62) 45%,
+    rgba(10, 22, 33, 0.92) 100%
+  ) !important;
+}
+
+.service-overview-top {
+  position: relative !important;
+  z-index: 3 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.service-overview-icon-badge {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff !important;
+  transition: all 0.25s ease !important;
+}
+
+.service-overview-row:hover .service-overview-icon-badge {
+  background: #9966ff !important;
+  border-color: #9966ff !important;
+  transform: scale(1.06) !important;
+}
+
+.service-overview-arrow-badge {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff !important;
+  transition: all 0.25s ease !important;
+}
+
+.service-overview-row:hover .service-overview-arrow-badge {
+  background: #ffffff !important;
+  color: #9966ff !important;
+  transform: translate(3px, -3px) !important;
+}
+
+.service-overview-bottom {
+  position: relative !important;
+  z-index: 3 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.service-overview-bottom strong {
+  color: #ffffff !important;
+  font-family: var(--font-sans), Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: clamp(18px, 1.45vw, 22px) !important;
+  font-weight: 750 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.015em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+}
+
+.service-overview-featured .service-overview-bottom strong {
+  font-size: clamp(26px, 2.5vw, 36px) !important;
+  line-height: 1.18 !important;
+}
+
+.service-overview-bottom p {
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  margin: 0 !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7) !important;
+}
+
+.service-overview-featured .service-overview-bottom p {
+  font-size: 14.5px !important;
+  max-width: 48ch !important;
+}
+
 

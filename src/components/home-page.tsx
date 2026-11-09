@@ -58,6 +58,16 @@ const serviceSlugs = [
   "adhd-autism-assessments",
 ] as const;
 
+const serviceImages: Record<string, string> = {
+  "psychology-therapy-counselling": "https://www.accesspsych.com.au/wp-content/uploads/2022/06/Psych_therapy_counselling1.jpg",
+  "employee-assistance-program": "/images/pathways/eap.jpg",
+  "professional-care-program": "https://www.accesspsych.com.au/wp-content/uploads/2025/08/lady-computer.jpg",
+  "workplace-group-education": "/images/blogs/conflict-resolution.jpg",
+  "mhfa": "/images/blogs/neurodiverse-employees.jpg",
+  "critical-incident-support": "/images/blogs/managing-stress.jpg",
+  "adhd-autism-assessments": "/images/blogs/adhd-emotional-intensity.jpg",
+};
+
 const serviceIcons = [
   Brain,
   BriefcaseBusiness,
@@ -328,6 +338,7 @@ export default function HomePage() {
             {serviceSlugs.map((slug, index) => {
               const service = pages[slug];
               const ServiceIcon = serviceIcons[index];
+              const serviceImg = serviceImages[slug] ?? service.image;
 
               return (
                 <Reveal
@@ -339,23 +350,30 @@ export default function HomePage() {
                     className={`service-overview-row${index === 0 ? " service-overview-featured" : ""}`}
                     href={`/${slug}`}
                   >
-                    {index === 0 && service.image && (
+                    {serviceImg && (
                       <span className="service-overview-image">
                         <Image
-                          src={service.image}
-                          alt={service.imageAlt ?? ""}
+                          src={serviceImg}
+                          alt=""
                           fill
                           unoptimized
-                          sizes="(max-width: 760px) 100vw, 52vw"
+                          sizes={index === 0 ? "(max-width: 760px) 100vw, 52vw" : "(max-width: 760px) 100vw, 30vw"}
                         />
+                        <span className="service-overview-overlay" aria-hidden="true" />
                       </span>
                     )}
-                    <ServiceIcon size={22} aria-hidden="true" />
-                    <span className="service-overview-copy">
+                    <div className="service-overview-top">
+                      <span className="service-overview-icon-badge" aria-hidden="true">
+                        <ServiceIcon size={20} />
+                      </span>
+                      <span className="service-overview-arrow-badge" aria-hidden="true">
+                        <ArrowUpRight size={17} />
+                      </span>
+                    </div>
+                    <div className="service-overview-bottom">
                       <strong>{service.title}</strong>
-                      <small>{service.intro}</small>
-                    </span>
-                    <ArrowUpRight size={19} aria-hidden="true" />
+                      <p>{service.intro}</p>
+                    </div>
                   </Link>
                 </Reveal>
               );
