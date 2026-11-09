@@ -278,10 +278,16 @@ export default function HomePage() {
                         <strong>Need support with something else?</strong>
                         <p>Our clinicians support a broad spectrum of mental health needs.</p>
                       </div>
-                      <a className="concern-cta-button" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">
-                        <span>Book a session</span>
-                        <ArrowUpRight size={13} aria-hidden="true" />
-                      </a>
+                      <div className="concern-cta-actions">
+                        <a className="concern-cta-button" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">
+                          <span>Book a session</span>
+                          <ArrowUpRight size={13} aria-hidden="true" />
+                        </a>
+                        <Link className="concern-cta-button concern-cta-secondary" href="/meet-our-team">
+                          <span>Find a clinician</span>
+                          <ArrowUpRight size={13} aria-hidden="true" />
+                        </Link>
+                      </div>
                     </div>
                     <div className="concern-card-trust-strip">
                       <span className="trust-strip-item">

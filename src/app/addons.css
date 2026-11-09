@@ -3973,6 +3973,13 @@
   line-height: 1.4 !important;
 }
 
+.concern-cta-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+
 .concern-cta-button {
   display: inline-flex !important;
   align-items: center !important;
@@ -3994,6 +4001,21 @@
   color: #ffffff !important;
   transform: translateY(-1px) !important;
   box-shadow: 0 6px 16px rgba(153, 102, 255, 0.45) !important;
+}
+
+.concern-cta-button.concern-cta-secondary {
+  background: #ffffff !important;
+  color: #1c2b38 !important;
+  border: 1.5px solid #d4c4fb !important;
+  box-shadow: 0 2px 6px rgba(28, 43, 56, 0.06) !important;
+}
+
+.concern-cta-button.concern-cta-secondary:hover {
+  background: #f5f0ff !important;
+  color: #8040ff !important;
+  border-color: #9966ff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(153, 102, 255, 0.2) !important;
 }
 
 .concern-card-trust-strip {
