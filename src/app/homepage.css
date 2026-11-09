@@ -227,15 +227,9 @@ summary:focus-visible {
   pointer-events: none;
 }
 
-/* Dark overlay on top of videos: high contrast on left for merged text block, crystal clear on right */
+/* Video background: no dark overlay over the video */
 .hero-video-gradient-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background:
-    linear-gradient(90deg, rgba(8, 24, 32, 0.88) 0%, rgba(8, 24, 32, 0.74) 44%, rgba(8, 24, 32, 0.28) 76%, rgba(8, 24, 32, 0.12) 100%),
-    linear-gradient(180deg, rgba(8, 24, 32, 0.6) 0%, transparent 20%, transparent 80%, rgba(8, 24, 32, 0.7) 100%);
-  pointer-events: none;
+  display: none !important;
 }
 
 /* Video-Related Synchronized Hero Content (Merged on Left, Main Heading) */

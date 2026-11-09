@@ -3421,6 +3421,23 @@
   object-position: center top !important;
 }
 
+/* Remove black gradient overlay from hero video (User request) */
+.hero-video-gradient-overlay {
+  display: none !important;
+}
+
+.hero-caption-headline {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.95) !important;
+}
+
+.hero-caption-line {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.95) !important;
+}
+
+.hero-caption-name {
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85) !important;
+}
+
 /* ==========================================================================
    Homepage Intro Section & Specialised Support Card Redesign
    ========================================================================== */
