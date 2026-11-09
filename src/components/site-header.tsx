@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Linkedin, Mail, Menu, Phone, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   BOOKING_PORTAL,
+  EMAIL_LINK,
   LOGO_URL,
   navigation,
   PHONE_LINK,
@@ -106,6 +107,47 @@ export default function SiteHeader() {
 
   return (
     <header className={`site-header${scrolled || !isHome ? " is-scrolled" : ""}${menuOpen ? " menu-is-open" : ""}`}>
+      <div className="header-topbar">
+        <div className="header-topbar-inner">
+          <div className="header-topbar-left">
+            <a
+              href="https://au.linkedin.com/company/access-psych/"
+              target="_blank"
+              rel="noreferrer"
+              className="topbar-social-btn"
+              aria-label="Access Psych on LinkedIn"
+            >
+              <Linkedin size={13} aria-hidden="true" />
+            </a>
+            <a
+              href={EMAIL_LINK}
+              className="topbar-social-btn"
+              aria-label="Email Access Psych"
+            >
+              <Mail size={13} aria-hidden="true" />
+            </a>
+            <a href={PHONE_LINK} className="topbar-phone-link">
+              <Phone size={13} aria-hidden="true" />
+              <span>1800 APSYCH (1800 277 924)</span>
+            </a>
+          </div>
+
+          <div className="header-topbar-right">
+            <Link href="/online-booking-request" className="topbar-action-btn topbar-btn-white">
+              Make a Booking / Referral
+            </Link>
+            <a
+              href={BOOKING_PORTAL}
+              target="_blank"
+              rel="noreferrer"
+              className="topbar-action-btn topbar-btn-purple"
+            >
+              Treatment Booking Portal
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="nav-shell">
         <div className="nav-inner">
           <Link className="brand" href="/" aria-label="Access Psych homepage">
@@ -212,7 +254,8 @@ export default function SiteHeader() {
             </nav>
             <div className="mobile-menu-actions">
               <a className="button button-outline" href={PHONE_LINK}><Phone size={16} aria-hidden="true" />1800 APSYCH</a>
-              <a className="button button-violet" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">Book online now <span aria-hidden="true">↗</span></a>
+              <Link className="button button-outline" href="/online-booking-request" onClick={() => setMenuOpen(false)}>Make a Booking / Referral</Link>
+              <a className="button button-violet" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">Treatment Booking Portal <span aria-hidden="true">↗</span></a>
             </div>
           </motion.div>
         )}

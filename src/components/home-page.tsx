@@ -412,18 +412,35 @@ export default function HomePage() {
                     <ArrowUpRight size={20} aria-hidden="true" />
                   </span>
                   <span className="booking-row-copy">
-                    <strong>Book online</strong>
+                    <strong>Treatment Booking Portal</strong>
                     <small>
                       For private, Medicare, EAP and Supervision clients.
                     </small>
                   </span>
                   <span className="booking-row-action">
-                    BOOK ONLINE TODAY
+                    TREATMENT BOOKING PORTAL
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </span>
                 </a>
               </Reveal>
               <Reveal delay={0.07}>
+                <Link className="booking-row" href="/online-booking-request">
+                  <span className="booking-row-icon">
+                    <BookOpen size={20} aria-hidden="true" />
+                  </span>
+                  <span className="booking-row-copy">
+                    <strong>Make a Booking / Referral</strong>
+                    <small>
+                      Submit a new booking request or clinical referral online.
+                    </small>
+                  </span>
+                  <span className="booking-row-action">
+                    BOOKING &amp; REFERRAL
+                    <ArrowUpRight size={17} aria-hidden="true" />
+                  </span>
+                </Link>
+              </Reveal>
+              <Reveal delay={0.14}>
                 <a className="booking-row" href={PHONE_LINK}>
                   <span className="booking-row-icon">
                     <Phone size={20} aria-hidden="true" />
@@ -437,23 +454,6 @@ export default function HomePage() {
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </span>
                 </a>
-              </Reveal>
-              <Reveal delay={0.14}>
-                <Link className="booking-row" href="/online-booking-request">
-                  <span className="booking-row-icon">
-                    <BookOpen size={20} aria-hidden="true" />
-                  </span>
-                  <span className="booking-row-copy">
-                    <strong>Contact form</strong>
-                    <small>
-                      Ask a question or make a booking or referral request.
-                    </small>
-                  </span>
-                  <span className="booking-row-action">
-                    CONTACT FORM
-                    <ArrowUpRight size={17} aria-hidden="true" />
-                  </span>
-                </Link>
               </Reveal>
             </div>
           </div>
