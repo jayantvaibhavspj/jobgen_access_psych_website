@@ -83,7 +83,6 @@ export default function HeroVideoBackground({
   const [activeClipIndex, setActiveClipIndex] = useState<number>(0);
   const [captionIndex, setCaptionIndex] = useState<number>(0);
   const [captionAnimClass, setCaptionAnimClass] = useState<"enter" | "exit" | "visible">("visible");
-  const [progress, setProgress] = useState<number>(0);
   const [isReducedMotion, setIsReducedMotion] = useState<boolean>(false);
   const [isInViewport, setIsInViewport] = useState<boolean>(true);
 
@@ -239,7 +238,7 @@ export default function HeroVideoBackground({
     }
   }, [isInViewport, isReducedMotion]);
 
-  // Playback monitor: update progress bar and trigger transition 1.2s before clip ends
+  // Playback monitor: trigger transition 1.2s before clip ends
   useEffect(() => {
     if (isReducedMotion) return;
 
@@ -250,10 +249,6 @@ export default function HeroVideoBackground({
       if (activeVideo && activeVideo.duration > 0) {
         const currentTime = activeVideo.currentTime;
         const duration = activeVideo.duration;
-
-        // Progress fraction from 0 to 1
-        const pct = Math.min(1, Math.max(0, currentTime / duration));
-        setProgress(pct);
 
         // Start transition exactly 1.2s before the current clip ends
         const remaining = duration - currentTime;
@@ -269,12 +264,6 @@ export default function HeroVideoBackground({
     animId = requestAnimationFrame(checkTime);
     return () => cancelAnimationFrame(animId);
   }, [activeClipIndex, isReducedMotion, startTransition]);
-
-  // Handle manual jump via progress bar click
-  const handleBarClick = (targetIndex: number) => {
-    if (isTransitioningRef.current || targetIndex === activeClipIndex) return;
-    startTransition(targetIndex);
-  };
 
   const currentClip = HERO_CLIPS[captionIndex];
 
@@ -323,36 +312,6 @@ export default function HeroVideoBackground({
 
             {/* Action Buttons */}
             {actions}
-
-            {/* 5-Segment Progress Indicator */}
-            <div className="hero-caption-progress" role="tablist" aria-label="Hero video clips">
-              {HERO_CLIPS.map((clip, index) => {
-                const isActive = index === captionIndex;
-                const isCompleted = index < captionIndex;
-                const barFillWidth = isActive
-                  ? `${Math.round(progress * 100)}%`
-                  : isCompleted
-                  ? "100%"
-                  : "0%";
-
-                return (
-                  <button
-                    key={clip.id}
-                    type="button"
-                    className={`hero-progress-segment${isActive ? " is-active" : ""}`}
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-label={`Show clip ${index + 1} of 5: ${clip.headline}`}
-                    onClick={() => handleBarClick(index)}
-                  >
-                    <span
-                      className="hero-progress-fill"
-                      style={{ width: barFillWidth }}
-                    />
-                  </button>
-                );
-              })}
-            </div>
           </div>
 
           {children}
