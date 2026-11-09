@@ -106,6 +106,14 @@ export default function ContentPageView({
   slug?: string;
 }) {
   const isFaq = slug === "frequently-asked-questions";
+  const hasQuickFacts = Boolean(
+    slug?.includes("counselling") || slug?.includes("services") || slug?.includes("book") || slug === "fees"
+  );
+  const contentSectionsTheme = hasQuickFacts ? "section-dark" : "section-light";
+  const valueSectionTheme = (page.sections && page.sections.length > 0)
+    ? (contentSectionsTheme === "section-dark" ? "section-light" : "section-dark")
+    : "section-light";
+
   const heroStyle = slug === "employee-assistance-program"
     ? "workplace"
     : page.image
@@ -114,8 +122,8 @@ export default function ContentPageView({
 
   return (
     <main id="main" className={`inner-page page-${slug ?? "content"}`}>
-      {/* 1. Page Hero Banner */}
-      <section className={`page-hero page-hero-${heroStyle}${page.image ? " has-image" : ""}`}>
+      {/* 1. Page Hero Banner (Always Dark) */}
+      <section className={`page-hero page-hero-${heroStyle}${page.image ? " has-image" : ""} section-dark`}>
         <div className="page-hero-layout section-container">
           <div className="page-hero-content">
             <span className="page-eyebrow-tag">{page.eyebrow}</span>
@@ -139,9 +147,9 @@ export default function ContentPageView({
         <span className="page-hero-index" aria-hidden="true">Access Psych · {page.eyebrow}</span>
       </section>
 
-      {/* 2. Key Service Pillars Banner (for service & booking pages) */}
-      {(slug?.includes("counselling") || slug?.includes("services") || slug?.includes("book") || slug === "fees") && (
-        <section className="service-quick-facts" aria-label="Key service information">
+      {/* 2. Key Service Pillars Banner (Light) */}
+      {hasQuickFacts && (
+        <section className="service-quick-facts section-light" aria-label="Key service information">
           <div className="section-container quick-facts-grid">
             <div className="quick-fact-item">
               <Shield size={18} className="fact-icon" aria-hidden="true" />
@@ -175,9 +183,9 @@ export default function ContentPageView({
         </section>
       )}
 
-      {/* 3. Main Content Sections */}
+      {/* 3. Main Content Sections (Alternating Theme) */}
       {page.sections && page.sections.length > 0 && (
-        <section className="content-sections section-pad">
+        <section className={`content-sections section-pad ${contentSectionsTheme}`}>
           <div className="reading-column">
             {isFaq ? (
               <FaqAccordion sections={page.sections} />
@@ -237,9 +245,9 @@ export default function ContentPageView({
         </section>
       )}
 
-      {/* 4. Structured Feature / Value Cards */}
+      {/* 4. Structured Feature / Value Cards (Alternating Theme) */}
       {page.cards && page.cards.length > 0 && (
-        <section className={`value-section section-pad value-section-${slug ?? "content"}`}>
+        <section className={`value-section section-pad value-section-${slug ?? "content"} ${valueSectionTheme}`}>
           <div className="section-container">
             <div className="value-grid">
               {page.cards.map((card, index) => (
@@ -298,9 +306,9 @@ export default function ContentPageView({
         </aside>
       )}
 
-      {/* 6. Unified Next Step Call to Action */}
+      {/* 6. Unified Next Step Call to Action (Light, right before the Dark Footer) */}
       {page.cta && showCta && (
-        <section className="page-cta">
+        <section className="page-cta section-light">
           <div className="section-container page-cta-inner">
             <div>
               <h2>Take the next step in your mental health journey.</h2>

@@ -406,7 +406,7 @@ export function HowItWorks() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="how-it-works section-pad" aria-labelledby="how-it-works-title">
+    <section className="how-it-works section-pad section-dark" aria-labelledby="how-it-works-title">
       <div className="section-container">
         <div className="how-it-works-heading">
           <h2 id="how-it-works-title">How it works.</h2>
@@ -559,7 +559,7 @@ export function ValuesStory({ values }: { values: ContentCard[] }) {
 
   return (
     <section
-      className="values-story-section"
+      className="values-story-section section-dark"
       aria-label="Our purpose and values"
       ref={sectionRef}
     >

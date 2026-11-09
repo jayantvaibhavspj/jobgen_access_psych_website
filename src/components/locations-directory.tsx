@@ -17,7 +17,7 @@ export default function LocationsDirectory() {
   });
 
   return (
-    <section className="locations-directory section-pad">
+    <section className="locations-directory section-pad section-light">
       <div className="section-container">
         <div className="directory-heading">
           <div>

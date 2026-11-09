@@ -209,7 +209,7 @@ const integrations = [
 export default function TechnologyPartnerPage() {
   return (
     <main id="main" className="technology-page">
-      <section className="technology-hero">
+      <section className="technology-hero section-dark">
         <div className="section-container">
           <nav className="technology-breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Home</Link>
@@ -275,7 +275,7 @@ export default function TechnologyPartnerPage() {
         </div>
       </section>
 
-      <section className="technology-partnership section-pad">
+      <section className="technology-partnership section-pad section-light">
         <div className="section-container technology-partnership-content">
           <Reveal className="technology-partnership-copy">
             <h2>Support the admin around care.</h2>
@@ -301,7 +301,7 @@ export default function TechnologyPartnerPage() {
         </div>
       </section>
 
-      <section className="technology-agents section-pad">
+      <section className="technology-agents section-pad section-dark">
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
@@ -346,7 +346,7 @@ export default function TechnologyPartnerPage() {
         </div>
       </section>
 
-      <section className="technology-capabilities section-pad">
+      <section className="technology-capabilities section-pad section-light">
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
@@ -387,7 +387,7 @@ export default function TechnologyPartnerPage() {
         </div>
       </section>
 
-      <section className="technology-process section-pad">
+      <section className="technology-process section-pad section-dark">
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
@@ -420,7 +420,7 @@ export default function TechnologyPartnerPage() {
         </div>
       </section>
 
-      <section className="technology-guardrails section-pad">
+      <section className="technology-guardrails section-pad section-light">
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
@@ -447,7 +447,7 @@ export default function TechnologyPartnerPage() {
         </div>
       </section>
 
-      <section className="technology-integrations section-pad">
+      <section className="technology-integrations section-pad section-dark">
         <div className="section-container technology-integrations-content">
           <div>
             <h2>Connectors JobGen.AI lists.</h2>
@@ -465,7 +465,7 @@ export default function TechnologyPartnerPage() {
         </div>
       </section>
 
-      <section className="technology-cta section-pad">
+      <section className="technology-cta section-pad section-light">
         <div className="section-container">
           <div className="technology-cta-panel">
             <div className="technology-cta-photo" aria-hidden="true">

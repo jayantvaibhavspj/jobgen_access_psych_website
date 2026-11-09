@@ -5,7 +5,7 @@ import { clinicians } from "@/data/clinicians.js";
 
 export default function TeamDirectory() {
   return (
-    <section className="team-directory section-pad">
+    <section className="team-directory section-pad section-light">
       <div className="section-container">
         <div className="directory-heading">
           <div>

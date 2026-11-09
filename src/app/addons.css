@@ -2661,3 +2661,468 @@
   background: rgba(255, 255, 255, 0.22);
   transform: translateY(-1px);
 }
+
+
+/* ==========================================================================
+   Universal Alternating Section Themes (Dark / Light) Across Entire Website
+   ========================================================================== */
+
+/* 1. Global Section Theme Base Classes */
+.section-dark {
+  background: #0e1921 !important;
+  color: #f1f5f9 !important;
+  position: relative !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark strong {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.section-dark p {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.section-dark small,
+.section-dark .muted {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.section-dark .text-link,
+.section-dark .resource-preview-link,
+.section-dark .team-preview-link {
+  color: #b388ff !important;
+}
+
+.section-dark .text-link:hover,
+.section-dark .resource-preview-link:hover {
+  color: #ffffff !important;
+}
+
+/* Light Sections */
+.section-light {
+  background: #fbfcfd !important;
+  color: #1c2b38 !important;
+  position: relative !important;
+  border-top: 1px solid #edf1f5 !important;
+  border-bottom: 1px solid #edf1f5 !important;
+}
+
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.section-light h4,
+.section-light strong {
+  color: #1c2b38 !important;
+}
+
+.section-light p {
+  color: #384b5c !important;
+}
+
+.section-light small,
+.section-light .muted {
+  color: #5e7182 !important;
+}
+
+.section-light .text-link,
+.section-light .resource-preview-link,
+.section-light .team-preview-link {
+  color: #9966ff !important;
+}
+
+/* 2. Homepage Specific Dark Sections */
+
+/* How It Works (Dark) */
+.how-it-works.section-dark {
+  background: radial-gradient(ellipse at 50% 0%, rgba(153, 102, 255, 0.18), transparent 70%), #0e1921 !important;
+}
+
+.how-it-works.section-dark .process-step {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+.how-it-works.section-dark .process-step:hover {
+  border-color: #9966ff !important;
+  box-shadow: 0 16px 38px rgba(153, 102, 255, 0.25) !important;
+}
+
+.how-it-works.section-dark .process-step h3 {
+  color: #ffffff !important;
+}
+
+.how-it-works.section-dark .process-step p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.how-it-works.section-dark .process-step-number {
+  background: linear-gradient(135deg, #1c2b38, #2a3c4e) !important;
+  color: #9966ff !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Values Story (Dark) */
+.values-story-section.section-dark {
+  background: #0e1921 !important;
+}
+
+.values-story-section.section-dark .values-story-intro h2 {
+  color: #ffffff !important;
+}
+
+.values-story-section.section-dark .values-story-steps button {
+  color: rgba(255, 255, 255, 0.55) !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.values-story-section.section-dark .values-story-steps button[aria-current="step"] {
+  color: #ffffff !important;
+  border-bottom-color: #9966ff !important;
+}
+
+.values-story-section.section-dark .values-story-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+/* Session Section (Light) */
+.session-section.section-light {
+  background: #ffffff !important;
+  color: #1c2b38 !important;
+}
+
+.session-section.section-light .session-section-bg {
+  display: none !important;
+}
+
+.session-section.section-light .booking-editorial-heading h2 {
+  color: #1c2b38 !important;
+}
+
+.session-section.section-light .booking-editorial-heading p {
+  color: #384b5c !important;
+}
+
+.session-section.section-light .booking-row {
+  background: #f8fafc !important;
+  border: 1.5px solid #e6ebf0 !important;
+  color: #1c2b38 !important;
+}
+
+.session-section.section-light .booking-row:hover {
+  border-color: #9966ff !important;
+  box-shadow: 0 12px 32px rgba(153, 102, 255, 0.14) !important;
+}
+
+.session-section.section-light .booking-row strong {
+  color: #1c2b38 !important;
+}
+
+.session-section.section-light .booking-row small {
+  color: #5e7182 !important;
+}
+
+.session-section.section-light .booking-row-icon {
+  background: #f0ecfa !important;
+  color: #9966ff !important;
+}
+
+.session-section.section-light .booking-row-action {
+  color: #9966ff !important;
+}
+
+/* Team Preview Section (Dark) */
+.team-preview-section.section-dark {
+  background: #11202b !important;
+}
+
+.team-preview-section.section-dark h2 {
+  color: #ffffff !important;
+}
+
+/* Locations Preview (Dark) */
+.locations-preview.section-dark {
+  background: #0e1921 !important;
+}
+
+.locations-preview.section-dark h2 {
+  color: #ffffff !important;
+}
+
+.locations-preview.section-dark p {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.locations-preview.section-dark .australia-locations {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.locations-preview.section-dark .map-ocean-labels {
+  fill: rgba(255, 255, 255, 0.3) !important;
+}
+
+.locations-preview.section-dark .map-graticule line {
+  stroke: rgba(255, 255, 255, 0.06) !important;
+}
+
+.locations-preview.section-dark .australia-state-path {
+  fill: #1a2936 !important;
+  stroke: rgba(255, 255, 255, 0.2) !important;
+}
+
+.locations-preview.section-dark .australia-state-path:hover,
+.locations-preview.section-dark .australia-state-path.is-active {
+  fill: #2a3d4e !important;
+  stroke: #9966ff !important;
+}
+
+.locations-preview.section-dark .australia-card {
+  background: rgba(16, 28, 38, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.locations-preview.section-dark .australia-card strong {
+  color: #ffffff !important;
+}
+
+.locations-preview.section-dark .australia-card p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* News & Events Preview (Dark) */
+.news-preview.section-dark {
+  background: #11202b !important;
+}
+
+.news-preview.section-dark h2 {
+  color: #ffffff !important;
+}
+
+.news-preview.section-dark .news-preview-item {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.news-preview.section-dark .news-preview-item strong {
+  color: #ffffff !important;
+}
+
+.news-preview.section-dark .news-preview-item small {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Careers Preview (Dark) */
+.careers-preview.section-dark {
+  background: #0e1921 !important;
+  padding-block: clamp(60px, 8vw, 100px) !important;
+}
+
+.careers-preview.section-dark h2 {
+  color: #ffffff !important;
+}
+
+/* Country Section (Dark) */
+.country-section.section-dark {
+  background: #0e1921 !important;
+}
+
+.country-section.section-dark .country-panel {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.country-section.section-dark .country-panel h2 {
+  color: #ffffff !important;
+}
+
+.country-section.section-dark .country-panel p {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Final CTA (Light) */
+.final-cta.section-light {
+  background: #ffffff !important;
+  color: #1c2b38 !important;
+}
+
+.final-cta.section-light .final-cta-bg {
+  display: none !important;
+}
+
+.final-cta.section-light h2 {
+  color: #1c2b38 !important;
+}
+
+.final-cta.section-light p {
+  color: #384b5c !important;
+}
+
+/* 3. Content / Inner Pages Dark vs Light Blocks */
+
+/* Hero Banner is Always Dark */
+.page-hero.section-dark {
+  background: linear-gradient(180deg, #0e1921 0%, #142330 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.page-hero.section-dark h1 {
+  color: #ffffff !important;
+}
+
+.page-hero.section-dark p {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.page-hero.section-dark .page-hero-index {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Content Sections when Dark */
+.content-sections.section-dark {
+  background: #0e1921 !important;
+}
+
+.content-sections.section-dark .content-block {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28) !important;
+}
+
+.content-sections.section-dark .content-block h2 {
+  color: #ffffff !important;
+}
+
+.content-sections.section-dark .content-block p {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.content-sections.section-dark .content-block-index {
+  color: #b388ff !important;
+  opacity: 0.8;
+}
+
+.content-sections.section-dark .content-list-grid li {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #ffffff !important;
+}
+
+.content-sections.section-dark .content-list-grid li .bullet-check-icon {
+  color: #b388ff !important;
+}
+
+/* FAQ Interactive in Dark Content Section */
+.content-sections.section-dark .faq-search-input {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+}
+
+.content-sections.section-dark .faq-search-icon {
+  color: #b388ff !important;
+}
+
+.content-sections.section-dark .faq-accordion-item {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.content-sections.section-dark .faq-question-title {
+  color: #ffffff !important;
+}
+
+.content-sections.section-dark .faq-chevron-wrap {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.content-sections.section-dark .faq-accordion-body {
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.content-sections.section-dark .faq-accordion-body p {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Value Section when Dark */
+.value-section.section-dark {
+  background: #11202b !important;
+}
+
+.value-section.section-dark .value-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.value-section.section-dark .value-card h2 {
+  color: #ffffff !important;
+}
+
+.value-section.section-dark .value-card p {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.value-section.section-dark .value-card-number {
+  color: #b388ff !important;
+}
+
+/* Page CTA (Light, Directly Above the Dark Footer) */
+.page-cta.section-light {
+  background: #f6f8fa !important;
+  border-top: 1px solid #e6ebf0 !important;
+  border-bottom: none !important;
+  color: #1c2b38 !important;
+}
+
+.page-cta.section-light .page-cta-inner h2 {
+  color: #1c2b38 !important;
+}
+
+.page-cta.section-light .page-cta-inner p {
+  color: #384b5c !important;
+}
+
+.page-cta.section-light .button-dark {
+  background: #1c2b38 !important;
+  color: #ffffff !important;
+}
+
+.page-cta.section-light .page-cta-phone {
+  background: #ffffff !important;
+  border: 1px solid #d4dbe2 !important;
+  color: #1c2b38 !important;
+}
+
+.page-cta.section-light .page-cta-phone:hover {
+  background: #f0ecfa !important;
+  color: #9966ff !important;
+}
+
+/* 4. Footer is ALWAYS DARK (Strict User Rule) */
+.site-footer {
+  background: #0e1921 !important;
+  color: #ffffff !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.site-footer a {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.site-footer a:hover {
+  color: #ffffff !important;
+}
+
+.site-footer h2 {
+  color: #ffffff !important;
+}

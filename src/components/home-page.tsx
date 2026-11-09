@@ -112,7 +112,7 @@ export default function HomePage() {
       <MarqueeTicker />
       <TrustStrip />
 
-      <section className="intro-section section-pad" id="intro">
+      <section className="intro-section section-pad section-light" id="intro">
         <div className="section-container">
           <div className="intro-layout">
             {/* Left Column: Narrative Copy & Clinic Photo Card */}
@@ -240,7 +240,7 @@ export default function HomePage() {
       <HowItWorks />
 
       <section
-        className="services-overview section-pad"
+        className="services-overview section-pad section-light"
         aria-labelledby="services-heading"
       >
         <div className="section-container">
@@ -295,7 +295,7 @@ export default function HomePage() {
 
       <ValuesStory values={pages["vision-purpose-values"].cards ?? []} />
 
-      <section className="session-section section-pad">
+      <section className="session-section section-pad section-light">
         <div className="session-section-bg" aria-hidden="true">
           <Image
             src="/images/booking-bg.jpg"
@@ -374,7 +374,7 @@ export default function HomePage() {
       </section>
 
       <section
-        className="team-preview-section section-pad"
+        className="team-preview-section section-pad section-dark"
         aria-labelledby="team-preview-heading"
       >
         <div className="section-container">
@@ -390,7 +390,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="clinicians-section section-pad">
+      <section className="clinicians-section section-pad section-light">
         <div className="section-container clinicians-layout">
           <Reveal className="clinicians-content">
             <h2 className="pathway-heading">A good place to begin.</h2>
@@ -416,7 +416,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="locations-preview section-pad">
+      <section className="locations-preview section-pad section-dark">
         <div className="section-container">
           <div className="locations-preview-heading">
             <div className="locations-preview-intro">
@@ -433,7 +433,7 @@ export default function HomePage() {
 
       {featuredArticles.length > 0 && (
         <section
-          className="resources-preview section-pad"
+          className="resources-preview section-pad section-light"
           aria-labelledby="resources-preview-heading"
         >
           <div className="section-container">
@@ -485,7 +485,7 @@ export default function HomePage() {
 
       {featuredNews.length > 0 && (
         <section
-          className="news-preview section-pad"
+          className="news-preview section-pad section-dark"
           aria-labelledby="news-preview-heading"
         >
           <div className="section-container">
@@ -537,7 +537,7 @@ export default function HomePage() {
         </section>
       )}
 
-      <section className="faq-preview section-pad">
+      <section className="faq-preview section-pad section-light">
         <div className="section-container faq-preview-layout">
           <div className="faq-preview-intro">
             <h2>Questions are welcome.</h2>
@@ -551,7 +551,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="careers-preview" aria-label="Careers at Access Psych">
+      <section className="careers-preview section-dark" aria-label="Careers at Access Psych">
         <div className="section-container careers-preview-inner">
           <div className="careers-preview-copy">
             <h2>Make a difference with Access Psych.</h2>
@@ -570,7 +570,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="newsletter-preview" aria-label="Newsletter">
+      <section className="newsletter-preview section-light" aria-label="Newsletter">
         <div className="section-container newsletter-preview-inner">
           <div>
             <h2>{pages.newsletter.intro}</h2>
@@ -579,7 +579,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="country-section section-pad">
+      <section className="country-section section-pad section-dark">
         <div className="section-container country-panel">
           <div>
             <h2>Acknowledgement of Country</h2>
@@ -594,7 +594,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="final-cta">
+      <section className="final-cta section-light">
         <div className="final-cta-bg" aria-hidden="true">
           <Image
             src="/images/final-cta-bg.jpg"
