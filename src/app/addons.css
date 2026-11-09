@@ -3107,23 +3107,118 @@
   color: #9966ff !important;
 }
 
-/* 4. Footer is ALWAYS DARK (Strict User Rule) */
+/* 4. Footer: Deep Black Background with Glowing Design & Clear Content */
 .site-footer {
-  background: #0e1921 !important;
+  background: #081016 !important;
   color: #ffffff !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-top: 1px solid rgba(153, 102, 255, 0.25) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+
+.footer-journey-backdrop {
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
+  user-select: none !important;
+}
+
+.footer-journey-svg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  opacity: 1 !important;
+}
+
+.footer-journey-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(153, 102, 255, 0.16) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(8, 16, 22, 0.12) 0%, rgba(8, 16, 22, 0.48) 100%) !important;
+  pointer-events: none !important;
+}
+
+.site-footer .section-container {
+  position: relative !important;
+  z-index: 3 !important;
 }
 
 .site-footer a {
   color: rgba(255, 255, 255, 0.85) !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
 }
 
 .site-footer a:hover {
-  color: #ffffff !important;
+  color: #b388ff !important;
 }
 
 .site-footer h2 {
   color: #ffffff !important;
+  font-weight: 750 !important;
+}
+
+.footer-cta-pill {
+  background: linear-gradient(135deg, #9966ff 0%, #7b40f2 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 18px rgba(153, 102, 255, 0.45) !important;
+}
+
+.footer-cta-pill:hover {
+  background: linear-gradient(135deg, #a87aff 0%, #8b4ff5 100%) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(153, 102, 255, 0.6) !important;
+}
+
+.footer-contact-item .contact-icon {
+  background: rgba(153, 102, 255, 0.18) !important;
+  border: 1px solid rgba(153, 102, 255, 0.35) !important;
+  color: #b388ff !important;
+}
+
+.footer-giant-watermark span {
+  color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.footer-giant-watermark:hover span {
+  color: rgba(153, 102, 255, 0.35) !important;
+  text-shadow:
+    0 0 25px rgba(153, 102, 255, 0.75),
+    0 0 50px rgba(153, 102, 255, 0.45) !important;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.footer-bottom-left span,
+.footer-bottom-left a {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.footer-bottom-left a:hover {
+  color: #ffffff !important;
+}
+
+.scroll-top {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.scroll-top:hover {
+  background: #9966ff !important;
+  border-color: #9966ff !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(153, 102, 255, 0.45) !important;
 }
 
 

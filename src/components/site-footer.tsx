@@ -25,31 +25,31 @@ export default function SiteFooter() {
         >
           <defs>
             <linearGradient id="journeyLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#9966ff" stopOpacity="0.08" />
-              <stop offset="30%" stopColor="#9966ff" stopOpacity="0.32" />
-              <stop offset="70%" stopColor="#9966ff" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#9966ff" stopOpacity="0.12" />
+              <stop offset="0%" stopColor="#9966ff" stopOpacity="0.2" />
+              <stop offset="30%" stopColor="#9966ff" stopOpacity="0.65" />
+              <stop offset="70%" stopColor="#c084fc" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#9966ff" stopOpacity="0.25" />
             </linearGradient>
 
             <linearGradient id="subTrackGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.04" />
-              <stop offset="50%" stopColor="#9966ff" stopOpacity="0.18" />
-              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.05" />
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.08" />
+              <stop offset="50%" stopColor="#9966ff" stopOpacity="0.38" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.1" />
             </linearGradient>
 
             <radialGradient id="nodeGlow1" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#9966ff" stopOpacity="0.25" />
+              <stop offset="0%" stopColor="#9966ff" stopOpacity="0.38" />
               <stop offset="100%" stopColor="#9966ff" stopOpacity="0" />
             </radialGradient>
 
             <radialGradient id="nodeGlow2" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#9966ff" stopOpacity="0.3" />
+              <stop offset="0%" stopColor="#9966ff" stopOpacity="0.45" />
               <stop offset="100%" stopColor="#9966ff" stopOpacity="0" />
             </radialGradient>
 
             <pattern id="journeyGrid" width="64" height="64" patternUnits="userSpaceOnUse">
-              <circle cx="32" cy="32" r="1" fill="#ffffff" fillOpacity="0.04" />
-              <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.02" />
+              <circle cx="32" cy="32" r="1.5" fill="#9966ff" fillOpacity="0.18" />
+              <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.04" />
             </pattern>
           </defs>
 
@@ -66,7 +66,7 @@ export default function SiteFooter() {
           <path
             d="M -40 310 C 180 340, 320 280, 520 180 C 720 80, 780 320, 920 270 C 1120 210, 1260 330, 1500 290"
             stroke="url(#subTrackGrad)"
-            strokeWidth="1.5"
+            strokeWidth="1.8"
             strokeDasharray="6 8"
           />
 
@@ -74,73 +74,73 @@ export default function SiteFooter() {
           <path
             d="M -60 210 C 120 160, 240 310, 520 180 C 760 70, 840 340, 920 270 C 1040 170, 1160 140, 1500 230"
             stroke="url(#journeyLineGrad)"
-            strokeWidth="2.5"
+            strokeWidth="3"
           />
 
           {/* Subtle Vertical Milestone Alignment Rays */}
-          <line x1="160" y1="90" x2="160" y2="390" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.08" strokeDasharray="4 6" />
-          <line x1="520" y1="50" x2="520" y2="430" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.09" strokeDasharray="4 6" />
-          <line x1="920" y1="70" x2="920" y2="420" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.09" strokeDasharray="4 6" />
-          <line x1="1280" y1="60" x2="1280" y2="410" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.08" strokeDasharray="4 6" />
+          <line x1="160" y1="90" x2="160" y2="390" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.16" strokeDasharray="4 6" />
+          <line x1="520" y1="50" x2="520" y2="430" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.18" strokeDasharray="4 6" />
+          <line x1="920" y1="70" x2="920" y2="420" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.18" strokeDasharray="4 6" />
+          <line x1="1280" y1="60" x2="1280" y2="410" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.16" strokeDasharray="4 6" />
 
           {/* Node 1: Initial Referral / Intake */}
           <g transform="translate(160, 240)">
-            <circle r="36" fill="#1c2b38" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.22" />
-            <circle r="24" fill="none" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="3 4" />
-            <circle r="6" fill="#9966ff" fillOpacity="0.55" />
-            <circle r="2.5" fill="#ffffff" fillOpacity="0.85" />
-            <text x="0" y="-45" textAnchor="middle" fill="#9966ff" fillOpacity="0.45" fontSize="10.5" fontWeight="700" letterSpacing="0.14em">
+            <circle r="36" fill="#0d1720" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.5" />
+            <circle r="24" fill="none" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.6" strokeDasharray="3 4" />
+            <circle r="7" fill="#9966ff" fillOpacity="0.85" />
+            <circle r="3" fill="#ffffff" fillOpacity="1" />
+            <text x="0" y="-45" textAnchor="middle" fill="#b388ff" fillOpacity="0.85" fontSize="11" fontWeight="750" letterSpacing="0.14em">
               01 · REFERRAL &amp; INTAKE
             </text>
-            <text x="0" y="52" textAnchor="middle" fill="#ffffff" fillOpacity="0.24" fontSize="9" letterSpacing="0.08em">
+            <text x="0" y="52" textAnchor="middle" fill="#ffffff" fillOpacity="0.45" fontSize="9.5" letterSpacing="0.08em">
               GP · EAP · SELF-REFERRAL
             </text>
           </g>
 
           {/* Node 2: Clinician Matching */}
           <g transform="translate(520, 180)">
-            <circle r="42" fill="#1c2b38" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.24" />
-            <circle r="28" fill="none" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="4 4" />
-            <circle r="7" fill="#9966ff" fillOpacity="0.65" />
-            <circle r="3" fill="#ffffff" fillOpacity="0.9" />
-            <text x="0" y="-50" textAnchor="middle" fill="#9966ff" fillOpacity="0.5" fontSize="10.5" fontWeight="700" letterSpacing="0.14em">
+            <circle r="42" fill="#0d1720" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.55" />
+            <circle r="28" fill="none" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.65" strokeDasharray="4 4" />
+            <circle r="8" fill="#9966ff" fillOpacity="0.9" />
+            <circle r="3.5" fill="#ffffff" fillOpacity="1" />
+            <text x="0" y="-50" textAnchor="middle" fill="#b388ff" fillOpacity="0.9" fontSize="11" fontWeight="750" letterSpacing="0.14em">
               02 · CLINICIAN MATCHING
             </text>
-            <text x="0" y="58" textAnchor="middle" fill="#ffffff" fillOpacity="0.26" fontSize="9" letterSpacing="0.08em">
+            <text x="0" y="58" textAnchor="middle" fill="#ffffff" fillOpacity="0.48" fontSize="9.5" letterSpacing="0.08em">
               SPECIALIST ALIGNMENT
             </text>
           </g>
 
           {/* Node 3: Active Therapy & Clinical Support */}
           <g transform="translate(920, 270)">
-            <circle r="40" fill="#1c2b38" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.24" />
-            <circle r="26" fill="none" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="3 3" />
-            <circle r="7" fill="#9966ff" fillOpacity="0.65" />
-            <circle r="3" fill="#ffffff" fillOpacity="0.9" />
-            <text x="0" y="-48" textAnchor="middle" fill="#9966ff" fillOpacity="0.5" fontSize="10.5" fontWeight="700" letterSpacing="0.14em">
+            <circle r="40" fill="#0d1720" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.55" />
+            <circle r="26" fill="none" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.65" strokeDasharray="3 3" />
+            <circle r="8" fill="#9966ff" fillOpacity="0.9" />
+            <circle r="3.5" fill="#ffffff" fillOpacity="1" />
+            <text x="0" y="-48" textAnchor="middle" fill="#b388ff" fillOpacity="0.9" fontSize="11" fontWeight="750" letterSpacing="0.14em">
               03 · EVIDENCE-BASED CARE
             </text>
-            <text x="0" y="56" textAnchor="middle" fill="#ffffff" fillOpacity="0.26" fontSize="9" letterSpacing="0.08em">
+            <text x="0" y="56" textAnchor="middle" fill="#ffffff" fillOpacity="0.48" fontSize="9.5" letterSpacing="0.08em">
               TELEHEALTH &amp; CLINIC
             </text>
           </g>
 
           {/* Node 4: Recovery, Wellbeing & Independence */}
           <g transform="translate(1280, 210)">
-            <circle r="38" fill="#1c2b38" stroke="#9966ff" strokeWidth="1" strokeOpacity="0.22" />
-            <circle r="25" fill="none" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.42" strokeDasharray="4 4" />
-            <circle r="6" fill="#9966ff" fillOpacity="0.6" />
-            <circle r="2.5" fill="#ffffff" fillOpacity="0.85" />
-            <text x="0" y="-46" textAnchor="middle" fill="#9966ff" fillOpacity="0.45" fontSize="10.5" fontWeight="700" letterSpacing="0.14em">
+            <circle r="38" fill="#0d1720" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.5" />
+            <circle r="25" fill="none" stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.6" strokeDasharray="4 4" />
+            <circle r="7" fill="#9966ff" fillOpacity="0.85" />
+            <circle r="3" fill="#ffffff" fillOpacity="1" />
+            <text x="0" y="-46" textAnchor="middle" fill="#b388ff" fillOpacity="0.85" fontSize="11" fontWeight="750" letterSpacing="0.14em">
               04 · SUSTAINED WELLBEING
             </text>
-            <text x="0" y="54" textAnchor="middle" fill="#ffffff" fillOpacity="0.24" fontSize="9" letterSpacing="0.08em">
+            <text x="0" y="54" textAnchor="middle" fill="#ffffff" fillOpacity="0.45" fontSize="9.5" letterSpacing="0.08em">
               HEALTHIER FUTURES
             </text>
           </g>
 
           {/* Flow Direction Indicator Chevrons */}
-          <g stroke="#9966ff" strokeWidth="1.5" strokeOpacity="0.32" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <g stroke="#9966ff" strokeWidth="2" strokeOpacity="0.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
             <path d="M 330 240 L 338 244 L 330 248" />
             <path d="M 730 180 L 738 184 L 730 188" />
             <path d="M 1110 185 L 1118 189 L 1110 193" />
