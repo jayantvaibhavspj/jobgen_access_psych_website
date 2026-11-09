@@ -3,6 +3,7 @@ import { existsSync } from "node:fs";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  Activity,
   ArrowUpRight,
   BookOpen,
   Brain,
@@ -11,9 +12,15 @@ import {
   ClipboardCheck,
   GraduationCap,
   HandHeart,
+  Heart,
   HeartHandshake,
+  HeartPulse,
+  MapPin,
   Phone,
   Shield,
+  ShieldCheck,
+  Smile,
+  Sparkles,
   UsersRound,
 } from "lucide-react";
 import HomeHero from "@/components/home-hero";
@@ -64,6 +71,17 @@ const serviceIcons = [
 const featuredClinicians = clinicians.slice(0, 3);
 const featuredArticles = pages.blogs.cards?.slice(0, 3) ?? [];
 const featuredNews = pages["news-and-events"].cards?.slice(0, 2) ?? [];
+
+const concernIconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+  "Anxiety": Brain,
+  "Depression": Heart,
+  "Eating disorders": Activity,
+  "Mood disorders including bipolar disorder": Sparkles,
+  "Personality disorders": Smile,
+  "Relationship therapy": UsersRound,
+  "Substance abuse including drug and alcohol addictions": ShieldCheck,
+  "Trauma-related disorders such as PTSD": HeartHandshake,
+};
 const featuredLocations = [
   locations.find((location) => location.city === "Sydney CBD"),
   locations.find((location) => location.city === "Melbourne CBD"),
@@ -139,7 +157,10 @@ export default function HomePage() {
             <div className="intro-copy">
               <Reveal>
                 <div className="intro-heading-group">
-                  <span className="intro-category-badge">EVIDENCE-BASED CARE</span>
+                  <span className="intro-category-badge">
+                    <Sparkles size={13} aria-hidden="true" />
+                    <span>Evidence-Based Care</span>
+                  </span>
                   <h2>Access psychology, therapy and counselling services</h2>
                 </div>
               </Reveal>
@@ -151,7 +172,7 @@ export default function HomePage() {
                   </p>
                 </Reveal>
                 <Reveal delay={0.12}>
-                  <p>
+                  <p className="intro-sub-para">
                     Whether managing anxiety, life transitions, depression, or workplace stress, our team offers compassionate, individualised support with immediate capacity and no long waitlists.
                   </p>
                 </Reveal>
@@ -161,16 +182,16 @@ export default function HomePage() {
               <Reveal delay={0.18}>
                 <div className="intro-value-pills">
                   <div className="intro-value-pill">
-                    <CheckCircle2 size={16} aria-hidden="true" />
-                    <span>No Long Waitlists</span>
+                    <CheckCircle2 size={15} aria-hidden="true" />
+                    <span>Immediate Capacity</span>
                   </div>
                   <div className="intro-value-pill">
-                    <CheckCircle2 size={16} aria-hidden="true" />
+                    <CheckCircle2 size={15} aria-hidden="true" />
                     <span>AHPRA-Registered Clinicians</span>
                   </div>
                   <div className="intro-value-pill">
-                    <CheckCircle2 size={16} aria-hidden="true" />
-                    <span>Telehealth &amp; 50+ Clinics</span>
+                    <CheckCircle2 size={15} aria-hidden="true" />
+                    <span>Telehealth &amp; 50+ In-Person Clinics</span>
                   </div>
                 </div>
               </Reveal>
@@ -186,6 +207,10 @@ export default function HomePage() {
                       height={380}
                       className="intro-photo-img"
                     />
+                    <div className="intro-photo-badge-top">
+                      <MapPin size={12} aria-hidden="true" />
+                      <span>50+ Clinics Nationwide</span>
+                    </div>
                     <div className="intro-photo-overlay">
                       <span className="photo-overlay-dot" />
                       <span>Comfortable, modern clinic spaces across Australia &amp; Telehealth nationwide</span>
@@ -201,14 +226,14 @@ export default function HomePage() {
                     <span className="age-note-icon">
                       <Shield size={16} aria-hidden="true" />
                     </span>
-                    <span>Our services are for people aged 12 and over.</span>
+                    <span>Our services are for people aged <strong>12 and over</strong>.</span>
                   </div>
                   <Link
                     className="intro-explore-btn"
                     href="/psychology-therapy-counselling"
                   >
-                    <span>Explore services</span>
-                    <ArrowUpRight size={16} aria-hidden="true" />
+                    <span>Explore all services</span>
+                    <ArrowUpRight size={15} aria-hidden="true" />
                   </Link>
                 </div>
               </Reveal>
@@ -219,36 +244,60 @@ export default function HomePage() {
               <Reveal delay={0.15}>
                 <div className="concern-card">
                   <div className="concern-card-header">
-                    <span className="concern-card-tag">AREAS OF SUPPORT</span>
+                    <span className="concern-card-tag">
+                      <HeartPulse size={13} aria-hidden="true" />
+                      <span>AREAS OF SUPPORT</span>
+                    </span>
                     <h3>Specialised mental health support</h3>
-                    <p>Evidence-based care for a broad range of challenges and conditions.</p>
+                    <p>Compassionate, evidence-based care tailored to your unique challenges and conditions.</p>
                   </div>
 
                   <ul className="concern-card-list" aria-label="Mental health issues and concerns">
-                    {concerns.map((concern) => (
-                      <li key={concern}>
-                        <Link
-                          className="concern-card-row"
-                          href="/psychology-therapy-counselling"
-                        >
-                          <span>{concern}</span>
-                          <span className="concern-row-arrow">
-                            <ArrowUpRight size={15} aria-hidden="true" />
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
+                    {concerns.map((concern) => {
+                      const Icon = concernIconMap[concern] ?? Brain;
+                      return (
+                        <li key={concern}>
+                          <Link
+                            className="concern-card-row"
+                            href="/psychology-therapy-counselling"
+                          >
+                            <span className="concern-row-left">
+                              <span className="concern-icon-wrap" aria-hidden="true">
+                                <Icon size={15} />
+                              </span>
+                              <span className="concern-row-title">{concern}</span>
+                            </span>
+                            <span className="concern-row-arrow">
+                              <ArrowUpRight size={14} aria-hidden="true" />
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
 
                   <div className="concern-card-cta">
-                    <div className="concern-cta-text">
-                      <strong>Need support with something else?</strong>
-                      <small>Our clinicians cover a wide range of needs.</small>
+                    <div className="concern-cta-top">
+                      <div className="concern-cta-text">
+                        <strong>Need support with something else?</strong>
+                        <p>Our clinicians support a broad spectrum of mental health needs.</p>
+                      </div>
+                      <a className="concern-cta-button" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">
+                        <span>Book a session</span>
+                        <ArrowUpRight size={13} aria-hidden="true" />
+                      </a>
                     </div>
-                    <a className="concern-cta-button" href={BOOKING_PORTAL} target="_blank" rel="noreferrer">
-                      <span>Book a session</span>
-                      <ArrowUpRight size={14} aria-hidden="true" />
-                    </a>
+                    <div className="concern-card-trust-strip">
+                      <span className="trust-strip-item">
+                        <CheckCircle2 size={12} aria-hidden="true" /> Immediate Capacity
+                      </span>
+                      <span className="trust-strip-item">
+                        <CheckCircle2 size={12} aria-hidden="true" /> Telehealth &amp; In-Person
+                      </span>
+                      <span className="trust-strip-item">
+                        <CheckCircle2 size={12} aria-hidden="true" /> Ages 12+
+                      </span>
+                    </div>
                   </div>
                 </div>
               </Reveal>
