@@ -3557,8 +3557,8 @@
 
 .intro-layout {
   display: grid !important;
-  grid-template-columns: minmax(0, 1.15fr) minmax(380px, 0.85fr) !important;
-  gap: clamp(36px, 5vw, 68px) !important;
+  grid-template-columns: minmax(0, 1.28fr) minmax(360px, 0.72fr) !important;
+  gap: clamp(28px, 4vw, 56px) !important;
   align-items: stretch !important;
 }
 
@@ -3623,30 +3623,44 @@
   margin: 0 !important;
 }
 
-/* 3 Pillars */
+/* 3 Pillars - Kept on a single line */
 .intro-value-pills {
   display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 10px !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: clamp(6px, 0.8vw, 10px) !important;
   margin: 4px 0 !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.intro-value-pills::-webkit-scrollbar {
+  display: none !important;
 }
 
 .intro-value-pill {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 8px !important;
-  padding: 8px 16px !important;
+  gap: 6px !important;
+  padding: 6px 13px !important;
   border-radius: 999px !important;
   background: #f8fafd !important;
   border: 1.5px solid #e2e8f0 !important;
   color: #1c2b38 !important;
-  font-size: 13px !important;
+  font-size: clamp(11.5px, 0.9vw, 12.5px) !important;
   font-weight: 650 !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
   transition: all 0.25s ease !important;
 }
 
 .intro-value-pill svg {
   color: #9966ff !important;
+  width: 14px !important;
+  height: 14px !important;
+  flex-shrink: 0 !important;
 }
 
 .intro-value-pill:hover {

@@ -589,27 +589,35 @@ summary:focus-visible {
 /* Key Value Pillars */
 .intro-value-pills {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
   margin: 4px 0 6px;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
 .intro-value-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  gap: 6px;
+  padding: 6px 13px;
   border-radius: 999px;
   background: #f5f0ff;
   border: 1.5px solid #e3d9fc;
   color: #1c2b38;
-  font-size: 13px;
+  font-size: clamp(11.5px, 0.9vw, 12.5px);
   font-weight: 650;
+  white-space: nowrap;
+  flex: 0 0 auto;
   box-shadow: 0 2px 8px rgba(153, 102, 255, 0.08);
 }
 
 .intro-value-pill svg {
   color: #9966ff;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
 }
 
