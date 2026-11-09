@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import Image from "next/image";
-import { HOME_IMAGE } from "@/lib/site-data";
 
 export interface HeroClip {
   id: string;
@@ -62,11 +60,7 @@ export const HERO_CLIPS: HeroClip[] = [
   },
 ];
 
-interface HeroVideoBackgroundProps {
-  poster?: string;
-}
-
-export default function HeroVideoBackground({ poster = HOME_IMAGE }: HeroVideoBackgroundProps) {
+export default function HeroVideoBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoARef = useRef<HTMLVideoElement>(null);
   const videoBRef = useRef<HTMLVideoElement>(null);
@@ -75,7 +69,6 @@ export default function HeroVideoBackground({ poster = HOME_IMAGE }: HeroVideoBa
   const currentSlotRef = useRef<"A" | "B">("A");
   const isTransitioningRef = useRef<boolean>(false);
   const isMountedRef = useRef<boolean>(false);
-  const hasStartedRef = useRef<boolean>(false);
 
   const [activeClipIndex, setActiveClipIndex] = useState<number>(0);
   const [captionIndex, setCaptionIndex] = useState<number>(0);
@@ -83,12 +76,11 @@ export default function HeroVideoBackground({ poster = HOME_IMAGE }: HeroVideoBa
   const [progress, setProgress] = useState<number>(0);
   const [isReducedMotion, setIsReducedMotion] = useState<boolean>(false);
   const [isInViewport, setIsInViewport] = useState<boolean>(true);
-  const [videoAvailable, setVideoAvailable] = useState<boolean>(true);
 
   // Transition to a specified clip index
   const startTransition = useCallback((targetIndex: number) => {
     if (isTransitioningRef.current) return;
-    if (targetIndex === activeClipIndex && hasStartedRef.current) return;
+    if (targetIndex === activeClipIndex) return;
 
     const currentSlot = currentSlotRef.current;
     const currentVideo = currentSlot === "A" ? videoARef.current : videoBRef.current;
@@ -162,8 +154,6 @@ export default function HeroVideoBackground({ poster = HOME_IMAGE }: HeroVideoBa
     const playPromise = incomingVideo.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Fallback gracefully if autoplay was prevented
-        setVideoAvailable(false);
         isTransitioningRef.current = false;
         setCaptionIndex(targetIndex);
         setCaptionAnimClass("visible");
@@ -213,33 +203,10 @@ export default function HeroVideoBackground({ poster = HOME_IMAGE }: HeroVideoBa
     };
     document.addEventListener("visibilitychange", handleVisibility);
 
-    // Initial video start
-    if (!motionQuery.matches) {
-      const videoA = videoARef.current;
-      const videoB = videoBRef.current;
-      if (videoA && videoB) {
-        videoA.src = HERO_CLIPS[0].src;
-        videoA.preload = "auto";
-        videoB.src = HERO_CLIPS[1].src;
-        videoB.preload = "auto";
-
-        videoA.style.opacity = "0";
-        videoA.style.zIndex = "2";
-
-        const handleFirstPlaying = () => {
-          hasStartedRef.current = true;
-          videoA.style.transition = "opacity 1200ms cubic-bezier(0.4, 0, 0.2, 1)";
-          videoA.style.opacity = "1";
-        };
-        videoA.addEventListener("playing", handleFirstPlaying, { once: true });
-
-        const p = videoA.play();
-        if (p !== undefined) {
-          p.catch(() => {
-            setVideoAvailable(false);
-          });
-        }
-      }
+    // Ensure active video is playing
+    const videoA = videoARef.current;
+    if (videoA && !motionQuery.matches) {
+      videoA.play().catch(() => {});
     }
 
     return () => {
@@ -257,14 +224,14 @@ export default function HeroVideoBackground({ poster = HOME_IMAGE }: HeroVideoBa
 
     if (!isInViewport) {
       activeVideo.pause();
-    } else if (!isReducedMotion && hasStartedRef.current) {
+    } else if (!isReducedMotion) {
       activeVideo.play().catch(() => {});
     }
   }, [isInViewport, isReducedMotion]);
 
   // Playback monitor: update progress bar and trigger transition 1.2s before clip ends
   useEffect(() => {
-    if (isReducedMotion || !videoAvailable) return;
+    if (isReducedMotion) return;
 
     let animId: number;
 
@@ -291,7 +258,7 @@ export default function HeroVideoBackground({ poster = HOME_IMAGE }: HeroVideoBa
 
     animId = requestAnimationFrame(checkTime);
     return () => cancelAnimationFrame(animId);
-  }, [activeClipIndex, isReducedMotion, startTransition, videoAvailable]);
+  }, [activeClipIndex, isReducedMotion, startTransition]);
 
   // Handle manual jump via progress bar click
   const handleBarClick = (targetIndex: number) => {
@@ -303,38 +270,28 @@ export default function HeroVideoBackground({ poster = HOME_IMAGE }: HeroVideoBa
 
   return (
     <div className="hero-video-container" ref={containerRef} aria-hidden="false">
-      {/* 1. Full-bleed Video Background Layer */}
+      {/* 1. Full-bleed Video Background Layer (Pure video, no photo) */}
       <div className="hero-video-backdrop" aria-hidden="true">
-        {/* Fallback / Poster Image */}
-        <Image
-          src={poster}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="hero-video-poster"
-          unoptimized
+        {/* Video Elements A & B */}
+        <video
+          ref={videoARef}
+          className="hero-bg-video video-slot-a"
+          muted
+          playsInline
+          autoPlay
+          preload="auto"
+          src={HERO_CLIPS[0].src}
+          style={{ opacity: 1, zIndex: 1 }}
         />
-
-        {/* Video Elements A & B (Only active when reduced motion is off and video supported) */}
-        {!isReducedMotion && videoAvailable && (
-          <>
-            <video
-              ref={videoARef}
-              className="hero-bg-video video-slot-a"
-              muted
-              playsInline
-              preload="auto"
-            />
-            <video
-              ref={videoBRef}
-              className="hero-bg-video video-slot-b"
-              muted
-              playsInline
-              preload="auto"
-            />
-          </>
-        )}
+        <video
+          ref={videoBRef}
+          className="hero-bg-video video-slot-b"
+          muted
+          playsInline
+          preload="auto"
+          src={HERO_CLIPS[1].src}
+          style={{ opacity: 0, zIndex: 1 }}
+        />
 
         {/* Dark brand gradient overlay for high text contrast */}
         <div className="hero-video-gradient-overlay" />
@@ -385,3 +342,4 @@ export default function HeroVideoBackground({ poster = HOME_IMAGE }: HeroVideoBa
     </div>
   );
 }
+

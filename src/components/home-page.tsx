@@ -108,7 +108,7 @@ export default function HomePage() {
 
   return (
     <main id="main">
-      <HomeHero videoSources={heroVideoSources} />
+      <HomeHero />
       <MarqueeTicker />
       <TrustStrip />
 

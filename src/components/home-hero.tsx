@@ -2,19 +2,14 @@
 
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
-import { BOOKING_PORTAL, HOME_IMAGE } from "@/lib/site-data";
+import { BOOKING_PORTAL } from "@/lib/site-data";
 import HeroVideoBackground from "@/components/HeroVideoBackground";
 
-export default function HomeHero({
-  poster = HOME_IMAGE,
-}: {
-  videoSources?: { webm: string | null; mp4: string | null }[];
-  poster?: string;
-}) {
+export default function HomeHero() {
   return (
     <section className="home-hero min-h-screen" aria-label="Welcome to Access Psych">
-      {/* Step 2 & 3: Full-Bleed Rotating Background Video & Overlay */}
-      <HeroVideoBackground poster={poster} />
+      {/* Full-Bleed Rotating Background Video & Overlay (Pure Video, No Photo) */}
+      <HeroVideoBackground />
 
       {/* Step 1: Existing Hero Content on top (position relative, z-index 10) */}
       <div className="hero-inner">
