@@ -3300,3 +3300,53 @@
     max-height: 190px !important;
   }
 }
+
+/* ==========================================================================
+   Mental Health Information / Blog Cards Image Framing & Layout
+   ========================================================================== */
+.resource-preview-item {
+  display: flex !important;
+  flex-direction: column !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  border: 1.5px solid #e6ebf0 !important;
+  box-shadow: 0 8px 24px rgba(28, 43, 56, 0.05) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+  height: 100% !important;
+  text-decoration: none !important;
+}
+
+.resource-preview-item:hover {
+  transform: translateY(-5px) !important;
+  border-color: #9966ff !important;
+  box-shadow: 0 16px 36px rgba(153, 102, 255, 0.16) !important;
+}
+
+.resource-preview-image {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 9.5 !important;
+  overflow: hidden !important;
+  background: #f1f4f8 !important;
+  margin-bottom: 16px !important;
+}
+
+.resource-preview-image img {
+  object-fit: cover !important;
+  object-position: center top !important;
+  width: 100% !important;
+  height: 100% !important;
+  transition: transform 0.4s ease !important;
+}
+
+.resource-preview-item:hover .resource-preview-image img {
+  transform: scale(1.04) !important;
+}
+
+.value-card-image img {
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+

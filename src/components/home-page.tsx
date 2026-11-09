@@ -493,11 +493,9 @@ export default function HomePage() {
             <div className="resources-preview-grid">
               {featuredArticles.map((article, index) => (
                 <Reveal key={article.title} delay={index * 0.06}>
-                  <a
+                  <Link
                     className="resource-preview-item"
-                    href={article.href}
-                    target="_blank"
-                    rel="noreferrer"
+                    href={article.href || "/blogs"}
                   >
                     {article.image && (
                       <span className="resource-preview-image">
@@ -517,7 +515,7 @@ export default function HomePage() {
                     <span className="resource-preview-link">
                       Read article <ArrowUpRight size={15} aria-hidden="true" />
                     </span>
-                  </a>
+                  </Link>
                 </Reveal>
               ))}
             </div>
