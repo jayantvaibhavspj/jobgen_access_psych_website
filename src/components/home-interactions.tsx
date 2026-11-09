@@ -376,7 +376,7 @@ export function TrustStrip() {
     "Medicare rebates available",
     "Employee Assistance Program",
     "Telehealth appointments",
-    "Face-to-face sessions",
+    "Face to face sessions",
   ];
 
   return (
@@ -386,8 +386,10 @@ export function TrustStrip() {
         <div className="trust-chip-list">
           {credentials.map((credential) => (
             <span className="trust-chip" key={credential}>
-              <Check size={15} aria-hidden="true" />
-              {credential}
+              <span className="trust-chip-icon" aria-hidden="true">
+                <Check size={12} strokeWidth={2.8} />
+              </span>
+              <span>{credential}</span>
             </span>
           ))}
         </div>
