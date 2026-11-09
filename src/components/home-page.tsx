@@ -106,31 +106,59 @@ const featuredFaqs =
 const pathways = [
   {
     title: "About Access Psych",
-    description: "Our story, clinical mission, and approach to mental wellbeing.",
+    description: "Delivering evidence-based psychology, counselling, and mental health care across Australia.",
     href: "/about-us",
     icon: HeartHandshake,
+    image: "/images/pathways/about-us.jpg",
     tag: "Our Story & Care",
+    ctaLabel: "About our care",
+    highlights: [
+      "70+ clinics & telehealth nationwide",
+      "Client-first empathetic approach",
+      "Support for individuals aged 12+",
+    ],
   },
   {
     title: "Find a clinician near you",
-    description: "Browse AHPRA-registered psychologists, counsellors, and social workers.",
+    description: "Connect with experienced psychologists, social workers, and mental health counsellors.",
     href: "/meet-our-team",
     icon: UsersRound,
+    image: "/images/pathways/find-clinician.jpg",
     tag: "AHPRA Clinicians",
+    ctaLabel: "Browse clinicians",
+    highlights: [
+      "AHPRA-registered clinicians",
+      "In-person & telehealth sessions",
+      "Immediate appointment capacity",
+    ],
   },
   {
-    title: "Our fees",
-    description: "Clear fee structures, Medicare rebates, and healthcare claims.",
+    title: "Our fees & rebates",
+    description: "Clear fee structures with Medicare rebates, private health, and government funding options.",
     href: "/fees",
     icon: ClipboardCheck,
+    image: "/images/pathways/our-fees.jpg",
     tag: "Medicare Rebates",
+    ctaLabel: "View fee schedule",
+    highlights: [
+      "Medicare rebate with GP MHCP",
+      "Private health rebates accepted",
+      "NDIS, WorkCover & EAP funding",
+    ],
   },
   {
     title: "Employee Assistance Program",
-    description: "Dedicated workplace mental health and wellbeing solutions for organisations.",
+    description: "Dedicated workplace mental health, wellbeing programs, and critical incident support.",
     href: "/employee-assistance-program",
     icon: BriefcaseBusiness,
+    image: "/images/pathways/eap.jpg",
     tag: "Workplace Wellbeing",
+    ctaLabel: "Explore EAP services",
+    highlights: [
+      "24/7 confidential crisis support",
+      "Manager support & team training",
+      "Custom wellbeing programs",
+    ],
   },
 ];
 
@@ -490,20 +518,38 @@ export default function HomePage() {
                     href={item.href}
                     key={item.title}
                   >
-                    <div className="pathway-card-top">
-                      <span className="pathway-icon-wrap">
-                        <PathwayIcon size={20} aria-hidden="true" />
+                    <div className="pathway-card-media">
+                      <Image
+                        src={item.image}
+                        alt=""
+                        fill
+                        unoptimized
+                        sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 25vw"
+                        className="pathway-media-img"
+                      />
+                      <div className="pathway-media-overlay" />
+                      <span className="pathway-media-tag">{item.tag}</span>
+                      <span className="pathway-media-icon">
+                        <PathwayIcon size={17} aria-hidden="true" />
                       </span>
-                      <span className="pathway-tag">{item.tag}</span>
                     </div>
 
                     <div className="pathway-card-body">
                       <strong>{item.title}</strong>
                       <p>{item.description}</p>
+
+                      <ul className="pathway-card-highlights">
+                        {item.highlights.map((point) => (
+                          <li key={point}>
+                            <CheckCircle2 size={13} aria-hidden="true" />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
                     <div className="pathway-card-bottom">
-                      <span className="pathway-action-label">Explore</span>
+                      <span className="pathway-action-label">{item.ctaLabel}</span>
                       <span className="pathway-action-arrow">
                         <ArrowUpRight size={16} aria-hidden="true" />
                       </span>

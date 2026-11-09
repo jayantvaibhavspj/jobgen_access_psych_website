@@ -3451,83 +3451,104 @@
   position: relative !important;
   background: #ffffff !important;
   border: 1.5px solid #e8edf2 !important;
-  border-radius: 22px !important;
-  padding: 24px 22px !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important;
-  min-height: 236px !important;
-  box-shadow: 0 4px 18px rgba(28, 43, 56, 0.05) !important;
+  box-shadow: 0 4px 20px rgba(28, 43, 56, 0.05) !important;
   text-decoration: none !important;
-  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 280ms cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .pathway-clean-card:hover {
-  transform: translateY(-5px) !important;
+  transform: translateY(-6px) !important;
   border-color: #9966ff !important;
-  box-shadow: 0 16px 36px rgba(153, 102, 255, 0.16), 0 4px 12px rgba(28, 43, 56, 0.04) !important;
+  box-shadow: 0 20px 42px rgba(153, 102, 255, 0.16), 0 4px 12px rgba(28, 43, 56, 0.05) !important;
 }
 
-.pathway-clean-card .pathway-card-top {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 10px !important;
-  margin-bottom: 16px !important;
+.pathway-card-media {
+  position: relative !important;
+  width: 100% !important;
+  height: 168px !important;
+  overflow: hidden !important;
+  background: #1c2b38 !important;
 }
 
-.pathway-clean-card .pathway-icon-wrap {
-  width: 44px !important;
-  height: 44px !important;
-  border-radius: 13px !important;
-  background: #f0ecfa !important;
-  border: 1px solid rgba(153, 102, 255, 0.22) !important;
+.pathway-media-img {
+  object-fit: cover !important;
+  object-position: center !important;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.pathway-clean-card:hover .pathway-media-img {
+  transform: scale(1.07) !important;
+}
+
+.pathway-media-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, rgba(16, 28, 38, 0.15) 0%, rgba(16, 28, 38, 0.52) 100%) !important;
+  z-index: 1 !important;
+}
+
+.pathway-media-tag {
+  position: absolute !important;
+  top: 12px !important;
+  left: 14px !important;
+  z-index: 2 !important;
+  font-family: var(--font-sans), Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 10.5px !important;
+  font-weight: 750 !important;
+  color: #7934e6 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(8px) !important;
+  padding: 4px 11px !important;
+  border-radius: 999px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.pathway-media-icon {
+  position: absolute !important;
+  top: 12px !important;
+  right: 14px !important;
+  z-index: 2 !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(8px) !important;
   color: #9966ff !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: all 220ms ease !important;
-  box-shadow: 0 2px 6px rgba(153, 102, 255, 0.1) !important;
-  flex-shrink: 0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  transition: all 200ms ease !important;
 }
 
-.pathway-clean-card:hover .pathway-icon-wrap {
+.pathway-clean-card:hover .pathway-media-icon {
   background: #9966ff !important;
   color: #ffffff !important;
-  transform: scale(1.05) !important;
-}
-
-.pathway-clean-card .pathway-tag {
-  font-family: var(--font-sans), Arial, "Helvetica Neue", Helvetica, sans-serif !important;
-  font-size: 11px !important;
-  font-weight: 750 !important;
-  color: #5e7182 !important;
-  letter-spacing: 0.04em !important;
-  text-transform: uppercase !important;
-  background: #f4f6f8 !important;
-  padding: 5px 12px !important;
-  border-radius: 999px !important;
-  border: 1px solid #e2e8ee !important;
-  white-space: nowrap !important;
+  transform: scale(1.06) !important;
 }
 
 .pathway-clean-card .pathway-card-body {
+  padding: 20px 22px 14px !important;
   flex: 1 !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important;
-  margin: 4px 0 10px !important;
 }
 
 .pathway-clean-card .pathway-card-body strong {
   display: block !important;
   font-family: var(--font-sans), Arial, "Helvetica Neue", Helvetica, sans-serif !important;
-  font-size: 19px !important;
+  font-size: 20px !important;
   font-weight: 750 !important;
   color: #1c2b38 !important;
-  line-height: 1.3 !important;
+  line-height: 1.25 !important;
   letter-spacing: -0.02em !important;
-  margin-bottom: 7px !important;
+  margin-bottom: 8px !important;
   text-shadow: none !important;
   transition: color 200ms ease !important;
 }
@@ -3540,22 +3561,46 @@
   font-family: var(--font-sans), Arial, "Helvetica Neue", Helvetica, sans-serif !important;
   font-size: 13.5px !important;
   line-height: 1.55 !important;
-  color: #64748b !important;
-  margin: 0 !important;
-  display: -webkit-box !important;
-  -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: 2 !important;
-  overflow: hidden !important;
+  color: #5e7182 !important;
+  margin: 0 0 14px !important;
   text-shadow: none !important;
 }
 
+.pathway-card-highlights {
+  list-style: none !important;
+  margin: 0 0 6px 0 !important;
+  padding: 12px 14px !important;
+  background: #f8fafc !important;
+  border: 1px solid #edf2f7 !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 7px !important;
+}
+
+.pathway-card-highlights li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: var(--font-sans), Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+  line-height: 1.4 !important;
+}
+
+.pathway-card-highlights li svg {
+  color: #9966ff !important;
+  flex-shrink: 0 !important;
+}
+
 .pathway-clean-card .pathway-card-bottom {
+  padding: 14px 22px 18px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  margin-top: 14px !important;
-  padding-top: 14px !important;
-  border-top: 1px solid #f0f3f6 !important;
+  border-top: 1px solid #f1f5f9 !important;
+  margin-top: auto !important;
 }
 
 .pathway-clean-card .pathway-action-label {
