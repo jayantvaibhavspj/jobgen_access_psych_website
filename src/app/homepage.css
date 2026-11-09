@@ -180,6 +180,204 @@ summary:focus-visible {
 
 .home-hero {
   background: var(--deep-teal);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Full-Bleed Hero Background Video & Dynamic Synced Caption System
+   ========================================================================== */
+.hero-video-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-video-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-video-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  z-index: 0;
+}
+
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Dark overlay on top of videos: linear-gradient from rgba(8, 24, 32, 0.75) on the left to rgba(8, 24, 32, 0.35) on the right */
+.hero-video-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    linear-gradient(90deg, rgba(8, 24, 32, 0.85) 0%, rgba(8, 24, 32, 0.72) 36%, rgba(8, 24, 32, 0.45) 72%, rgba(8, 24, 32, 0.35) 100%),
+    linear-gradient(180deg, rgba(8, 24, 32, 0.65) 0%, transparent 18%, transparent 78%, rgba(8, 24, 32, 0.75) 100%);
+  pointer-events: none;
+}
+
+/* Video-Related Synchronized Caption Block */
+.hero-video-caption-block {
+  position: absolute;
+  right: max(48px, calc((100% - 1240px) / 2));
+  bottom: 84px;
+  z-index: 10;
+  width: min(390px, 90vw);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: auto;
+  transition: transform 500ms ease, right 500ms ease;
+}
+
+/* Move caption if person in clip is on the right or left */
+.hero-video-caption-block.caption-side-right {
+  right: max(48px, calc((100% - 1240px) / 2 + 24px));
+}
+
+.hero-video-caption-block.caption-side-left {
+  right: max(48px, calc((100% - 1240px) / 2));
+}
+
+.hero-caption-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-caption-content.anim-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-caption-content.anim-exit {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition-duration: 400ms;
+}
+
+.hero-caption-content.anim-enter {
+  opacity: 1;
+  transform: translateY(0);
+  animation: heroCaptionSlideUp 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroCaptionSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-caption-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sea-glass, #89c5b2);
+  margin-bottom: 2px;
+}
+
+.hero-caption-headline {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--display);
+  font-size: clamp(21px, 1.8vw, 27px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
+.hero-caption-line {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13.5px;
+  line-height: 1.5;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+.hero-caption-name {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 2px;
+}
+
+/* 5-Segment Progress Indicator */
+.hero-caption-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.hero-progress-segment {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  transition: background 200ms ease, height 180ms ease;
+}
+
+.hero-progress-segment:hover {
+  background: rgba(255, 255, 255, 0.48);
+  height: 4px;
+}
+
+.hero-progress-segment:focus-visible {
+  box-shadow: 0 0 0 2px #9966ff;
+  height: 4px;
+}
+
+.hero-progress-fill {
+  display: block;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 999px;
+  transition: width 120ms linear;
+}
+
+.hero-progress-segment.is-active .hero-progress-fill {
+  background: #ffffff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.85);
 }
 
 .hero-poster,
@@ -1980,6 +2178,11 @@ summary:focus-visible {
 @media (max-width: 900px) {
   .clinicians-feature-layout { grid-template-columns: 1fr; }
   .clinicians-image { min-height: 400px; }
+  .hero-video-caption-block {
+    right: 32px !important;
+    bottom: 70px;
+    width: min(330px, 85vw);
+  }
 }
 
 @media (max-width: 760px) {
@@ -2011,6 +2214,29 @@ summary:focus-visible {
   }
   .hero-poster,
   .hero-video { object-position: 58% center; }
+  .hero-video-caption-block {
+    right: 50% !important;
+    left: auto !important;
+    transform: translateX(50%) !important;
+    bottom: 20px;
+    width: min(380px, calc(100% - 32px));
+    text-align: center;
+    align-items: center;
+  }
+  .hero-caption-content {
+    align-items: center;
+    text-align: center;
+  }
+  .hero-caption-headline {
+    font-size: 21px;
+  }
+  .hero-caption-line {
+    font-size: 13px;
+  }
+  .hero-caption-progress {
+    max-width: 220px;
+    margin-inline: auto;
+  }
   .hero-controls { right: 50%; bottom: 23px; transform: translateX(50%); }
   .scroll-cue { display: none; }
   .intro-layout,
