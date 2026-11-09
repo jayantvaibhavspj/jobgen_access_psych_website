@@ -19,13 +19,12 @@ import HomeHero from "@/components/home-hero";
 import Reveal from "@/components/reveal";
 import {
   AustraliaLocations,
+  CliniciansShowcase,
   FAQAccordion,
   HowItWorks,
   MarqueeTicker,
-  MetricsPlaceholder,
   ParallaxPhoto,
   NewsletterForm,
-  TestimonialSlider,
   TrustStrip,
   ValuesStory,
 } from "@/components/home-interactions";
@@ -68,6 +67,8 @@ const featuredLocations = [
   locations.find((location) => location.city === "Sydney CBD"),
   locations.find((location) => location.city === "Melbourne CBD"),
   locations.find((location) => location.city === "Brisbane"),
+  locations.find((location) => location.city === "Adelaide"),
+  locations.find((location) => location.city === "Perth"),
 ].filter((location): location is (typeof locations)[number] => Boolean(location));
 const featuredFaqs =
   pages["frequently-asked-questions"].sections?.slice(0, 3).map((faq) => ({
@@ -117,7 +118,6 @@ export default function HomePage() {
           <div className="intro-layout">
             <div className="intro-copy">
               <Reveal>
-                <span className="section-eyebrow">Care, on your terms</span>
                 <h2>Access psychology, therapy and counselling services</h2>
               </Reveal>
               <div className="intro-prose">
@@ -126,13 +126,15 @@ export default function HomePage() {
                     {index === 2 ? (
                       <div className="intro-image-row">
                         <p>{paragraph}</p>
-                        <Image
-                          src={HOME_IMAGE}
-                          alt="A young man talking with a psychologist or therapist"
-                          width={420}
-                          height={320}
-                          unoptimized
-                        />
+                        <div className="intro-inline-photo">
+                          <Image
+                            src="/images/intro-therapy-space.jpg"
+                            alt="A welcoming and comfortable modern therapy clinic space"
+                            width={460}
+                            height={340}
+                            className="intro-photo-img"
+                          />
+                        </div>
                       </div>
                     ) : (
                       <p>{paragraph}</p>
@@ -178,7 +180,6 @@ export default function HomePage() {
       </section>
 
       <HowItWorks />
-      <MetricsPlaceholder />
 
       <section
         className="services-overview section-pad"
@@ -187,7 +188,6 @@ export default function HomePage() {
         <div className="section-container">
           <div className="services-overview-heading">
             <div>
-              <span className="section-eyebrow">Ways we can support you</span>
               <h2 id="services-heading">Care for people and workplaces.</h2>
             </div>
             <Link className="text-link" href="/access-our-services">
@@ -238,10 +238,20 @@ export default function HomePage() {
       <ValuesStory values={pages["vision-purpose-values"].cards ?? []} />
 
       <section className="session-section section-pad">
+        <div className="session-section-bg" aria-hidden="true">
+          <Image
+            src="/images/booking-bg.jpg"
+            alt=""
+            fill
+            unoptimized
+            sizes="100vw"
+            className="session-section-bg-img"
+          />
+          <div className="session-section-overlay" />
+        </div>
         <div className="section-container">
           <div className="booking-editorial">
             <Reveal className="booking-editorial-heading">
-              <span className="section-eyebrow">One small next step</span>
               <h2>Book a session with one of our mental health clinicians.</h2>
               <p>Choose the way that feels easiest. Our team is here to help.</p>
             </Reveal>
@@ -312,67 +322,19 @@ export default function HomePage() {
         <div className="section-container">
           <div className="team-preview-heading">
             <div>
-              <span className="section-eyebrow">Meet our people</span>
               <h2 id="team-preview-heading">A clinician who listens.</h2>
             </div>
             <Link className="text-link" href="/meet-our-team">
               Meet the team <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </div>
-          <div className="clinicians-feature-layout">
-            <Reveal className="clinicians-image">
-              <ParallaxPhoto
-                src={HOME_IMAGE}
-                alt="A young man talking with a psychologist or therapist"
-                className="parallax-photo"
-                sizes="(max-width: 900px) 100vw, 35vw"
-              />
-              <span className="image-caption">
-                A little more room to feel like you.
-              </span>
-            </Reveal>
-            <div className="team-preview-grid">
-              {featuredClinicians.map((clinician, index) => (
-                <Reveal key={clinician.name} delay={index * 0.06}>
-                  <a
-                    className="team-preview-person"
-                    href={clinician.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span className="team-preview-photo">
-                      <Image
-                        src={clinician.image}
-                        alt={`${clinician.name}, ${clinician.title}`}
-                        fill
-                        unoptimized
-                        sizes="(max-width: 650px) 80vw, 20vw"
-                      />
-                      <span className="team-preview-overlay">
-                        <span className="team-preview-role">
-                          {clinician.title}
-                        </span>
-                        <strong>{clinician.name}</strong>
-                        <span className="team-preview-link">
-                          View profile{" "}
-                          <ArrowUpRight size={15} aria-hidden="true" />
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </Reveal>
-              ))}
-            </div>
-          </div>
+          <CliniciansShowcase clinicians={clinicians} />
         </div>
       </section>
-
-      <TestimonialSlider />
 
       <section className="clinicians-section section-pad">
         <div className="section-container clinicians-layout">
           <Reveal className="clinicians-content">
-            <span className="section-eyebrow">Get to know our clinicians</span>
             <h2 className="pathway-heading">A good place to begin.</h2>
             <div className="pathway-grid">
               {pathways.map((item) => {
@@ -400,7 +362,6 @@ export default function HomePage() {
         <div className="section-container">
           <div className="locations-preview-heading">
             <div className="locations-preview-intro">
-              <span className="section-eyebrow">Across Australia</span>
               <h2>Support, wherever you are.</h2>
               <p>
                 Appointments are available via telehealth, with face-to-face
@@ -420,9 +381,6 @@ export default function HomePage() {
           <div className="section-container">
             <div className="resources-preview-heading">
               <div>
-                <span className="section-eyebrow">
-                  <BookOpen size={14} aria-hidden="true" /> Read and explore
-                </span>
                 <h2 id="resources-preview-heading">
                   Mental health, made easier to understand.
                 </h2>
@@ -475,7 +433,6 @@ export default function HomePage() {
           <div className="section-container">
             <div className="news-preview-heading">
               <div className="news-preview-intro">
-                <span className="section-eyebrow">From Access Psych</span>
                 <h2 id="news-preview-heading">News and events.</h2>
               </div>
               <Link className="text-link" href="/news-and-events">
@@ -525,7 +482,6 @@ export default function HomePage() {
       <section className="faq-preview section-pad">
         <div className="section-container faq-preview-layout">
           <div className="faq-preview-intro">
-            <span className="section-eyebrow">Good to know</span>
             <h2>Questions are welcome.</h2>
             <p>Clear answers about appointments and support from Access Psych.</p>
             <Link className="text-link" href="/frequently-asked-questions">
@@ -540,29 +496,25 @@ export default function HomePage() {
       <section className="careers-preview" aria-label="Careers at Access Psych">
         <div className="section-container careers-preview-inner">
           <div className="careers-preview-copy">
-            <span className="section-eyebrow">Work with us</span>
             <h2>Make a difference with Access Psych.</h2>
             <Link className="button button-dark" href="/careers">
               Current vacancies <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </div>
-          {pages.careers.image && (
-            <div className="careers-preview-image">
-              <ParallaxPhoto
-                src={pages.careers.image}
-                alt={pages.careers.imageAlt ?? ""}
-                className="parallax-photo"
-                sizes="(max-width: 760px) 100vw, 44vw"
-              />
-            </div>
-          )}
+          <div className="careers-preview-image">
+            <ParallaxPhoto
+              src="/images/careers-banner.jpg"
+              alt="A collaborative multidisciplinary healthcare and psychology team"
+              className="parallax-photo"
+              sizes="(max-width: 760px) 100vw, 44vw"
+            />
+          </div>
         </div>
       </section>
 
       <section className="newsletter-preview" aria-label="Newsletter">
         <div className="section-container newsletter-preview-inner">
           <div>
-            <span className="section-eyebrow">Stay connected</span>
             <h2>{pages.newsletter.intro}</h2>
           </div>
           <NewsletterForm />
@@ -585,9 +537,19 @@ export default function HomePage() {
       </section>
 
       <section className="final-cta">
+        <div className="final-cta-bg" aria-hidden="true">
+          <Image
+            src="/images/final-cta-bg.jpg"
+            alt=""
+            fill
+            unoptimized
+            sizes="100vw"
+            className="final-cta-bg-img"
+          />
+          <div className="final-cta-overlay" />
+        </div>
         <div className="section-container final-cta-inner">
           <div>
-            <span className="section-eyebrow">Take the next step</span>
             <h2>Book online now.</h2>
           </div>
           <div className="final-cta-actions">

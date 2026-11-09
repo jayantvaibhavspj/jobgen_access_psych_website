@@ -9,7 +9,6 @@ export default function TeamDirectory() {
       <div className="section-container">
         <div className="directory-heading">
           <div>
-            <span className="section-eyebrow">Meet our team</span>
             <h2>Our mental health clinicians.</h2>
             <p>Access Psych has a team of mental health clinicians located across Australia.</p>
           </div>

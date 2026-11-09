@@ -91,7 +91,7 @@ export default async function InnerPage({
       {slug === "our-locations" && (
         <>
           <LocationsDirectory />
-          {page.cta && <section className="page-cta"><div className="section-container page-cta-inner"><div><span className="section-eyebrow">Access Psych</span><h2>Make a booking or referral.</h2></div><a className="button button-dark" href={page.cta.href}>Contact our team <span aria-hidden="true">↗</span></a></div></section>}
+          {page.cta && <section className="page-cta"><div className="section-container page-cta-inner"><div><h2>Make a booking or referral.</h2></div><a className="button button-dark" href={page.cta.href}>Contact our team <span aria-hidden="true">↗</span></a></div></section>}
         </>
       )}
     </>

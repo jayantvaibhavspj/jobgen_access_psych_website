@@ -374,6 +374,13 @@ export default function ChatWidget() {
             animate={{ opacity: 1, x: 0 }}
             exit={reduceMotion ? undefined : { opacity: 0, x: -8 }}
           >
+            <Image
+              className="chat-tooltip-image"
+              src="/images/access-psych-chat.jpg"
+              alt="A person speaking with a psychologist"
+              width={36}
+              height={36}
+            />
             <span>Access Psych Assistant</span>
             <button type="button" aria-label="Dismiss chat prompt" onClick={() => setTooltip(false)}>
               <X size={14} aria-hidden="true" />

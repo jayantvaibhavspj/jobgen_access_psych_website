@@ -218,7 +218,6 @@ export default function TechnologyPartnerPage() {
           </nav>
           <div className="technology-hero-grid">
             <div className="technology-hero-copy">
-              <span className="section-eyebrow">Technology partner</span>
               <h1>Meet JobGen.AI</h1>
               <p>
                 JobGen.AI builds voice and chat agents for reception,
@@ -279,7 +278,6 @@ export default function TechnologyPartnerPage() {
       <section className="technology-partnership section-pad">
         <div className="section-container technology-partnership-content">
           <Reveal className="technology-partnership-copy">
-            <span className="section-eyebrow">People first. Technology in support.</span>
             <h2>Support the admin around care.</h2>
             <p>
               JobGen.AI describes conversational agents for answering
@@ -307,7 +305,6 @@ export default function TechnologyPartnerPage() {
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
-              <span className="section-eyebrow">JobGen.AI agent examples</span>
               <h2>Two roles in the JobGen.AI workforce.</h2>
             </div>
             <p>
@@ -353,7 +350,6 @@ export default function TechnologyPartnerPage() {
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
-              <span className="section-eyebrow">JobGen.AI platform overview</span>
               <h2>Reception, routing and follow-up tools.</h2>
             </div>
             <p>
@@ -395,7 +391,6 @@ export default function TechnologyPartnerPage() {
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
-              <span className="section-eyebrow">Implementation journey</span>
               <h2>From verified information to a tested workflow.</h2>
             </div>
             <p>
@@ -429,7 +424,6 @@ export default function TechnologyPartnerPage() {
         <div className="section-container">
           <div className="technology-section-heading">
             <div>
-              <span className="section-eyebrow">Accuracy and accountability</span>
               <h2>Guardrails matter as much as automation.</h2>
             </div>
             <p>
@@ -456,7 +450,6 @@ export default function TechnologyPartnerPage() {
       <section className="technology-integrations section-pad">
         <div className="section-container technology-integrations-content">
           <div>
-            <span className="section-eyebrow">Tool ecosystem</span>
             <h2>Connectors JobGen.AI lists.</h2>
             <p>
               JobGen.AI describes connections with the services below. Their
@@ -484,7 +477,6 @@ export default function TechnologyPartnerPage() {
               />
             </div>
             <div className="technology-cta-copy">
-              <span className="section-eyebrow">Explore the platform</span>
               <h2>See JobGen.AI in action.</h2>
               <p>
                 Visit JobGen.AI or book a product demonstration to learn more

@@ -19,7 +19,6 @@ export default function LocationsDirectory() {
       <div className="section-container">
         <div className="directory-heading">
           <div>
-            <span className="section-eyebrow">View our clinics by state</span>
             <h2>Find a clinic near you.</h2>
           </div>
           <span className="clinic-count">{filtered.length} {filtered.length === 1 ? "clinic" : "clinics"}</span>

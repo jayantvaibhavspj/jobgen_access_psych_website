@@ -26,6 +26,7 @@ export type ContentCard = {
   href?: string;
   image?: string;
   imageAlt?: string;
+  backgroundImage?: string;
 };
 
 export type ContentPage = {
@@ -173,10 +174,34 @@ export const pages: Record<string, ContentPage> = {
       },
     ],
     cards: [
-      { title: "Authentic", text: "Our mental health clinicians build genuine relationships with clients that foster trust and confidence.", image: `${SITE_URL}/wp-content/uploads/2022/08/Authentic_Aug.png`, imageAlt: "Authenticity icon" },
-      { title: "Compassionate", text: "We understand the challenges our clients face and approach them with compassion and understanding.", image: `${SITE_URL}/wp-content/uploads/2022/08/Compassionate_Aug.png`, imageAlt: "Compassion icon" },
-      { title: "Dependable", text: "Our team of expert mental health clinicians can be trusted to work towards the best interest of the client.", image: `${SITE_URL}/wp-content/uploads/2022/08/Dependable_Aug.png`, imageAlt: "Dependability icon" },
-      { title: "Collaborative", text: "We are determined to work with our clients to identify solutions that help resolve their issues and concerns.", image: `${SITE_URL}/wp-content/uploads/2022/08/Collaborative_Aug.png`, imageAlt: "Collaboration icon" },
+      {
+        title: "Authentic",
+        text: "Our mental health clinicians build genuine relationships with clients that foster trust and confidence.",
+        image: `${SITE_URL}/wp-content/uploads/2022/08/Authentic_Aug.png`,
+        imageAlt: "Authenticity icon",
+        backgroundImage: "/images/values-authentic.jpg",
+      },
+      {
+        title: "Compassionate",
+        text: "We understand the challenges our clients face and approach them with compassion and understanding.",
+        image: `${SITE_URL}/wp-content/uploads/2022/08/Compassionate_Aug.png`,
+        imageAlt: "Compassion icon",
+        backgroundImage: "/images/values-compassionate.jpg",
+      },
+      {
+        title: "Dependable",
+        text: "Our team of expert mental health clinicians can be trusted to work towards the best interest of the client.",
+        image: `${SITE_URL}/wp-content/uploads/2022/08/Dependable_Aug.png`,
+        imageAlt: "Dependability icon",
+        backgroundImage: "/images/values-dependable.jpg",
+      },
+      {
+        title: "Collaborative",
+        text: "We are determined to work with our clients to identify solutions that help resolve their issues and concerns.",
+        image: `${SITE_URL}/wp-content/uploads/2022/08/Collaborative_Aug.png`,
+        imageAlt: "Collaboration icon",
+        backgroundImage: "/images/values-collaborative.jpg",
+      },
     ],
   },
   "our-approach": {

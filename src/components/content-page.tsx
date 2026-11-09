@@ -28,7 +28,6 @@ export default function ContentPageView({ page, showCta = true, slug }: { page: 
       <section className={`page-hero page-hero-${heroStyle}${page.image ? " has-image" : ""}`}>
         <div className="page-hero-layout section-container">
           <div className="page-hero-content">
-            <span className="hero-eyebrow"><span className="eyebrow-line" />{page.eyebrow}</span>
             <h1>{page.title}</h1>
             <p>{page.intro}</p>
           </div>
@@ -101,31 +100,45 @@ export default function ContentPageView({ page, showCta = true, slug }: { page: 
             <div className="value-grid">
               {page.cards.map((card, index) => (
                 <Reveal key={card.title} delay={index * 0.045}>
-                  <article className="value-card">
-                    {(slug === "blogs" || slug === "news-and-events") && card.image && (
-                      <div className="value-card-image">
+                  <article className={`value-card ${card.backgroundImage ? "value-card-with-bg" : ""}`}>
+                    {card.backgroundImage && (
+                      <div className="value-card-bg" aria-hidden="true">
                         <Image
-                          src={card.image}
-                          alt={card.imageAlt ?? ""}
+                          src={card.backgroundImage}
+                          alt=""
                           fill
-                          unoptimized
-                          sizes="(max-width: 760px) 100vw, 40vw"
+                          sizes="(max-width: 760px) 100vw, 400px"
+                          className="value-card-bg-img"
                         />
+                        <div className="value-card-bg-overlay" />
                       </div>
                     )}
-                    {card.image && slug !== "blogs" && slug !== "news-and-events" && (
-                      <span className="value-icon">
-                        <Image src={card.image} alt={card.imageAlt ?? ""} width={44} height={44} unoptimized />
-                      </span>
-                    )}
-                    {!card.image && <span className="value-card-number">{String(index + 1).padStart(2, "0")}</span>}
-                    <h2>{card.title}</h2>
-                    <p>{card.text}</p>
-                    {card.href && (
-                      <ContentLink href={card.href}>
-                        Read more <ArrowUpRight size={15} aria-hidden="true" />
-                      </ContentLink>
-                    )}
+                    <div className="value-card-inner">
+                      {(slug === "blogs" || slug === "news-and-events") && card.image && (
+                        <div className="value-card-image">
+                          <Image
+                            src={card.image}
+                            alt={card.imageAlt ?? ""}
+                            fill
+                            unoptimized
+                            sizes="(max-width: 760px) 100vw, 40vw"
+                          />
+                        </div>
+                      )}
+                      {card.image && slug !== "blogs" && slug !== "news-and-events" && (
+                        <span className="value-icon">
+                          <Image src={card.image} alt={card.imageAlt ?? ""} width={44} height={44} unoptimized />
+                        </span>
+                      )}
+                      {!card.image && <span className="value-card-number">{String(index + 1).padStart(2, "0")}</span>}
+                      <h2>{card.title}</h2>
+                      <p>{card.text}</p>
+                      {card.href && (
+                        <ContentLink href={card.href}>
+                          Read more <ArrowUpRight size={15} aria-hidden="true" />
+                        </ContentLink>
+                      )}
+                    </div>
                   </article>
                 </Reveal>
               ))}
@@ -144,7 +157,6 @@ export default function ContentPageView({ page, showCta = true, slug }: { page: 
         <section className="page-cta">
           <div className="section-container page-cta-inner">
             <div>
-              <span className="section-eyebrow">Access Psych</span>
               <h2>Make a booking or referral.</h2>
             </div>
             <div className="page-cta-actions">

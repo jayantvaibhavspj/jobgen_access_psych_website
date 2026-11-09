@@ -7,7 +7,6 @@ export default function BookingRequestPage() {
       <section className="page-hero">
         <div className="page-hero-background"><div className="page-hero-overlay" /></div>
         <div className="page-hero-content section-container">
-          <span className="hero-eyebrow"><span className="eyebrow-line" />Bookings &amp; Referrals</span>
           <h1>Bookings &amp; Referrals</h1>
           <p>Who is completing this form? Please select from below to get started.</p>
         </div>
@@ -17,7 +16,6 @@ export default function BookingRequestPage() {
         <div className="section-container booking-form-panel">
           <span className="booking-form-icon"><ClipboardList size={26} aria-hidden="true" /></span>
           <div>
-            <span className="section-eyebrow">Booking request form</span>
             <h2>Make a booking or referral.</h2>
             <p>The Access Psych booking and referral form is available through the official Access Psych website.</p>
             <a className="button button-dark" href={`${SITE_URL}/online-booking-request/`} target="_blank" rel="noreferrer">

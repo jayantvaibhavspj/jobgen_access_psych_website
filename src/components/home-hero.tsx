@@ -14,6 +14,7 @@ const slides = [
     text: "Our mental health clinicians have capacity for telehealth and face-to-face sessions.",
     action: "Find a clinician",
     href: "/meet-our-team",
+    image: HOME_IMAGE,
   },
   {
     title: "Employee Assistance Program.",
@@ -21,6 +22,7 @@ const slides = [
     text: "We offer dependable and proven counselling services to meet corporate needs.",
     action: "Learn more",
     href: "/employee-assistance-program",
+    image: "/images/careers-banner.jpg",
   },
   {
     title: "Meet our clinicians.",
@@ -28,6 +30,7 @@ const slides = [
     text: "We've got Australia covered so there's a talented and qualified clinician near you.",
     action: "Find a clinician",
     href: "/meet-our-team",
+    image: "/images/clinician-listen.jpg",
   },
 ];
 
@@ -88,11 +91,11 @@ export default function HomeHero({
             transition={{ duration: reducedMotion ? 0 : 1, ease: "easeInOut" }}
           >
             <Image
-              src={HOME_IMAGE}
+              src={slide.image || HOME_IMAGE}
               alt=""
               fill
               unoptimized
-              preload={active === 0}
+              priority={active === 0}
               sizes="100vw"
               className="hero-poster"
             />
@@ -180,11 +183,11 @@ export default function HomeHero({
           </div>
 
           <div className="hero-trust" aria-label="Service details">
-            <span><Check size={14} aria-hidden="true" /> Telehealth + face-to-face</span>
+            <span><Check size={14} aria-hidden="true" /> Telehealth and clinic appointments</span>
             <i aria-hidden="true" />
             <span><Check size={14} aria-hidden="true" /> Clinicians across Australia</span>
             <i aria-hidden="true" />
-            <span><Check size={14} aria-hidden="true" /> Ages 12+</span>
+            <span><Check size={14} aria-hidden="true" /> Ages 12 and over</span>
           </div>
         </div>
 

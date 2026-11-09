@@ -13,18 +13,27 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
+  Compass,
   MapPin,
   Plus,
+  Radio,
 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
   FormEvent,
   PointerEvent,
+  useEffect,
   useRef,
   useState,
 } from "react";
 import type { ContentCard } from "@/lib/site-data";
+import {
+  AUSTRALIA_STATES,
+  AUSTRALIA_PINS,
+  AUSTRALIA_MAP_WIDTH,
+  AUSTRALIA_MAP_HEIGHT,
+} from "@/data/australia-map-data";
 
 type Location = {
   state: string;
@@ -37,77 +46,222 @@ type FAQ = {
 };
 
 export function AustraliaLocations({ locations }: { locations: Location[] }) {
-  const [activeCity, setActiveCity] = useState<string | null>(null);
+  const [activeCity, setActiveCity] = useState<string | null>("Sydney CBD");
+  const [hoveredState, setHoveredState] = useState<string | null>(null);
   const reduceMotion = useReducedMotion();
+
+  const activePin = AUSTRALIA_PINS.find((pin) => pin.city === activeCity);
 
   return (
     <div className="australia-locations">
       <div className="australia-map-wrap">
         <svg
           className="australia-map"
-          viewBox="0 0 420 340"
+          viewBox={`0 0 ${AUSTRALIA_MAP_WIDTH} ${AUSTRALIA_MAP_HEIGHT}`}
           role="img"
-          aria-label="Map of Australia highlighting Sydney, Melbourne and Brisbane"
+          aria-label="Real interactive geographic map of Australia showing clinic locations"
         >
-          <motion.path
-            className="australia-map-shape"
-            d="M56 96 71 73 111 64 131 48 163 58 184 45 212 59 241 55 265 71 301 64 319 82 349 87 365 109 356 137 369 156 354 180 360 207 340 226 331 255 308 271 296 302 270 308 252 288 228 295 208 278 185 286 164 268 141 279 119 257 98 253 83 230 66 221 74 197 61 175 70 153 53 130Z"
-            initial={{ pathLength: 0 }}
-            whileInView={{ pathLength: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 1.4, ease: "easeInOut" }}
-          />
-          <path className="australia-map-tasmania" d="m308 309 11 8 3 14-9 5-10-10Z" />
-          {[
-            { city: "Brisbane", x: 322, y: 145 },
-            { city: "Sydney CBD", x: 319, y: 214 },
-            { city: "Melbourne CBD", x: 286, y: 253 },
-          ].map((point) => (
-            <a
-              key={point.city}
-              href="/our-locations"
-              className={`map-marker${activeCity === point.city ? " is-active" : ""}`}
-              aria-label={`View ${point.city} locations`}
-              onMouseEnter={() => setActiveCity(point.city)}
-              onMouseLeave={() => setActiveCity(null)}
-              onFocus={() => setActiveCity(point.city)}
-              onBlur={() => setActiveCity(null)}
-            >
-              <motion.circle
-                className="map-marker-halo"
-                cx={point.x}
-                cy={point.y}
-                r="12"
-                animate={reduceMotion ? undefined : { scale: [1, 1.08, 1] }}
-                transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <circle className="map-marker-core" cx={point.x} cy={point.y} r="4.5" />
-            </a>
-          ))}
+          <defs>
+            <linearGradient id="auStateGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#f3edff" />
+              <stop offset="100%" stopColor="#e2d6fc" />
+            </linearGradient>
+            <filter id="landGlow" x="-8%" y="-8%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="8" stdDeviation="14" floodColor="#1c2b38" floodOpacity="0.12" />
+            </filter>
+          </defs>
+
+          {/* Graticule grid */}
+          <g className="map-graticule" stroke="rgba(28, 43, 56, 0.08)" strokeDasharray="3 4">
+            <line x1="40" y1="120" x2="600" y2="120" />
+            <line x1="40" y1="240" x2="600" y2="240" />
+            <line x1="40" y1="360" x2="600" y2="360" />
+            <line x1="40" y1="480" x2="600" y2="480" />
+            <line x1="160" y1="30" x2="160" y2="490" />
+            <line x1="280" y1="30" x2="280" y2="490" />
+            <line x1="400" y1="30" x2="400" y2="490" />
+            <line x1="520" y1="30" x2="520" y2="490" />
+          </g>
+
+          {/* Ocean geographic watermarks */}
+          <g className="map-ocean-labels" fill="rgba(28, 43, 56, 0.32)" fontSize="9" letterSpacing="0.18em" fontWeight="600" textAnchor="middle">
+            <text x="80" y="240">INDIAN OCEAN</text>
+            <text x="560" y="110">CORAL SEA</text>
+            <text x="575" y="440">TASMAN SEA</text>
+            <text x="240" y="470">SOUTHERN OCEAN</text>
+            <text x="160" y="22" fill="rgba(28, 43, 56, 0.25)" fontSize="8">120°E</text>
+            <text x="280" y="22" fill="rgba(28, 43, 56, 0.25)" fontSize="8">130°E</text>
+            <text x="400" y="22" fill="rgba(28, 43, 56, 0.25)" fontSize="8">140°E</text>
+            <text x="520" y="22" fill="rgba(28, 43, 56, 0.25)" fontSize="8">150°E</text>
+          </g>
+
+          {/* Compass rose */}
+          <g className="map-compass" transform="translate(585, 42)">
+            <circle cx="0" cy="0" r="16" fill="rgba(255, 255, 255, 0.85)" stroke="rgba(28, 43, 56, 0.15)" strokeWidth="1" />
+            <polygon points="0,-13 3,-2 0,0 -3,-2" fill="#1c2b38" />
+            <polygon points="0,13 3,2 0,0 -3,2" fill="rgba(28, 43, 56, 0.3)" />
+            <polygon points="-13,0 -2,-3 0,0 -2,3" fill="rgba(28, 43, 56, 0.3)" />
+            <polygon points="13,0 2,-3 0,0 2,3" fill="rgba(28, 43, 56, 0.3)" />
+            <text x="0" y="-15" textAnchor="middle" fontSize="7" fontWeight="700" fill="#1c2b38">N</text>
+          </g>
+
+          {/* Real Australian states */}
+          <g className="australia-states-layer" filter="url(#landGlow)">
+            {AUSTRALIA_STATES.map((st) => {
+              const isStateHovered = hoveredState === st.name;
+              return (
+                <path
+                  key={st.code}
+                  className={`australia-state-polygon${isStateHovered ? " is-hovered" : ""}`}
+                  d={st.d}
+                  fill="url(#auStateGrad)"
+                  stroke="#9966ff"
+                  strokeWidth="1.2"
+                  strokeLinejoin="round"
+                  onMouseEnter={() => setHoveredState(st.name)}
+                  onMouseLeave={() => setHoveredState(null)}
+                />
+              );
+            })}
+          </g>
+
+          {/* Interactive capital city pins */}
+          <g className="australia-pins-layer">
+            {AUSTRALIA_PINS.map((pin) => {
+              const isActive = activeCity === pin.city;
+              return (
+                <g
+                  key={pin.city}
+                  className={`australia-pin-group${isActive ? " is-active" : ""}`}
+                  transform={`translate(${pin.x}, ${pin.y})`}
+                  onClick={() => setActiveCity(pin.city)}
+                  onMouseEnter={() => {
+                    setActiveCity(pin.city);
+                    setHoveredState(pin.state);
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  {/* Radar pulse wave */}
+                  <circle
+                    className="pin-pulse-wave"
+                    r={isActive ? 20 : 11}
+                    fill={isActive ? "rgba(153, 102, 255, 0.25)" : "rgba(28, 43, 56, 0.08)"}
+                    stroke={isActive ? "#9966ff" : "rgba(28, 43, 56, 0.2)"}
+                    strokeWidth={isActive ? 1.5 : 1}
+                  />
+                  {/* Inner halo */}
+                  <circle
+                    className="pin-inner-halo"
+                    r={isActive ? 10 : 6.5}
+                    fill={isActive ? "#9966ff" : "rgba(28, 43, 56, 0.15)"}
+                  />
+                  {/* Core dot */}
+                  <circle
+                    className="pin-core-dot"
+                    r={isActive ? 5 : 3.5}
+                    fill={isActive ? "#ffffff" : "#1c2b38"}
+                    stroke={isActive ? "#9966ff" : "#ffffff"}
+                    strokeWidth={1.5}
+                  />
+                  {/* City label text */}
+                  <text
+                    x={pin.x > 500 ? -12 : 12}
+                    y={4}
+                    textAnchor={pin.x > 500 ? "end" : "start"}
+                    className={`pin-label${isActive ? " is-active" : ""}`}
+                    fontSize="11"
+                    fontWeight={isActive ? "700" : "600"}
+                    fill={isActive ? "#1c2b38" : "rgba(28, 43, 56, 0.85)"}
+                  >
+                    {pin.city.replace(" CBD", "")}
+                  </text>
+                </g>
+              );
+            })}
+          </g>
         </svg>
-        <span className="map-caption">Clinicians across Australia</span>
-      </div>
-      <div className="locations-preview-list">
-        {locations.map((location) => (
-          <a
-            className={`location-preview-row${activeCity === location.city ? " is-active" : ""}`}
-            href="/our-locations"
-            key={`${location.state}-${location.city}`}
-            onMouseEnter={() => setActiveCity(location.city)}
-            onMouseLeave={() => setActiveCity(null)}
-            onFocus={() => setActiveCity(location.city)}
-            onBlur={() => setActiveCity(null)}
+
+        {/* Live floating callout card on active city */}
+        {activePin && (
+          <div
+            className="map-floating-callout"
+            style={{
+              left: `${(activePin.x / AUSTRALIA_MAP_WIDTH) * 100}%`,
+              top: `${(activePin.y / AUSTRALIA_MAP_HEIGHT) * 100}%`,
+            }}
           >
-            <MapPin size={19} aria-hidden="true" />
-            <span>
-              <strong>{location.city}</strong>
-              <small>{location.state}</small>
+            <div className="map-callout-inner">
+              <div className="map-callout-head">
+                <span className="map-callout-status">● {activePin.status}</span>
+                <span className="map-callout-state">{activePin.state}</span>
+              </div>
+              <strong className="map-callout-title">{activePin.city}</strong>
+              <p className="map-callout-desc">Psychology, Therapy & Mental Health Services</p>
+              <a href="/our-locations" className="map-callout-link">
+                View clinic details <ArrowUpRight size={13} />
+              </a>
+            </div>
+          </div>
+        )}
+
+        {/* Bottom card bar with scale and hovered state */}
+        <div className="map-footer-bar">
+          <div className="map-scale-metric">
+            <span className="map-scale-line" />
+            <span className="map-scale-text">500 km</span>
+          </div>
+          <span className="map-hover-state">
+            {hoveredState ? `Selected: ${hoveredState}` : "Click or hover any city pin"}
+          </span>
+          <span className="map-telehealth-badge">
+            <Radio size={12} /> Telehealth Nationwide
+          </span>
+        </div>
+      </div>
+
+      <div className="locations-preview-list">
+        {locations.map((location) => {
+          const isActive = activeCity === location.city;
+          return (
+            <a
+              className={`location-preview-row${isActive ? " is-active" : ""}`}
+              href="/our-locations"
+              key={`${location.state}-${location.city}`}
+              onMouseEnter={() => {
+                setActiveCity(location.city);
+                setHoveredState(location.state);
+              }}
+              onFocus={() => {
+                setActiveCity(location.city);
+                setHoveredState(location.state);
+              }}
+            >
+              <div className={`location-pin-icon${isActive ? " is-active" : ""}`}>
+                <MapPin size={18} aria-hidden="true" />
+              </div>
+              <span className="location-info">
+                <strong>{location.city}</strong>
+                <small>{location.state}</small>
+              </span>
+              <div className="location-arrow">
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </div>
+            </a>
+          );
+        })}
+
+        {/* Quick state coverage pills */}
+        <div className="map-quick-states">
+          <span className="map-quick-label">Coverage:</span>
+          {["NSW", "VIC", "QLD", "SA", "WA", "TAS", "ACT", "NT"].map((code) => (
+            <span key={code} className="state-badge-pill">
+              {code}
             </span>
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
-        ))}
-        <a className="text-link" href="/our-locations">
-          View all locations <ArrowUpRight size={16} aria-hidden="true" />
+          ))}
+        </div>
+
+        <a className="locations-cta-link text-link" href="/our-locations">
+          View all 70+ locations across Australia <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </div>
     </div>
@@ -255,7 +409,6 @@ export function HowItWorks() {
     <section className="how-it-works section-pad" aria-labelledby="how-it-works-title">
       <div className="section-container">
         <div className="how-it-works-heading">
-          <span className="section-eyebrow">A clear next step</span>
           <h2 id="how-it-works-title">How it works.</h2>
         </div>
         <div className="process-steps">
@@ -383,6 +536,13 @@ export function TestimonialSlider() {
   );
 }
 
+const valueImages: Record<string, string> = {
+  Authentic: "/images/values-authentic.jpg",
+  Compassionate: "/images/values-compassionate.jpg",
+  Dependable: "/images/values-dependable.jpg",
+  Collaborative: "/images/values-collaborative.jpg",
+};
+
 export function ValuesStory({ values }: { values: ContentCard[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
@@ -406,7 +566,6 @@ export function ValuesStory({ values }: { values: ContentCard[] }) {
       <div className="values-story-sticky">
         <div className="section-container values-story-layout">
           <div className="values-story-intro">
-            <span className="section-eyebrow">Our purpose</span>
             <h2>Connecting people with the mental health support they need, when they need it.</h2>
             <a className="text-link" href="/vision-purpose-values">
               Vision, purpose &amp; values <ArrowUpRight size={16} aria-hidden="true" />
@@ -433,8 +592,24 @@ export function ValuesStory({ values }: { values: ContentCard[] }) {
               exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
               transition={{ duration: reduceMotion ? 0 : 0.32 }}
             >
-              <h3>{values[activeIndex]?.title}</h3>
-              <p>{values[activeIndex]?.text}</p>
+              {(values[activeIndex]?.backgroundImage || valueImages[values[activeIndex]?.title]) && (
+                <div className="values-story-card-bg" aria-hidden="true">
+                  <Image
+                    src={values[activeIndex]?.backgroundImage || valueImages[values[activeIndex]?.title]}
+                    alt=""
+                    fill
+                    unoptimized
+                    sizes="(max-width: 760px) 100vw, 650px"
+                    className="values-story-card-bg-img"
+                    priority
+                  />
+                  <div className="values-story-card-overlay" />
+                </div>
+              )}
+              <div className="values-story-card-content">
+                <h3>{values[activeIndex]?.title}</h3>
+                <p>{values[activeIndex]?.text}</p>
+              </div>
             </motion.article>
           </AnimatePresence>
         </div>
@@ -472,5 +647,130 @@ export function ParallaxPhoto({
     <motion.div ref={imageRef} className={className} style={{ y }}>
       <Image src={src} alt={alt} fill unoptimized sizes={sizes} />
     </motion.div>
+  );
+}
+
+export type ClinicianItem = {
+  name: string;
+  title: string;
+  description?: string;
+  url: string;
+  image: string;
+};
+
+export function CliniciansShowcase({ clinicians }: { clinicians: ClinicianItem[] }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const count = clinicians.length;
+
+  useEffect(() => {
+    if (paused || count <= 1) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % count);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, [paused, count]);
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + count) % count);
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % count);
+  };
+
+  if (!clinicians || clinicians.length === 0) return null;
+
+  const offsets = [-2, -1, 0, 1, 2];
+
+  return (
+    <div
+      className="clinicians-showcase"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div className="clinicians-showcase-stage">
+        {offsets.map((offset) => {
+          const index = (activeIndex + offset + count) % count;
+          const clinician = clinicians[index];
+          const isCenter = offset === 0;
+
+          return (
+            <motion.div
+              key={`${clinician.name}-${offset}`}
+              className={`clinicians-showcase-card offset-${offset} ${isCenter ? "is-center" : ""}`}
+              onClick={() => {
+                if (!isCenter) {
+                  setActiveIndex(index);
+                }
+              }}
+              layout
+              transition={{ type: "spring", stiffness: 280, damping: 28 }}
+            >
+              <div className="clinicians-showcase-photo-wrap">
+                <Image
+                  src={clinician.image}
+                  alt={`${clinician.name}, ${clinician.title}`}
+                  fill
+                  unoptimized
+                  sizes="(max-width: 760px) 80vw, 320px"
+                  className="clinicians-showcase-photo"
+                  priority={isCenter}
+                />
+                <div className="clinicians-showcase-card-overlay" />
+              </div>
+
+              <div className="clinicians-showcase-info">
+                <span className="clinicians-showcase-role">{clinician.title}</span>
+                <strong className="clinicians-showcase-name">{clinician.name}</strong>
+                {isCenter && (
+                  <a
+                    className="clinicians-showcase-btn"
+                    href={clinician.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    View profile <ArrowUpRight size={15} aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      <div className="clinicians-showcase-controls">
+        <button
+          type="button"
+          className="clinicians-nav-btn prev"
+          onClick={handlePrev}
+          aria-label="Previous clinician"
+        >
+          <ArrowLeft size={18} aria-hidden="true" />
+        </button>
+
+        <div className="clinicians-showcase-dots">
+          {clinicians.slice(0, Math.min(count, 10)).map((_, i) => (
+            <button
+              type="button"
+              key={i}
+              className={`clinicians-dot ${i === activeIndex % Math.min(count, 10) ? "is-active" : ""}`}
+              onClick={() => setActiveIndex(i)}
+              aria-label={`Go to clinician ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className="clinicians-nav-btn next"
+          onClick={handleNext}
+          aria-label="Next clinician"
+        >
+          <ArrowRight size={18} aria-hidden="true" />
+        </button>
+      </div>
+    </div>
   );
 }

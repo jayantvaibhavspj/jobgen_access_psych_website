@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Figtree, Fraunces } from "next/font/google";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
-import FloatingBooking from "@/components/floating-booking";
 import ChatWidget from "@/components/chat-widget";
 import { HOME_IMAGE } from "@/lib/site-data";
 import "./globals.css";
@@ -59,7 +58,6 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
-        <FloatingBooking />
         <ChatWidget />
       </body>
     </html>
